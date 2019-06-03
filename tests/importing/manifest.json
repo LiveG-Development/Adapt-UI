@@ -1,0 +1,12 @@
+{
+    "package": "tech.liveg.opensource.importingTests",
+    "version": "0.1.0",
+    "name": {
+        "en_GB": "Importing Tests"
+    },
+    "description": {
+        "en_GB": "Testing for library imports for Adapt UI."
+    },
+    "defaultLocale": "en_GB",
+    "mainScript": "script.js"
+}
