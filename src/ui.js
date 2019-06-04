@@ -46,7 +46,7 @@ ui.components.Component = class {
     generateHTML() {
         return this.generateDOMElement().html.get();
     }
-},
+};
 
 /*
     @name ui.components.Text
@@ -71,7 +71,7 @@ ui.components.Text = class extends ui.components.Component {
 
         return currentDOMElement;
     }
-},
+};
 
 /*
     @name ui.components.HTML
@@ -96,7 +96,7 @@ ui.components.HTML = class extends ui.components.Component {
 
         return currentDOMElement;
     }
-},
+};
 
 /*
     @name ui.components.Container
@@ -110,4 +110,4 @@ ui.components.Container = class extends ui.components.Component {
     constructor(children = []) {
         super(children);
     }
-}
+};
