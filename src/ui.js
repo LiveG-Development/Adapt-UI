@@ -1,7 +1,47 @@
+// Adapt UI
+// 
+// Copyright (C) LiveG. All Rights Reserved.
+// Copying is not a victimless crime. Anyone caught copying LiveG software may
+// face sanctions.
+// 
+// https://liveg.tech
+// Licensed by the LiveG Open-Source Licence, which can be found at LICENCE.md.
+
 // @import https://opensource.liveg.tech/ZaprCoreLibs/src/dom/dom
 
 var ui = {
-    components: {}
+    components: {},
+    screen: [],
+
+    events: {
+        /*
+            @name ui.events.loaded
+
+            @param callback function Callback function to call when main UI container has loaded.
+
+            @shortDescription Call callback function when main UI container has loaded.
+        */
+        loaded: function(callback) {
+            dom.loaded(function() {
+                callback();
+
+                ui.refresh();
+            });
+        }
+    },
+
+    /*
+        @name ui.refresh
+
+        @shortDescription Regenerate the DOM to reflect the UI layout in `ui.screen`.
+    */
+    refresh: function() {
+        dom.element().children().delete();
+
+        for (var i = 0; i < ui.screen.length; i++) {
+            dom.element().newChild(ui.screen[i].generateDOMElement());
+        }
+    }
 };
 
 /*
@@ -109,5 +149,9 @@ ui.components.HTML = class extends ui.components.Component {
 ui.components.Container = class extends ui.components.Component {
     constructor(children = []) {
         super(children);
+
+        this.HTMLTagName = "span";
     }
 };
+
+ui.events.loaded(function() {});
