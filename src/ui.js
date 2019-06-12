@@ -8,6 +8,9 @@
 // Licensed by the LiveG Open-Source Licence, which can be found at LICENCE.md.
 
 // @import https://opensource.liveg.tech/ZaprCoreLibs/src/dom/dom
+// @import https://opensource.liveg.tech/ZaprCoreLibs/src/importer/importer
+
+// @asset src/style.css
 
 var ui = {
     components: {},
@@ -24,6 +27,8 @@ var ui = {
         loaded: function(callback) {
             dom.loaded(function() {
                 callback();
+
+                dom.element("head").append(importer.generateLinkDOMElement("style.css"));
 
                 ui.refresh();
             });
