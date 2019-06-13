@@ -10,8 +10,6 @@
 // @import https://opensource.liveg.tech/ZaprCoreLibs/src/dom/dom
 // @import https://opensource.liveg.tech/ZaprCoreLibs/src/importer/importer
 
-// @asset src/style.css
-
 var ui = {
     components: {},
     screen: [],
@@ -28,7 +26,9 @@ var ui = {
             dom.loaded(function() {
                 callback();
 
-                dom.element("head").append(importer.generateLinkDOMElement("style.css"));
+                // @asset style.css
+                
+                dom.element("head").newChild(importer.generateLinkDOMElement(_assets["style.css"]));
 
                 ui.refresh();
             });
