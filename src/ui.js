@@ -26,6 +26,10 @@ var ui = {
             dom.loaded(function() {
                 callback();
 
+                // @asset imports.css
+
+                dom.element("head").newChild(importer.generateLinkDOMElement(_assets["imports.css"]));
+
                 // @asset style.css
                 
                 dom.element("head").newChild(importer.generateLinkDOMElement(_assets["style.css"]));
@@ -155,8 +159,71 @@ ui.components.Container = class extends ui.components.Component {
     constructor(children = []) {
         super(children);
 
-        this.HTMLTagName = "span";
+        this.HTMLTagName = "div";
     }
 };
+
+/*
+    @name ui.components.Paragraph
+
+    @param children object Children to include in component. Default: `[]`.
+
+    @shortDescription Paragraph class, extends `ui.components.Component`.
+    @longDescription Has similar properties to a HTML `p` element.
+*/
+ui.components.Paragraph = class extends ui.components.Component {
+    constructor(children = []) {
+        super(children);
+
+        this.HTMLTagName = "p";
+    }
+}
+
+/*
+    @name ui.components.Heading
+
+    @param children object Children to include in component. Default: `[]`.
+    @param level number Level number to use for heading. Must be between 1 and 6 inclusive. Default: `1`.
+
+    @shortDescription Heading class, extends `ui.components.Component`.
+    @longDescription Has similar properties to the HTML `h1`, `h2`, `h3`, `h4`, `h5` and `h6` elements.
+*/
+ui.components.Heading = class extends ui.components.Component {
+    constructor(children = [], level = 1) {
+        super(children);
+
+        if (typeof(level) == "number" && Number.isInteger(level) && level >= 1 && level <= 6) {
+            this.HTMLTagName = "h" + String(level);
+        } else {
+            throw "`level` is either not a number, is not an integer, or is not between 1 and 6 inclusive";
+        }
+    }
+}
+
+/*
+    @name ui.components.Icon
+
+    @param name string Name of icon to use.
+
+    @shortDescription Icon class, extends `ui.components.Component`.
+    @longDescription Uses icons from from the Clarity icon set. An `i` element is generated.
+*/
+ui.components.Icon = class extends ui.components.Component {
+    constructor(name) {
+        super();
+
+        this.HTMLTagName = "i";
+
+        this.name = name;
+    }
+
+    generateDOMElement() {
+        var currentDOMElement = dom.new(this.HTMLTagName);
+
+        currentDOMElement.text.set(this.name);
+
+        return currentDOMElement;
+    }
+}
 
 ui.events.loaded(function() {});

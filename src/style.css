@@ -1,3 +1,53 @@
 body {
-    font-family: sans-serif;
+    font-family: "Circumference", "Century Gothic", "CenturyGothic", "URW Gothic L Book", "AppleGothic", sans-serif;
+    font-size: 16px;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+h5 {
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+h6 {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 16px;
+}
+
+icon {
+    font-family: "Clarity", "Circumference", sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: liga;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: liga;
 }
