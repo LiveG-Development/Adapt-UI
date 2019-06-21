@@ -4,6 +4,6 @@
 core.unpack(ui.components);
 
 ui.screen = [
-    new Heading([new Text("Hello, world!")]),
-    new Paragraph([new Text("This is a test of Adapt UI, the user interface design language by LiveG Technologies.")])
+    new Heading("Hello, world!"),
+    new Paragraph("This is a test of Adapt UI, the user interface design language by LiveG Technologies.")
 ];

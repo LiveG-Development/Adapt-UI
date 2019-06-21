@@ -56,7 +56,7 @@ var ui = {
 /*
     @name ui.components.Component
 
-    @param children object Children to include in component. Default: `[]`.
+    @param children any Children or content to include in component. Default: `[]`.
 
     @shortDescription Blank component class.
 */
@@ -76,6 +76,10 @@ ui.components.Component = class {
         @shortDescription Generate DOM element for component.
     */
     generateDOMElement() {
+        if (typeof(this.children) == "string" || typeof(this.children) == "number") {
+            this.children = [new ui.components.Text(this.children)];
+        }
+
         var currentDOMElement = dom.new(this.HTMLTagName);
 
         for (var i = 0; i < this.children.length; i++) {
@@ -150,7 +154,7 @@ ui.components.HTML = class extends ui.components.Component {
 /*
     @name ui.components.Container
 
-    @param children object Children to include in component. Default: `[]`.
+    @param children any Children or content to include in component. Default: `[]`.
 
     @shortDescription Container class, extends `ui.components.Component`.
     @longDescription Has similar properties to a HTML `div` element.
@@ -166,7 +170,7 @@ ui.components.Container = class extends ui.components.Component {
 /*
     @name ui.components.Paragraph
 
-    @param children object Children to include in component. Default: `[]`.
+    @param children any Children or content to include in component. Default: `[]`.
 
     @shortDescription Paragraph class, extends `ui.components.Component`.
     @longDescription Has similar properties to a HTML `p` element.
@@ -182,7 +186,7 @@ ui.components.Paragraph = class extends ui.components.Component {
 /*
     @name ui.components.Heading
 
-    @param children object Children to include in component. Default: `[]`.
+    @param children any Children or content to include in component. Default: `[]`.
     @param level number Level number to use for heading. Must be between 1 and 6 inclusive. Default: `1`.
 
     @shortDescription Heading class, extends `ui.components.Component`.
