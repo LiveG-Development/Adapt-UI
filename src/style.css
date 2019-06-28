@@ -1,43 +1,76 @@
+/*
+    Adapt UI
+    
+    Copyright (C) LiveG. All Rights Reserved.
+    Copying is not a victimless crime. Anyone caught copying LiveG software may
+    face sanctions.
+    
+    https://liveg.tech
+    Licensed by the LiveG Open-Source Licence, which can be found at LICENCE.md.
+    Some portions of this document are licenced by the licences listed in
+    FONT_LICENCE.md.
+*/
+
+:root {
+    --fontCircumference: "Circumference", "Century Gothic", "CenturyGothic", "URW Gothic L Book", "AppleGothic", sans-serif;
+    --fontClarity: "Clarity", var(--fontCircumference), sans-serif;
+    --sizeH1: 36px;
+    --sizeH2: 30px;
+    --sizeH3: 24px;
+    --sizeH4: 18px;
+    --sizeH5: 16px;
+    --sizeH6: 14px;
+    --sizeP: 16px;
+    --primaryBackground: rgb(255, 255, 255);
+    --primaryText: rgb(0, 0, 0);
+    --primaryUI: rgb(80, 145, 247);
+    --primaryUIText: rgb(255, 255, 255);
+    --secondaryBackground: rgb(229, 229, 229);
+    --secondaryText: rgb(0, 0, 0);
+    --secondaryUI: rgb(150, 184, 247);
+    --secondaryUIText: rgb(255, 255, 255);
+}
+
 body {
-    font-family: "Circumference", "Century Gothic", "CenturyGothic", "URW Gothic L Book", "AppleGothic", sans-serif;
+    font-family: var(--fontCircumference);
     font-size: 16px;
 }
 
 h1 {
-    font-size: 36px;
+    font-size: var(--sizeH1);
     font-weight: 700;
 }
 
 h2 {
-    font-size: 30px;
+    font-size: var(--sizeH2);
     font-weight: 700;
 }
 
 h3 {
-    font-size: 24px;
+    font-size: var(--sizeH3);
     font-weight: 700;
 }
 
 h4 {
-    font-size: 18px;
+    font-size: var(--sizeH4);
 }
 
 h5 {
-    font-size: 16px;
+    font-size: var(--sizeH5);
     text-transform: uppercase;
 }
 
 h6 {
-    font-size: 14px;
+    font-size: var(--sizeH6);
     text-transform: uppercase;
 }
 
 p {
-    font-size: 16px;
+    font-size: var(--sizeP);
 }
 
 icon {
-    font-family: "Clarity", "Circumference", sans-serif;
+    font-family: var(--fontClarity);
     font-weight: normal;
     font-style: normal;
     line-height: 1;
@@ -50,4 +83,22 @@ icon {
     -webkit-font-feature-settings: liga;
     -webkit-font-smoothing: antialiased;
     font-feature-settings: liga;
+}
+
+button {
+    margin: 5px;
+    padding: 10px;
+    font-family: var(--fontCircumference);
+    font-size: var(--sizeP);
+    background-color: var(--primaryUI);
+    color: var(--primaryUIText);
+    border: none;
+    border-radius: 10px;
+    cursor: default;
+    transition: 0.5s;
+}
+
+button[secondary] {
+    background-color: var(--secondaryUI);
+    color: var(--secondaryUIText);
 }

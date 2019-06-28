@@ -98,11 +98,11 @@ ui.colour.RGBA = class {
 
 ui.theming = {
     primaryBackground: new ui.colour.RGBA(255, 255, 255),
-    primaryText: new ui.colour.RGBA(20, 20, 20),
+    primaryText: new ui.colour.RGBA(0, 0, 0),
     primaryUI: new ui.colour.RGBA(80, 145, 247),
     primaryUIText: new ui.colour.RGBA(255, 255, 255),
     secondaryBackground: new ui.colour.RGBA(229, 229, 229),
-    secondaryText: new ui.colour.RGBA(20, 20, 20),
+    secondaryText: new ui.colour.RGBA(0, 0, 0),
     secondaryUI: new ui.colour.RGBA(150, 184, 247),
     secondaryUIText: new ui.colour.RGBA(255, 255, 255)
 };
@@ -236,7 +236,7 @@ ui.components.HTML = class extends ui.components.Component {
     @param events object Events to listen to on component. Default: `{}`.
 
     @shortDescription Container class, extends `ui.components.Component`.
-    @longDescription Has similar properties to a HTML `div` element.
+    @longDescription Has similar properties to an HTML `div` element.
 */
 ui.components.Container = class extends ui.components.Component {
     constructor(children = [], style = {}, attributes = {}, events = {}) {
@@ -255,7 +255,7 @@ ui.components.Container = class extends ui.components.Component {
     @param events object Events to listen to on component. Default: `{}`.
 
     @shortDescription Paragraph class, extends `ui.components.Component`.
-    @longDescription Has similar properties to a HTML `p` element.
+    @longDescription Has similar properties to an HTML `p` element.
 */
 ui.components.Paragraph = class extends ui.components.Component {
     constructor(children = [], style = {}, attributes = {}, events = {}) {
@@ -312,6 +312,30 @@ ui.components.Icon = class extends ui.components.Component {
         currentDOMElement.text.set(this.name);
 
         return currentDOMElement;
+    }
+};
+
+/*
+    @name ui.components.Button
+
+    @param children any Children or content to include in component. Default: `[]`.
+    @param secondary boolean Whether to make the button secondary. Use `true` to enable. Default: `false`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription Button class, extends `ui.components.Component`.
+    @longDescription Has similar properties to an HTML `button` element.
+*/
+ui.components.Button = class extends ui.components.Component {
+    constructor(children = [], secondary = false, style = {}, attributes = {}, events = {}) {
+        if (secondary) {
+            attributes["secondary"] = "";
+        }
+
+        super(children, style, attributes, events);
+
+        this.HTMLTagName = "button";
     }
 };
 
