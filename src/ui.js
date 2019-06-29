@@ -40,6 +40,8 @@ var ui = {
         }
     },
 
+    utilities: {},
+
     /*
         @name ui.refresh
 
@@ -96,6 +98,32 @@ ui.colour.RGBA = class {
     }
 };
 
+/*
+    @name ui.Vector
+
+    @param x X position or width of vector.
+    @param y Y position or height of vector.
+
+    @shortDescription Vector class for use with dimensions in terms of position and size.
+*/
+ui.Vector = class {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+};
+
+/*
+    @name ui.utilities.getScreenSize
+
+    @return object Vector class of screen size.
+
+    @shortDescription Get the screen (viewport)'s size in pixels.
+*/
+ui.utilities.getScreenSize = function() {
+    return new ui.Vector(window.innerWidth, window.innerHeight);
+};
+
 ui.theming = {
     primaryBackground: new ui.colour.RGBA(255, 255, 255),
     primaryText: new ui.colour.RGBA(0, 0, 0),
@@ -129,6 +157,19 @@ ui.components.Component = class {
     }
 
     /*
+        @name ui.components.Component( ... ).precompute
+
+        @param domObject object DOM object to use for precomputing.
+
+        @return object Newly computed DOM object.
+
+        @shortDescription Precompute DOM values for generation.
+    */
+    precompute(domObject) {
+        return domObject;
+    }
+
+    /*
         @name ui.components.Component( ... ).generateDOMElement
 
         @return object Dictionary of available functions and values for generated DOM element.
@@ -141,6 +182,8 @@ ui.components.Component = class {
         }
 
         var currentDOMElement = dom.new(this.HTMLTagName);
+
+        currentDOMElement = this.precompute(currentDOMElement);
 
         for (var i = 0; i < Object.keys(this.style).length; i++) {
             currentDOMElement.style.set(Object.keys(this.style)[i], (
@@ -316,6 +359,44 @@ ui.components.Icon = class extends ui.components.Component {
 };
 
 /*
+    @name ui.components.TextBoldEffect
+
+    @param children any Children or content to include in component. Default: `[]`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription TextBoldEffect, extends `ui.components.Component`.
+    @longDescription Displays text in bold. Has similar properties to an HTML `strong` element. 
+*/
+ui.components.TextBoldEffect = class extends ui.components.Component {
+    constructor(children = [], style = {}, attributes = {}, events = {}) {
+        super(children, style, attributes, events);
+
+        this.HTMLTagName = "strong";
+    }
+};
+
+/*
+    @name ui.components.TextItalicsEffect
+
+    @param children any Children or content to include in component. Default: `[]`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription TextBoldEffect, extends `ui.components.Component`.
+    @longDescription Displays text in italics. Has similar properties to an HTML `em` element. 
+*/
+ui.components.TextItalicsEffect = class extends ui.components.Component {
+    constructor(children = [], style = {}, attributes = {}, events = {}) {
+        super(children, style, attributes, events);
+
+        this.HTMLTagName = "em";
+    }
+};
+
+/*
     @name ui.components.Button
 
     @param children any Children or content to include in component. Default: `[]`.
@@ -329,13 +410,57 @@ ui.components.Icon = class extends ui.components.Component {
 */
 ui.components.Button = class extends ui.components.Component {
     constructor(children = [], secondary = false, style = {}, attributes = {}, events = {}) {
-        if (secondary) {
-            attributes["secondary"] = "";
-        }
-
         super(children, style, attributes, events);
 
         this.HTMLTagName = "button";
+
+        this.secondary = secondary;
+    }
+
+    precompute(domObject) {
+        if (this.secondary) {
+            this.attributes["secondary"] = this.secondary;
+        } else {
+            delete this.attributes["secondary"];
+        }
+
+        return domObject;
+    }
+};
+
+/*
+    @name ui.components.TextInput
+
+    @param value string Initial value to store in input. Default: `""`.
+    @param placeholder string Value to show in input if it is empty. Default: `""`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription Button class, extends `ui.components.Component`.
+    @longDescription Has similar properties to an HTML `input` element.
+*/
+ui.components.TextInput = class extends ui.components.Component {
+    constructor(value = "", placeholder = "", style = {}, attributes = {}, events = {}) {
+        super([], style, attributes, events);
+
+        this.HTMLTagName = "input";
+
+        this.value = value;
+        this.placeholder = placeholder;
+    }
+
+    precompute(domObject) {
+        this.attributes["value"] = this.value;
+        this.attributes["placeholder"] = this.placeholder;
+
+        var thisScope = this;
+
+        domObject.events.listen("change", function(event) {
+            thisScope.value = event.target.value;
+        });
+
+        return domObject;
     }
 };
 

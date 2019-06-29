@@ -1,0 +1,12 @@
+{
+    "package": "tech.liveg.opensource.chatlog",
+    "version": "0.1.0",
+    "name": {
+        "en_GB": "ChatLog"
+    },
+    "description": {
+        "en_GB": "Testing the dynamic capabilities of the Adapt UI library."
+    },
+    "defaultLocale": "en_GB",
+    "mainScript": "script.js"
+}

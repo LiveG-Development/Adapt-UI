@@ -34,6 +34,7 @@
 body {
     font-family: var(--fontCircumference);
     font-size: 16px;
+    min-height: 100vh;
 }
 
 h1 {
@@ -101,4 +102,17 @@ button {
 button[secondary] {
     background-color: var(--secondaryUI);
     color: var(--secondaryUIText);
+}
+
+input {
+    margin: 5px;
+    padding: 10px;
+    font-family: var(--fontCircumference);
+    font-size: var(--sizeP);
+    background-color: var(--secondaryBackground);
+    color: var(--secondaryText);
+    border: none;
+    border-radius: 10px;
+    cursor: text;
+    transition: 0.5s;
 }
