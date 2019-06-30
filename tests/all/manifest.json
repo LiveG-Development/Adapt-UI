@@ -1,0 +1,12 @@
+{
+    "package": "tech.liveg.opensource.allTests",
+    "version": "0.1.0",
+    "name": {
+        "en_GB": "All UI Tests"
+    },
+    "description": {
+        "en_GB": "Testing the UI components of the Adapt UI library."
+    },
+    "defaultLocale": "en_GB",
+    "mainScript": "script.js"
+}

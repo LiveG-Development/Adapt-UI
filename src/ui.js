@@ -53,6 +53,26 @@ var ui = {
         for (var i = 0; i < ui.screen.length; i++) {
             dom.element().newChild(ui.screen[i].generateDOMElement());
         }
+
+        dom.element().events.listen("keydown", function(event) {
+            if (event.keyCode == 9) {
+                dom.element("style[data-ui-helper='focus']").delete();
+
+                dom.element().newChild(
+                    dom.new("style")
+                        .attribute("data-ui-helper").set("focus")
+                        .html.set(`
+                            *:focus {
+                                outline: -webkit-focus-ring-color auto 1px!important;
+                            }
+                        `)
+                );
+            }
+        });
+
+        dom.element().events.listen("click", function() {
+            dom.element("style[data-ui-helper='focus']").delete();
+        });
     }
 };
 
@@ -129,10 +149,12 @@ ui.theming = {
     primaryText: new ui.colour.RGBA(0, 0, 0),
     primaryUI: new ui.colour.RGBA(80, 145, 247),
     primaryUIText: new ui.colour.RGBA(255, 255, 255),
+    primaryUIPress: new ui.colour.RGBA(113, 162, 240),
     secondaryBackground: new ui.colour.RGBA(229, 229, 229),
     secondaryText: new ui.colour.RGBA(0, 0, 0),
     secondaryUI: new ui.colour.RGBA(150, 184, 247),
-    secondaryUIText: new ui.colour.RGBA(255, 255, 255)
+    secondaryUIText: new ui.colour.RGBA(255, 255, 255),
+    secondaryUIPress: new ui.colour.RGBA(180, 196, 224)
 };
 
 /*
@@ -433,6 +455,7 @@ ui.components.Button = class extends ui.components.Component {
 
     @param value string Initial value to store in input. Default: `""`.
     @param placeholder string Value to show in input if it is empty. Default: `""`.
+    @param secondary boolean Whether to make the input secondary. Use `true` to enable. Default: `false`.
     @param style object Styling to use on component. Default: `{}`.
     @param attributes object HTML attributes to use on component. Default: `{}`.
     @param events object Events to listen to on component. Default: `{}`.
@@ -441,18 +464,25 @@ ui.components.Button = class extends ui.components.Component {
     @longDescription Has similar properties to an HTML `input` element.
 */
 ui.components.TextInput = class extends ui.components.Component {
-    constructor(value = "", placeholder = "", style = {}, attributes = {}, events = {}) {
+    constructor(value = "", placeholder = "", secondary = false, style = {}, attributes = {}, events = {}) {
         super([], style, attributes, events);
 
         this.HTMLTagName = "input";
 
         this.value = value;
         this.placeholder = placeholder;
+        this.secondary = secondary;
     }
 
     precompute(domObject) {
         this.attributes["value"] = this.value;
         this.attributes["placeholder"] = this.placeholder;
+
+        if (this.secondary) {
+            this.attributes["secondary"] = this.secondary;
+        } else {
+            delete this.attributes["secondary"];
+        }
 
         var thisScope = this;
 

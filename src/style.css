@@ -25,16 +25,26 @@
     --primaryText: rgb(0, 0, 0);
     --primaryUI: rgb(80, 145, 247);
     --primaryUIText: rgb(255, 255, 255);
+    --primaryUIPress: rgb(113, 162, 240);
     --secondaryBackground: rgb(229, 229, 229);
     --secondaryText: rgb(0, 0, 0);
     --secondaryUI: rgb(150, 184, 247);
     --secondaryUIText: rgb(255, 255, 255);
+    --secondaryUIPress: rgb(180, 196, 224);
 }
 
-body {
+html, body {
+    position: absolute;
+    top: 0;
     font-family: var(--fontCircumference);
     font-size: 16px;
+    margin: 0;
+    width: 100vw;
     min-height: 100vh;
+}
+
+div {
+    margin: 8px;
 }
 
 h1 {
@@ -107,6 +117,7 @@ button[secondary] {
 input {
     margin: 5px;
     padding: 10px;
+    width: 200px;
     font-family: var(--fontCircumference);
     font-size: var(--sizeP);
     background-color: var(--secondaryBackground);
@@ -115,4 +126,19 @@ input {
     border-radius: 10px;
     cursor: text;
     transition: 0.5s;
+}
+
+input[secondary] {
+    background-color: var(--primaryBackground);
+    color: var(--primaryText);
+}
+
+/* Keyboard focus prevention, is disabled when focusing keyboard input is sent */
+
+input:focus {
+    outline: none;
+}
+
+button:focus {
+    outline: none;
 }
