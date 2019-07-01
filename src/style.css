@@ -25,12 +25,12 @@
     --primaryText: rgb(0, 0, 0);
     --primaryUI: rgb(80, 145, 247);
     --primaryUIText: rgb(255, 255, 255);
-    --primaryUIPress: rgb(113, 162, 240);
+    --primaryUIPress: rgb(150, 186, 243);
     --secondaryBackground: rgb(229, 229, 229);
     --secondaryText: rgb(0, 0, 0);
     --secondaryUI: rgb(150, 184, 247);
     --secondaryUIText: rgb(255, 255, 255);
-    --secondaryUIPress: rgb(180, 196, 224);
+    --secondaryUIPress: rgb(191, 217, 245);
 }
 
 html, body {
@@ -109,9 +109,17 @@ button {
     transition: 0.5s;
 }
 
+button:hover {
+    background-color: var(--primaryUIPress);
+}
+
 button[secondary] {
     background-color: var(--secondaryUI);
     color: var(--secondaryUIText);
+}
+
+button[secondary]:hover {
+    background-color: var(--secondaryUIPress);
 }
 
 input {
