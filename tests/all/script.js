@@ -20,5 +20,13 @@ ui.screen = [
     new Container([
         new TextInput("", "Looking camouflaged!", true),
         new Button("Do that other action", true)
+    ]),
+    new Container([
+        new SelectionInput({
+            "apple": "Apple",
+            "liveg": "LiveG",
+            "microsoft": "Microsoft",
+            "google": "Google"
+        }, "liveg")
     ])
 ];

@@ -14,6 +14,7 @@
 :root {
     --fontCircumference: "Circumference", "Century Gothic", "CenturyGothic", "URW Gothic L Book", "AppleGothic", sans-serif;
     --fontClarity: "Clarity", var(--fontCircumference), sans-serif;
+    --assetDropdownIcon: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNyAxMGw1IDUgNS01eiIvPjxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz48L3N2Zz4=");
     --sizeH1: 36px;
     --sizeH2: 30px;
     --sizeH3: 24px;
@@ -122,7 +123,7 @@ button[secondary]:hover {
     background-color: var(--secondaryUIPress);
 }
 
-input {
+input, select {
     margin: 5px;
     padding: 10px;
     width: 200px;
@@ -136,17 +137,29 @@ input {
     transition: 0.5s;
 }
 
-input[secondary] {
+input[secondary], select[secondary] {
     background-color: var(--primaryBackground);
     color: var(--primaryText);
 }
 
-/* Keyboard focus prevention, is disabled when focusing keyboard input is sent */
-
-input:focus {
-    outline: none;
+select {
+    width: 220px;
+    background: var(--assetDropdownIcon) no-repeat right var(--secondaryBackground);
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    cursor: default;
 }
 
-button:focus {
+select[secondary] {
+    background: var(--assetDropdownIcon) no-repeat right var(--primaryBackground);
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+/* Keyboard focus prevention, is disabled when focusing keyboard input is sent */
+
+button:focus, input:focus, select:focus {
     outline: none;
 }

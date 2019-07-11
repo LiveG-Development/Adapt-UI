@@ -460,7 +460,7 @@ ui.components.Button = class extends ui.components.Component {
     @param attributes object HTML attributes to use on component. Default: `{}`.
     @param events object Events to listen to on component. Default: `{}`.
 
-    @shortDescription Button class, extends `ui.components.Component`.
+    @shortDescription TextInput class, extends `ui.components.Component`.
     @longDescription Has similar properties to an HTML `input` element.
 */
 ui.components.TextInput = class extends ui.components.Component {
@@ -488,6 +488,62 @@ ui.components.TextInput = class extends ui.components.Component {
 
         domObject.events.listen("change", function(event) {
             thisScope.value = event.target.value;
+        });
+
+        return domObject;
+    }
+};
+
+/*
+    @name ui.components.SelectionInput
+
+    @param candidates object Candidates to display in input. Default: `{}`.
+    @param selected string Candidate key for selected candidate. Default: `""`.
+    @param secondary boolean Whether to make the input secondary. Use `true` to enable. Default: `false`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`
+    @shortDescription SelectionInput class, extends `ui.components.Component`.
+    @longDescription Has similar properties to an HTML `input` element.
+*/
+ui.components.SelectionInput = class extends ui.components.Component {
+    constructor(candidates = {}, selected = "", secondary = false, style = {}, attributes = {}, events = {}) {
+        super([], style, attributes, events);
+
+        this.HTMLTagName = "select";
+
+        this.candidates = candidates;
+        this.selected = selected;
+        this.secondary = secondary;
+    }
+
+    precompute(domObject) {
+        if (this.secondary) {
+            this.attributes["secondary"] = this.secondary;
+        } else {
+            delete this.attributes["secondary"];
+        }
+
+        for (var i = 0; i < Object.keys(this.candidates).length; i++) {
+            var key = Object.keys(this.candidates)[i];
+            var content = this.candidates[key];
+
+            var child = dom.new("option");
+
+            child.attribute("value").set(key);
+            child.text.set(content);
+
+            if (this.selected == key) {
+                child.attribute("selected").set("");
+            }
+
+            domObject.newChild(child);
+        }
+
+        var thisScope = this;
+
+        domObject.events.listen("change", function(event) {
+            thisScope.selected = event.target.options[event.target.selectedIndex].value;
         });
 
         return domObject;
