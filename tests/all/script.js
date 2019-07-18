@@ -14,19 +14,45 @@ ui.screen = [
         new Paragraph("As you can see, there are a lot of headings. This is just some of the UI components featured. More are below!"),
     ]),
     new Container([
-        new TextInput("", "Write something here..."),
-        new Button("Do that action")
+        new Label([
+            new Text("Text input (primary)"),
+            new TextInput("", "Write something here..."),
+            new Button("Do that action")
+        ]),
+        new Label([
+            new Text("Text input (secondary)"),
+            new TextInput("", "Looking camouflaged!", true),
+            new Button("Do that other action", true)
+        ]),
+        new Label([
+            new Text("Selection input"),
+            new SelectionInput({
+                "apple": "Apple",
+                "liveg": "LiveG",
+                "microsoft": "Microsoft",
+                "google": "Google"
+            }, "liveg")
+        ])
     ]),
     new Container([
-        new TextInput("", "Looking camouflaged!", true),
-        new Button("Do that other action", true)
-    ]),
-    new Container([
-        new SelectionInput({
-            "apple": "Apple",
-            "liveg": "LiveG",
-            "microsoft": "Microsoft",
-            "google": "Google"
-        }, "liveg")
+        new Heading("Sign in test", 2),
+        new Label([
+            new Text("Username"),
+            new TextInput()
+        ]),
+        new Label([
+            new Text("Password"),
+            new PasswordInput()
+        ]),
+        new Label([
+            new Text(),
+            new Label([
+                new CheckboxInput(),
+                new Text("Remember me")
+            ]),
+        ]),
+        new Container([
+            new Button("Sign in")
+        ])
     ])
 ];

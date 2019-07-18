@@ -245,12 +245,12 @@ ui.components.Component = class {
 /*
     @name ui.components.Text
 
-    @param text string Text to use.
+    @param text string Text to use. Default: `""`.
 
     @shortDescription Text class, extends `ui.components.Component`.
 */
 ui.components.Text = class extends ui.components.Component {
-    constructor(text) {
+    constructor(text = "") {
         super();
 
         this.HTMLTagName = "span";
@@ -270,12 +270,12 @@ ui.components.Text = class extends ui.components.Component {
 /*
     @name ui.components.HTML
 
-    @param html text HTML contents to use.
+    @param html text HTML contents to use. Default: `""`.
 
     @shortDescription HTML class, extends `ui.components.Component`.
 */
 ui.components.HTML = class extends ui.components.Component {
-    constructor(html) {
+    constructor(html = "") {
         super();
 
         this.HTMLTagName = "span";
@@ -388,7 +388,7 @@ ui.components.Icon = class extends ui.components.Component {
     @param attributes object HTML attributes to use on component. Default: `{}`.
     @param events object Events to listen to on component. Default: `{}`.
 
-    @shortDescription TextBoldEffect, extends `ui.components.Component`.
+    @shortDescription TextBoldEffect class, extends `ui.components.Component`.
     @longDescription Displays text in bold. Has similar properties to an HTML `strong` element. 
 */
 ui.components.TextBoldEffect = class extends ui.components.Component {
@@ -407,7 +407,7 @@ ui.components.TextBoldEffect = class extends ui.components.Component {
     @param attributes object HTML attributes to use on component. Default: `{}`.
     @param events object Events to listen to on component. Default: `{}`.
 
-    @shortDescription TextBoldEffect, extends `ui.components.Component`.
+    @shortDescription TextItalicsEffect class, extends `ui.components.Component`.
     @longDescription Displays text in italics. Has similar properties to an HTML `em` element. 
 */
 ui.components.TextItalicsEffect = class extends ui.components.Component {
@@ -415,6 +415,25 @@ ui.components.TextItalicsEffect = class extends ui.components.Component {
         super(children, style, attributes, events);
 
         this.HTMLTagName = "em";
+    }
+};
+
+/*
+    @name ui.components.Label
+
+    @param children any Children or content to include in component. Default: `[]`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription Label class, extends `ui.components.Component`.
+    @longDescription Has similar properties to an HTML `label` element.
+*/
+ui.components.Label = class extends ui.components.Component {
+    constructor(children = [], style = {}, attributes = {}, events = {}) {
+        super(children, style, attributes, events);
+
+        this.HTMLTagName = "label";
     }
 };
 
@@ -495,6 +514,52 @@ ui.components.TextInput = class extends ui.components.Component {
 };
 
 /*
+    @name ui.components.PasswordInput
+
+    @param value string Initial value to store in input. Default: `""`.
+    @param placeholder string Value to show in input if it is empty. Default: `""`.
+    @param secondary boolean Whether to make the input secondary. Use `true` to enable. Default: `false`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription PasswordInput class, extends `ui.components.Component`.
+    @longDescription Has similar properties to an HTML `input` element with attribute `type` as `"password"`.
+*/
+ui.components.PasswordInput = class extends ui.components.Component {
+    constructor(value = "", placeholder = "", secondary = false, style = {}, attributes = {}, events = {}) {
+        super([], style, attributes, events);
+
+        this.HTMLTagName = "input";
+
+        this.value = value;
+        this.placeholder = placeholder;
+        this.secondary = secondary;
+    }
+
+    precompute(domObject) {
+        this.attributes["type"] = "password";
+
+        this.attributes["value"] = this.value;
+        this.attributes["placeholder"] = this.placeholder;
+
+        if (this.secondary) {
+            this.attributes["secondary"] = this.secondary;
+        } else {
+            delete this.attributes["secondary"];
+        }
+
+        var thisScope = this;
+
+        domObject.events.listen("change", function(event) {
+            thisScope.value = event.target.value;
+        });
+
+        return domObject;
+    }
+};
+
+/*
     @name ui.components.SelectionInput
 
     @param candidates object Candidates to display in input. Default: `{}`.
@@ -504,7 +569,10 @@ ui.components.TextInput = class extends ui.components.Component {
     @param attributes object HTML attributes to use on component. Default: `{}`.
     @param events object Events to listen to on component. Default: `{}`
     @shortDescription SelectionInput class, extends `ui.components.Component`.
-    @longDescription Has similar properties to an HTML `input` element.
+    @longDescription Has similar properties to an HTML `select` element with `option` children.
+
+    @shortDescription SelectionInput class, extends `ui.components.Component`.
+    @longDescription Has similar properties to an HTML `select` element with children as element `option`.
 */
 ui.components.SelectionInput = class extends ui.components.Component {
     constructor(candidates = {}, selected = "", secondary = false, style = {}, attributes = {}, events = {}) {
@@ -544,6 +612,50 @@ ui.components.SelectionInput = class extends ui.components.Component {
 
         domObject.events.listen("change", function(event) {
             thisScope.selected = event.target.options[event.target.selectedIndex].value;
+        });
+
+        return domObject;
+    }
+};
+
+/*
+    @name ui.components.CheckboxInput
+
+    @param children any Children or content to include in component. Default: `[]`.
+    @param group string Name of group to group checkboxes in. Default: `""`.
+    @param selected boolean Whether to make the input selected. Use `true` to enable. Default: `false`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription TextInput class, extends `ui.components.Component`.
+    @longDescription Has similar properties to an HTML `input` element with attrbute `type` as `"checkbox"`.
+*/
+ui.components.CheckboxInput = class extends ui.components.Component {
+    constructor(children = [], group = "", selected = false, style = {}, attributes = {}, events = {}) {
+        super(children, style, attributes, events);
+
+        this.HTMLTagName = "input";
+
+        this.group = group;
+        this.selected = selected;
+    }
+
+    precompute(domObject) {
+        this.attributes["type"] = "checkbox";
+
+        this.attributes["name"] = this.group;
+
+        if (this.selected) {
+            this.attributes["selected"] = this.selected;
+        } else {
+            delete this.attributes["selected"];
+        }
+
+        var thisScope = this;
+
+        domObject.events.listen("change", function(event) {
+            thisScope.selected = event.target.checked;
         });
 
         return domObject;

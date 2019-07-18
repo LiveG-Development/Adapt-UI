@@ -15,6 +15,7 @@
     --fontCircumference: "Circumference", "Century Gothic", "CenturyGothic", "URW Gothic L Book", "AppleGothic", sans-serif;
     --fontClarity: "Clarity", var(--fontCircumference), sans-serif;
     --assetDropdownIcon: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNyAxMGw1IDUgNS01eiIvPjxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz48L3N2Zz4=");
+    --assetCheckmarkIcon: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CgogPGc+CiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPgogIDxyZWN0IGZpbGw9Im5vbmUiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgaGVpZ2h0PSI0MDIiIHdpZHRoPSI1ODIiIHk9Ii0xIiB4PSItMSIvPgogPC9nPgogPGc+CiAgPHRpdGxlPkxheWVyIDE8L3RpdGxlPgogIDxwYXRoIGlkPSJzdmdfMSIgZD0ibTAsMGwyNCwwbDAsMjRsLTI0LDBsMCwtMjR6IiBmaWxsPSJub25lIi8+CiAgPHBhdGggZmlsbD0iI2ZmZmZmZiIgaWQ9InN2Z18yIiBkPSJtOSwxNi4xN2wtMy40NywtMy40N2MtMC4zOSwtMC4zOSAtMS4wMiwtMC4zOSAtMS40MSwwYy0wLjM5LDAuMzkgLTAuMzksMS4wMiAwLDEuNDFsNC4xOCw0LjE4YzAuMzksMC4zOSAxLjAyLDAuMzkgMS40MSwwbDEwLjU4LC0xMC41OGMwLjM5LC0wLjM5IDAuMzksLTEuMDIgMCwtMS40MWMtMC4zOSwtMC4zOSAtMS4wMiwtMC4zOSAtMS40MSwwbC05Ljg4LDkuODd6Ii8+CiA8L2c+Cjwvc3ZnPg==");
     --sizeH1: 36px;
     --sizeH2: 30px;
     --sizeH3: 24px;
@@ -97,6 +98,21 @@ icon {
     font-feature-settings: liga;
 }
 
+label {
+    display: block;
+}
+
+label label {
+    display: inline;
+}
+
+label > span:first-child {
+    display: inline-block;
+    width: calc(100% - 240px);
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
 button {
     margin: 5px;
     padding: 10px;
@@ -142,6 +158,33 @@ input[secondary], select[secondary] {
     color: var(--primaryText);
 }
 
+input[type="checkbox"] {
+    position: relative;
+    display: inline-block;
+    width: unset;
+    -webkit-appearance: none;
+    padding: 10px;
+    background-color: var(--secondaryBackground);
+    border-radius: 5px;
+    cursor: default;
+}
+
+input[type="checkbox"]:checked {
+    background-color: var(--primaryUI);
+}
+
+input[type="checkbox"]:checked:after {
+    position: absolute;
+    top: -2px;
+    left: -3px;
+    content: var(--assetCheckmarkIcon);
+}
+
+input[type="checkbox"] + span {
+    position: relative;
+    top: -8px;
+}
+
 select {
     width: 220px;
     background: var(--assetDropdownIcon) no-repeat right var(--secondaryBackground);
@@ -162,4 +205,11 @@ select::-ms-expand {
 
 button:focus, input:focus, select:focus {
     outline: none;
+}
+
+/* Media queries */
+@media (min-width: 500px) {
+    label > span:first-child {
+        width: 240px;
+    }
 }
