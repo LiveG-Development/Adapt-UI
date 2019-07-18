@@ -16,6 +16,7 @@
     --fontClarity: "Clarity", var(--fontCircumference), sans-serif;
     --assetDropdownIcon: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNyAxMGw1IDUgNS01eiIvPjxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz48L3N2Zz4=");
     --assetCheckmarkIcon: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CgogPGc+CiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPgogIDxyZWN0IGZpbGw9Im5vbmUiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgaGVpZ2h0PSI0MDIiIHdpZHRoPSI1ODIiIHk9Ii0xIiB4PSItMSIvPgogPC9nPgogPGc+CiAgPHRpdGxlPkxheWVyIDE8L3RpdGxlPgogIDxwYXRoIGlkPSJzdmdfMSIgZD0ibTAsMGwyNCwwbDAsMjRsLTI0LDBsMCwtMjR6IiBmaWxsPSJub25lIi8+CiAgPHBhdGggZmlsbD0iI2ZmZmZmZiIgaWQ9InN2Z18yIiBkPSJtOSwxNi4xN2wtMy40NywtMy40N2MtMC4zOSwtMC4zOSAtMS4wMiwtMC4zOSAtMS40MSwwYy0wLjM5LDAuMzkgLTAuMzksMS4wMiAwLDEuNDFsNC4xOCw0LjE4YzAuMzksMC4zOSAxLjAyLDAuMzkgMS40MSwwbDEwLjU4LC0xMC41OGMwLjM5LC0wLjM5IDAuMzksLTEuMDIgMCwtMS40MWMtMC4zOSwtMC4zOSAtMS4wMiwtMC4zOSAtMS40MSwwbC05Ljg4LDkuODd6Ii8+CiA8L2c+Cjwvc3ZnPg==");
+    --assetRadioButtonIcon: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CgogPGc+CiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPgogIDxyZWN0IGZpbGw9Im5vbmUiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgaGVpZ2h0PSI0MDIiIHdpZHRoPSI1ODIiIHk9Ii0xIiB4PSItMSIvPgogPC9nPgogPGc+CiAgPHRpdGxlPkxheWVyIDE8L3RpdGxlPgogIDxwYXRoIGlkPSJzdmdfMSIgZD0ibTAsMGwyNCwwbDAsMjRsLTI0LDBsMCwtMjR6IiBmaWxsPSJub25lIi8+CiAgPGNpcmNsZSBmaWxsPSIjZmZmZmZmIiBpZD0ic3ZnXzMiIHI9IjUiIGN5PSIxMiIgY3g9IjEyIi8+CiA8L2c+Cjwvc3ZnPg==");
     --sizeH1: 36px;
     --sizeH2: 30px;
     --sizeH3: 24px;
@@ -158,7 +159,7 @@ input[secondary], select[secondary] {
     color: var(--primaryText);
 }
 
-input[type="checkbox"] {
+input[type="checkbox"], input[type="radio"] {
     position: relative;
     display: inline-block;
     width: unset;
@@ -169,20 +170,31 @@ input[type="checkbox"] {
     cursor: default;
 }
 
-input[type="checkbox"]:checked {
+input[type="checkbox"]:checked, input[type="radio"]:checked {
     background-color: var(--primaryUI);
 }
 
 input[type="checkbox"]:checked:after {
     position: absolute;
     top: -2px;
-    left: -3px;
+    left: -2px;
     content: var(--assetCheckmarkIcon);
 }
 
-input[type="checkbox"] + span {
+input[type="checkbox"] + span, input[type="radio"] + span {
     position: relative;
     top: -8px;
+}
+
+input[type="radio"] {
+    border-radius: 15px;
+}
+
+input[type="radio"]:checked:after {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    content: var(--assetRadioButtonIcon);
 }
 
 select {

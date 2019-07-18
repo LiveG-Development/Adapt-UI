@@ -621,19 +621,18 @@ ui.components.SelectionInput = class extends ui.components.Component {
 /*
     @name ui.components.CheckboxInput
 
-    @param children any Children or content to include in component. Default: `[]`.
     @param group string Name of group to group checkboxes in. Default: `""`.
     @param selected boolean Whether to make the input selected. Use `true` to enable. Default: `false`.
     @param style object Styling to use on component. Default: `{}`.
     @param attributes object HTML attributes to use on component. Default: `{}`.
     @param events object Events to listen to on component. Default: `{}`.
 
-    @shortDescription TextInput class, extends `ui.components.Component`.
+    @shortDescription CheckboxInput class, extends `ui.components.Component`.
     @longDescription Has similar properties to an HTML `input` element with attrbute `type` as `"checkbox"`.
 */
 ui.components.CheckboxInput = class extends ui.components.Component {
-    constructor(children = [], group = "", selected = false, style = {}, attributes = {}, events = {}) {
-        super(children, style, attributes, events);
+    constructor(group = "", selected = false, style = {}, attributes = {}, events = {}) {
+        super([], style, attributes, events);
 
         this.HTMLTagName = "input";
 
@@ -647,15 +646,58 @@ ui.components.CheckboxInput = class extends ui.components.Component {
         this.attributes["name"] = this.group;
 
         if (this.selected) {
-            this.attributes["selected"] = this.selected;
+            this.attributes["checked"] = this.selected;
         } else {
-            delete this.attributes["selected"];
+            delete this.attributes["checked"];
         }
 
         var thisScope = this;
 
         domObject.events.listen("change", function(event) {
             thisScope.selected = event.target.checked;
+        });
+
+        return domObject;
+    }
+};
+
+/*
+    @name ui.components.RadioButtonInput
+
+    @param group string Name of group to group radio buttons in. Default: `""`.
+    @param selected boolean Whether to make the input selected. Use `true` to enable. Default: `false`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription RadioButtonInput class, extends `ui.components.Component`.
+    @longDescription Has similar properties to an HTML `input` element with attrbute `type` as `"radio"`.
+*/
+ui.components.RadioButtonInput = class extends ui.components.Component {
+    constructor(group = "", selected = false, style = {}, attributes = {}, events = {}) {
+        super([], style, attributes, events);
+
+        this.HTMLTagName = "input";
+
+        this.group = group;
+        this.selected = selected;
+    }
+
+    precompute(domObject) {
+        this.attributes["type"] = "radio";
+
+        this.attributes["name"] = this.group;
+
+        if (this.selected) {
+            this.attributes["checked"] = this.selected;
+        } else {
+            delete this.attributes["checked"];
+        }
+
+        var thisScope = this;
+
+        setInterval(function() {
+            thisScope.selected = domObject.reference[0].checked;
         });
 
         return domObject;

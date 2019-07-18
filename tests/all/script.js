@@ -35,6 +35,33 @@ ui.screen = [
         ])
     ]),
     new Container([
+        new Heading("Selections", 2),
+        new Container([
+            new Label([
+                new Text("Fruits"),
+                new CheckboxInput("groceries", true)
+            ]),
+            new Label([
+                new Text("Vegetables"),
+                new CheckboxInput("groceries")
+            ])
+        ]),
+        new Container([
+            new Label([
+                new Text("Pasta"),
+                new RadioButtonInput("food")
+            ]),
+            new Label([
+                new Text("Pizza"),
+                new RadioButtonInput("food", true)
+            ]),
+            new Label([
+                new Text("Steak"),
+                new RadioButtonInput("food")
+            ])
+        ])
+    ]),
+    new Container([
         new Heading("Sign in test", 2),
         new Label([
             new Text("Username"),
