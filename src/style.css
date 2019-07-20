@@ -164,6 +164,7 @@ input[secondary], select[secondary] {
 input[type="checkbox"], input[type="radio"] {
     position: relative;
     display: inline-block;
+    top: 8px;
     width: unset;
     -webkit-appearance: none;
     padding: 10px;
@@ -195,6 +196,7 @@ input[type="radio"]:checked:after {
 }
 
 input[type="checkbox"][switch] {
+    top: 12px;
     padding: 15px;
     padding-right: 50px;
     border-radius: 15px;
@@ -216,11 +218,7 @@ input[type="checkbox"][switch]:checked:after {
 
 label > span {
     position: relative;
-    top: -8px;
-}
-
-input[type="checkbox"][switch] {
-    top: 8px;
+    top: -2px;
 }
 
 select {
