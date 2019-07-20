@@ -59,6 +59,16 @@ ui.screen = [
                 new Text("Steak"),
                 new RadioButtonInput("food")
             ])
+        ]),
+        new Container([
+            new Label([
+                new Text("Connect"),
+                new ToggleSwitch("connect")
+            ]),
+            new Label([
+                new Text("Go there"),
+                new ToggleSwitch("goThere", true)
+            ])
         ])
     ]),
     new Container([

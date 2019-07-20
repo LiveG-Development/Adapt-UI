@@ -704,4 +704,48 @@ ui.components.RadioButtonInput = class extends ui.components.Component {
     }
 };
 
+/*
+    @name ui.components.ToggleSwitch
+
+    @param group string Name of group to group toggle switches in. Default: `""`.
+    @param selected boolean Whether to make the switch selected. Use `true` to enable. Default: `false`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription ToggleSwitch class, extends `ui.components.Component`.
+    @longDescription Has similar properties to an HTML `input` element with attrbute `type` as `"checkbox"`.
+*/
+ui.components.ToggleSwitch = class extends ui.components.Component {
+    constructor(group = "", selected = false, style = {}, attributes = {}, events = {}) {
+        super([], style, attributes, events);
+
+        this.HTMLTagName = "input";
+
+        this.group = group;
+        this.selected = selected;
+    }
+
+    precompute(domObject) {
+        this.attributes["type"] = "checkbox";
+        this.attributes["switch"] = "";
+
+        this.attributes["name"] = this.group;
+
+        if (this.selected) {
+            this.attributes["checked"] = this.selected;
+        } else {
+            delete this.attributes["checked"];
+        }
+
+        var thisScope = this;
+
+        domObject.events.listen("change", function(event) {
+            thisScope.selected = event.target.checked;
+        });
+
+        return domObject;
+    }
+};
+
 ui.events.loaded(function() {});
