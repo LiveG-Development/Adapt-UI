@@ -216,6 +216,14 @@ input[type="checkbox"][switch]:checked:after {
     content: var(--assetToggleSwitchOnIcon);
 }
 
+body[dir="rtl"] input[type="checkbox"][switch]:after {
+    left: 22px;
+}
+
+body[dir="rtl"] input[type="checkbox"][switch]:checked:after {
+    left: -2px;
+}
+
 label > span {
     position: relative;
     top: -2px;
@@ -235,6 +243,14 @@ select[secondary] {
 
 select::-ms-expand {
     display: none;
+}
+
+body[dir="rtl"] select {
+    background: var(--assetDropdownIcon) no-repeat left var(--secondaryBackground);
+}
+
+body[dir="rtl"] select[secondary] {
+    background: var(--assetDropdownIcon) no-repeat left var(--primaryBackground);
 }
 
 /* Keyboard focus prevention, is disabled when focusing keyboard input is sent */
