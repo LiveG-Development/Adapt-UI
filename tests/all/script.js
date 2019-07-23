@@ -1,95 +1,129 @@
 // @import ../../src/ui
 // @import https://opensource.liveg.tech/ZaprCoreLibs/src/core/core
+// @import https://opensource.liveg.tech/ZaprCoreLibs/src/importer/importer
+// @import https://opensource.liveg.tech/ZaprCoreLibs/src/l10n/l10n
+
+// Locale integration configuration
+
+// @asset locale/en_GB.json
+// @asset locale/fr_FR.json
+// @asset locale/zh_CN.json
+// @asset locale/ar_EG.json
+
+l10n.load("en_GB", importer.getString(_assets["en_GB.json"]));
+l10n.load("fr_FR", importer.getString(_assets["fr_FR.json"]));
+l10n.load("zh_CN", importer.getString(_assets["zh_CN.json"]));
+l10n.load("ar_EG", importer.getString(_assets["ar_EG.json"]));
+
+var lang = l10n.getBrowserLocale();
+
+function _() {
+    return l10n.translate(...arguments);
+}
+
+if (core.parameter("lang") != null) {
+    lang = core.parameter("lang");
+}
+
+if (!(lang in l10n.locales)) {
+    lang = "en_GB";
+}
+
+l10n.use(lang);
+
+ui.mirroringDirection = l10n.languageData.direction;
+
+// UI design
 
 core.unpack(ui.components);
 
 ui.screen = [
     new Container([
-        new Heading("All UI components", 1),
-        new Heading("Testing all of them", 2),
-        new Heading("As you can see", 3),
-        new Heading("There's a lot", 4),
-        new Heading("So many headings", 5),
-        new Heading("There's loads", 6),
-        new Paragraph("As you can see, there are a lot of headings. This is just some of the UI components featured. More are below!"),
+        new Heading(_("h1"), 1),
+        new Heading(_("h2"), 2),
+        new Heading(_("h3"), 3),
+        new Heading(_("h4"), 4),
+        new Heading(_("h5"), 5),
+        new Heading(_("h6"), 6),
+        new Paragraph(_("p")),
     ]),
     new Container([
         new Label([
-            new Text("Text input (primary)"),
-            new TextInput("", "Write something here..."),
-            new Button("Do that action")
+            new Text(_("labelTextPrimary")),
+            new TextInput("", _("textPrimary")),
+            new Button(_("textPrimaryButton"))
         ]),
         new Label([
-            new Text("Text input (secondary)"),
-            new TextInput("", "Looking camouflaged!", true),
-            new Button("Do that other action", true)
+            new Text(_("labelTextSecondary")),
+            new TextInput("", _("textSecondary"), true),
+            new Button(_("textSecondaryButton"), true)
         ]),
         new Label([
-            new Text("Selection input"),
+            new Text(_("labelSelectionInput")),
             new SelectionInput({
-                "apple": "Apple",
-                "liveg": "LiveG",
-                "microsoft": "Microsoft",
-                "google": "Google"
+                "apple": _("selectionInputApple"),
+                "liveg": _("selectionInputLiveG"),
+                "microsoft": _("selectionInputMicrosoft"),
+                "google": _("selectionInputGoogle")
             }, "liveg")
         ])
     ]),
     new Container([
-        new Heading("Selections", 2),
+        new Heading(_("labelSelections"), 2),
         new Container([
             new Label([
-                new Text("Fruits"),
+                new Text(_("selectionsFruits")),
                 new CheckboxInput("groceries", true)
             ]),
             new Label([
-                new Text("Vegetables"),
+                new Text(_("selectionsVegetables")),
                 new CheckboxInput("groceries")
             ])
         ]),
         new Container([
             new Label([
-                new Text("Pasta"),
+                new Text(_("selectionsPasta")),
                 new RadioButtonInput("food")
             ]),
             new Label([
-                new Text("Pizza"),
+                new Text(_("selectionsPizza")),
                 new RadioButtonInput("food", true)
             ]),
             new Label([
-                new Text("Steak"),
+                new Text(_("selectionsSteak")),
                 new RadioButtonInput("food")
             ])
         ]),
         new Container([
             new Label([
-                new Text("Connect"),
+                new Text(_("togglesConnect")),
                 new ToggleSwitch("connect")
             ]),
             new Label([
-                new Text("Go there"),
+                new Text(_("togglesGoThere")),
                 new ToggleSwitch("goThere", true)
             ])
         ])
     ]),
     new Container([
-        new Heading("Sign in test", 2),
+        new Heading(_("labelSITest"), 2),
         new Label([
-            new Text("Username"),
+            new Text(_("siTestUsername")),
             new TextInput()
         ]),
         new Label([
-            new Text("Password"),
+            new Text(_("siTestPassword")),
             new PasswordInput()
         ]),
         new Label([
             new Text(),
             new Label([
                 new CheckboxInput(),
-                new Text("Remember me")
+                new Text(_("siTestRememberMe"))
             ]),
         ]),
         new Container([
-            new Button("Sign in")
+            new Button(_("siTestSignIn"))
         ])
     ])
 ];

@@ -216,11 +216,11 @@ input[type="checkbox"][role="switch"]:checked:after {
     content: var(--assetToggleSwitchOnIcon);
 }
 
-body[dir="rtl"] input[type="checkbox"][role="switch"]:after {
+[dir="rtl"] input[type="checkbox"][role="switch"]:after {
     left: 22px;
 }
 
-body[dir="rtl"] input[type="checkbox"][role="switch"]:checked:after {
+[dir="rtl"] input[type="checkbox"][role="switch"]:checked:after {
     left: -2px;
 }
 
@@ -245,11 +245,11 @@ select::-ms-expand {
     display: none;
 }
 
-body[dir="rtl"] select {
+[dir="rtl"] select {
     background: var(--assetDropdownIcon) no-repeat left var(--secondaryBackground);
 }
 
-body[dir="rtl"] select[secondary] {
+[dir="rtl"] select[secondary] {
     background: var(--assetDropdownIcon) no-repeat left var(--primaryBackground);
 }
 

@@ -11,6 +11,8 @@
 // @import https://opensource.liveg.tech/ZaprCoreLibs/src/importer/importer
 
 var ui = {
+    mirroringDirection: "ltr",
+
     components: {},
     colour: {},
     screen: [],
@@ -49,6 +51,7 @@ var ui = {
     */
     refresh: function() {
         dom.element().children().delete();
+        dom.element().attribute("dir").set(ui.mirroringDirection);
 
         for (var i = 0; i < ui.screen.length; i++) {
             dom.element().newChild(ui.screen[i].generateDOMElement());
