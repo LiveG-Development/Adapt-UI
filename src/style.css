@@ -195,14 +195,14 @@ input[type="radio"]:checked:after {
     content: var(--assetRadioButtonIcon);
 }
 
-input[type="checkbox"][switch] {
+input[type="checkbox"][role="switch"] {
     top: 12px;
     padding: 15px;
     padding-right: 50px;
     border-radius: 15px;
 }
 
-input[type="checkbox"][switch]:after {
+input[type="checkbox"][role="switch"]:after {
     position: absolute;
     top: -2px;
     left: -2px;
@@ -211,16 +211,16 @@ input[type="checkbox"][switch]:after {
     transition: 0.5s;
 }
 
-input[type="checkbox"][switch]:checked:after {
+input[type="checkbox"][role="switch"]:checked:after {
     left: 22px;
     content: var(--assetToggleSwitchOnIcon);
 }
 
-body[dir="rtl"] input[type="checkbox"][switch]:after {
+body[dir="rtl"] input[type="checkbox"][role="switch"]:after {
     left: 22px;
 }
 
-body[dir="rtl"] input[type="checkbox"][switch]:checked:after {
+body[dir="rtl"] input[type="checkbox"][role="switch"]:checked:after {
     left: -2px;
 }
 

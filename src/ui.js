@@ -728,7 +728,7 @@ ui.components.ToggleSwitch = class extends ui.components.Component {
 
     precompute(domObject) {
         this.attributes["type"] = "checkbox";
-        this.attributes["switch"] = "";
+        this.attributes["role"] = "switch";
 
         this.attributes["name"] = this.group;
 
