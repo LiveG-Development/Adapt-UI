@@ -78,6 +78,10 @@ ui.screen = [
             new Label([
                 new Text(_("selectionsVegetables")),
                 new CheckboxInput("groceries")
+            ]),
+            new Label([
+                new Text(_("selectionsMeats")),
+                new CheckboxInput("groceries", null)
             ])
         ]),
         new Container([

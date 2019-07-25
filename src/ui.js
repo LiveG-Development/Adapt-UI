@@ -625,7 +625,7 @@ ui.components.SelectionInput = class extends ui.components.Component {
     @name ui.components.CheckboxInput
 
     @param group string Name of group to group checkboxes in. Default: `""`.
-    @param selected boolean Whether to make the input selected. Use `true` to enable. Default: `false`.
+    @param selected boolean Whether to make the input selected. Use `true` to enable, or `null` to make indeterminate. Default: `false`.
     @param style object Styling to use on component. Default: `{}`.
     @param attributes object HTML attributes to use on component. Default: `{}`.
     @param events object Events to listen to on component. Default: `{}`.
@@ -648,16 +648,27 @@ ui.components.CheckboxInput = class extends ui.components.Component {
 
         this.attributes["name"] = this.group;
 
-        if (this.selected) {
-            this.attributes["checked"] = this.selected;
+        if (this.selected == true) {
+            domObject.reference[0].checked = true;
+            domObject.reference[0].indeterminate = false;
+        } else if (this.selected == null) {
+            domObject.reference[0].checked = true;
+            domObject.reference[0].indeterminate = true;
         } else {
-            delete this.attributes["checked"];
+            domObject.reference[0].checked = false;
+            domObject.reference[0].indeterminate = false;
         }
 
         var thisScope = this;
 
         domObject.events.listen("change", function(event) {
-            thisScope.selected = event.target.checked;
+            if (event.target.checked) {
+                thisScope.selected = true;
+            } else if (event.target.indeterminate) {
+                thisScope.selected = null;
+            } else {
+                thisScope.selected = false;
+            }
         });
 
         return domObject;
