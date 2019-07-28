@@ -224,11 +224,11 @@ input[type="checkbox"][role="switch"]:checked:after {
 }
 
 [dir="rtl"] input[type="checkbox"][role="switch"]:after {
-    left: 22px;
+    left: 15px;
 }
 
 [dir="rtl"] input[type="checkbox"][role="switch"]:checked:after {
-    left: -2px;
+    left: 1px;
 }
 
 label > span {
