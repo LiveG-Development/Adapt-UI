@@ -12,6 +12,7 @@
 
 var ui = {
     mirroringDirection: "ltr",
+    language: "en_GB",
 
     components: {},
     colour: {},
@@ -52,6 +53,18 @@ var ui = {
     refresh: function() {
         dom.element().children().delete();
         dom.element().attribute("dir").set(ui.mirroringDirection);
+        
+        if (ui.language.length < 2) {
+            throw "invalid UI language"
+        }
+
+        if (["zh_HK", "zh_MO", "zh_TW"].includes(ui.language)) {
+            dom.element().attribute("lang").set("zh-Hant");
+        } else if (ui.language.substring(0, 2) == "zh") {
+            dom.element().attribute("lang").set("zh-Hans");
+        } else {
+            dom.element().attribute("lang").set(ui.language.substring(0, 2));
+        }
 
         for (var i = 0; i < ui.screen.length; i++) {
             dom.element().newChild(ui.screen[i].generateDOMElement());

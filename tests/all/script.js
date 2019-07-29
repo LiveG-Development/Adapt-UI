@@ -1,5 +1,6 @@
 // @import ../../src/ui
 // @import https://opensource.liveg.tech/ZaprCoreLibs/src/core/core
+// @import https://opensource.liveg.tech/ZaprCoreLibs/src/dom/dom
 // @import https://opensource.liveg.tech/ZaprCoreLibs/src/importer/importer
 // @import https://opensource.liveg.tech/ZaprCoreLibs/src/l10n/l10n
 
@@ -32,6 +33,7 @@ if (!(lang in l10n.locales)) {
 l10n.use(lang);
 
 ui.mirroringDirection = l10n.languageData.direction;
+ui.language = lang;
 
 // UI design
 
