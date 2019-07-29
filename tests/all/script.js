@@ -68,6 +68,10 @@ ui.screen = [
                 "microsoft": _("selectionInputMicrosoft"),
                 "google": _("selectionInputGoogle")
             }, "liveg")
+        ]),
+        new Label([
+            new Text(_("labelSliderInput")),
+            new SliderInput()
         ])
     ]),
     new Container([

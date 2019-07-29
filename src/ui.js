@@ -775,4 +775,48 @@ ui.components.ToggleSwitch = class extends ui.components.Component {
     }
 };
 
+/*
+    @name ui.components.SliderInput
+
+    @param value number Initial value to store in input. Default: `0`.
+    @param minimum number Minimum value to be allowed on slider range. Default: `0`.
+    @param maximum number Maximum value to be allowed on slider range. Default: `100`.
+    @param step number Amount to step when slider is moved. Default: `1`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription SliderInput class, extends `ui.components.Component`.
+    @longDescription Has similar properties to an HTML `input` element with attribute `type` as `"range"`.
+*/
+ui.components.SliderInput = class extends ui.components.Component {
+    constructor(value = 0, minimum = 0, maximum = 100, step = 1, style = {}, attributes = {}, events = {}) {
+        super([], style, attributes, events);
+
+        this.HTMLTagName = "input";
+
+        this.value = value;
+        this.minimum = minimum;
+        this.maximum = maximum;
+        this.step = step;
+    }
+
+    precompute(domObject) {
+        this.attributes["type"] = "range";
+
+        this.attributes["value"] = this.value;
+        this.attributes["minimum"] = this.minimum;
+        this.attributes["maximum"] = this.maximum;
+        this.attributes["step"] = this.step;
+
+        var thisScope = this;
+
+        domObject.events.listen("change", function(event) {
+            thisScope.value = event.target.value;
+        });
+
+        return domObject;
+    }
+};
+
 ui.events.loaded(function() {});

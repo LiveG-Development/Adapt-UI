@@ -231,6 +231,42 @@ input[type="checkbox"][role="switch"]:checked:after {
     left: 1px;
 }
 
+input[type="range"] {
+    -webkit-appearance: none;
+    background-color: var(--secondaryBackground);
+    height: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: default;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: var(--primaryUI);
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    background-color: var(--primaryUIPress);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background-color: var(--primaryUI);
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+    background-color: var(--primaryUIPress);
+}
+
 label > span {
     position: relative;
     top: -2px;
