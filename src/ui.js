@@ -16,6 +16,7 @@ var ui = {
 
     components: {},
     colour: {},
+    enums: {},
     screen: [],
 
     events: {
@@ -55,7 +56,7 @@ var ui = {
         dom.element().attribute("dir").set(ui.mirroringDirection);
         
         if (ui.language.length < 2) {
-            throw "invalid UI language"
+            throw "Invalid UI language"
         }
 
         if (["zh_HK", "zh_MO", "zh_TW"].includes(ui.language)) {
@@ -545,6 +546,65 @@ ui.components.TextInput = class extends ui.components.Component {
 ui.components.PasswordInput = class extends ui.components.TextInput {
     precompute(domObject) {
         this.attributes["type"] = "password";
+
+        this.attributes["value"] = this.value;
+        this.attributes["placeholder"] = this.placeholder;
+
+        if (this.secondary) {
+            this.attributes["secondary"] = this.secondary;
+        } else {
+            delete this.attributes["secondary"];
+        }
+
+        var thisScope = this;
+
+        domObject.events.listen("change", function(event) {
+            thisScope.value = event.target.value;
+        });
+
+        return domObject;
+    }
+};
+
+ui.enums.formats = {
+    TEXT: "text",
+    EMAIL: "email",
+    NUMBER: "number",
+    PHONE: "tel",
+    URL: "url"
+};
+
+/*
+    @name ui.components.FormattedInput
+
+    @param value string Initial value to store in input. Default: `""`.
+    @param placeholder string Value to show in input if it is empty. Default: `""`.
+    @param secondary boolean Whether to make the input secondary. Use `true` to enable. Default: `false`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription FormattedInput class, extends `ui.components.TextInput`.
+    @longDescription Has similar properties to an HTML `input` element.
+*/
+ui.components.FormattedInput = class extends ui.components.TextInput {
+    constructor(format = ui.enums.formats.TEXT, value = "", placeholder = "", secondary = false, style = {}, attributes = {}, events = {}) {
+        super([], style, attributes, events);
+
+        this.HTMLTagName = "input";
+
+        this.format = format;
+        this.value = value;
+        this.placeholder = placeholder;
+        this.secondary = secondary;
+    }
+
+    precompute(domObject) {
+        if (Object.values(ui.enums.formats).indexOf(this.format) > -1) {
+            this.attributes["type"] = this.format;
+        } else {
+            throw "Invalid format";
+        }
 
         this.attributes["value"] = this.value;
         this.attributes["placeholder"] = this.placeholder;

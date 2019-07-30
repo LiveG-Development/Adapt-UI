@@ -160,6 +160,20 @@ input[secondary], select[secondary] {
     color: var(--primaryText);
 }
 
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+[dir="rtl"] input[type="tel"] {
+    direction: ltr;
+    text-align: right;
+}
+
 input[type="checkbox"], input[type="radio"] {
     position: relative;
     display: inline-block;
@@ -190,6 +204,11 @@ input[type="checkbox"]:not([role="switch"]):indeterminate:after {
     content: var(--assetIndeterminateIcon);
 }
 
+[dir="rtl"] input[type="checkbox"]:not([role="switch"]):indeterminate:after {
+    left: unset;
+    right: -2px;
+}
+
 input[type="radio"] {
     border-radius: 10px;
 }
@@ -199,6 +218,11 @@ input[type="radio"]:checked:after {
     top: -2px;
     left: -1.5px;
     content: var(--assetRadioButtonIcon);
+}
+
+[dir="rtl"] input[type="radio"]:indeterminate:after {
+    left: unset;
+    right: -2px;
 }
 
 input[type="checkbox"][role="switch"] {

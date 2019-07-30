@@ -116,6 +116,31 @@ ui.screen = [
         ])
     ]),
     new Container([
+        new Heading(_("labelTextFormats"), 2),
+        new Container([
+            new Label([
+                new Text(_("formatsText")),
+                new FormattedInput(ui.enums.formats.TEXT)
+            ]),
+            new Label([
+                new Text(_("formatsEmail")),
+                new FormattedInput(ui.enums.formats.EMAIL)
+            ]),
+            new Label([
+                new Text(_("formatsNumber")),
+                new FormattedInput(ui.enums.formats.NUMBER)
+            ]),
+            new Label([
+                new Text(_("formatsPhone")),
+                new FormattedInput(ui.enums.formats.PHONE)
+            ]),
+            new Label([
+                new Text(_("formatsURL")),
+                new FormattedInput(ui.enums.formats.URL)
+            ])
+        ])
+    ]),
+    new Container([
         new Heading(_("labelSITest"), 2),
         new Label([
             new Text(_("siTestUsername")),
