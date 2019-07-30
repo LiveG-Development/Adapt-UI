@@ -135,6 +135,14 @@ ui.colour.RGBA = class {
     }
 };
 
+ui.enums.formats = {
+    TEXT: "text",
+    EMAIL: "email",
+    NUMBER: "number",
+    PHONE: "tel",
+    URL: "url"
+};
+
 /*
     @name ui.Vector
 
@@ -564,14 +572,6 @@ ui.components.PasswordInput = class extends ui.components.TextInput {
 
         return domObject;
     }
-};
-
-ui.enums.formats = {
-    TEXT: "text",
-    EMAIL: "email",
-    NUMBER: "number",
-    PHONE: "tel",
-    URL: "url"
 };
 
 /*
