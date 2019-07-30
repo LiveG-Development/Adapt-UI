@@ -539,20 +539,10 @@ ui.components.TextInput = class extends ui.components.Component {
     @param attributes object HTML attributes to use on component. Default: `{}`.
     @param events object Events to listen to on component. Default: `{}`.
 
-    @shortDescription PasswordInput class, extends `ui.components.Component`.
+    @shortDescription PasswordInput class, extends `ui.components.TextInput`.
     @longDescription Has similar properties to an HTML `input` element with attribute `type` as `"password"`.
 */
-ui.components.PasswordInput = class extends ui.components.Component {
-    constructor(value = "", placeholder = "", secondary = false, style = {}, attributes = {}, events = {}) {
-        super([], style, attributes, events);
-
-        this.HTMLTagName = "input";
-
-        this.value = value;
-        this.placeholder = placeholder;
-        this.secondary = secondary;
-    }
-
+ui.components.PasswordInput = class extends ui.components.TextInput {
     precompute(domObject) {
         this.attributes["type"] = "password";
 
