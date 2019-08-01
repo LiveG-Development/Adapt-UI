@@ -73,7 +73,7 @@ var ui = {
             } else if (_manifest.defaultLocale in _manifest.name) {
                 dom.element("title").html.set(_manifest.name[_manifest.defaultLocale]);
             } else {
-                throw "Invalid manifest name specification"
+                throw "Invalid manifest name specification";
             }
         }
 
