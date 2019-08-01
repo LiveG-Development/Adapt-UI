@@ -67,6 +67,16 @@ var ui = {
             dom.element().attribute("lang").set(ui.language.substring(0, 2));
         }
 
+        if (_manifest != undefined && _manifest.name != undefined) {
+            if (ui.language in _manifest.name) {
+                dom.element("title").html.set(_manifest.name[ui.language]);
+            } else if (_manifest.defaultLocale in _manifest.name) {
+                dom.element("title").html.set(_manifest.name[_manifest.defaultLocale]);
+            } else {
+                throw "Invalid manifest name specification"
+            }
+        }
+
         for (var i = 0; i < ui.screen.length; i++) {
             dom.element().newChild(ui.screen[i].generateDOMElement());
         }

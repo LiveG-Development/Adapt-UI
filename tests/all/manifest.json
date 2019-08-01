@@ -2,10 +2,16 @@
     "package": "tech.liveg.opensource.allTests",
     "version": "0.1.0",
     "name": {
-        "en_GB": "All UI Tests"
+        "en_GB": "All UI Tests",
+        "fr_FR": "Tous les tests d'Interface Utilisateur",
+        "zh_CN": "所有UI测试",
+        "ar_EG": "جميع اختبارات واجهة المستخدم"
     },
     "description": {
-        "en_GB": "Testing the UI components of the Adapt UI library."
+        "en_GB": "Testing the UI components of the Adapt UI library.",
+        "fr_FR": "Test des composants d'interface utilisateur de la bibliothèque Adapt UI.",
+        "zh_CN": "测试Adapt UI库的UI组件。",
+        "ar_EG": "اختبار مكونات واجهة المستخدم في مكتبة Adapt UI."
     },
     "defaultLocale": "en_GB",
     "mainScript": "script.js"
