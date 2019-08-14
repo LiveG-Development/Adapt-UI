@@ -347,6 +347,26 @@ ui.components.Container = class extends ui.components.Component {
 };
 
 /*
+    @name ui.components.GroupContainer
+
+    @param children any Children or content to include in component. Default: `[]`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription GroupContainer class, extends `ui.components.Container`.
+    @longDescription Has similar properties to an HTML `div` element.
+    @longDescription Designed to group alike form elements already in a `Container`.
+*/
+ui.components.GroupContainer = class extends ui.components.Container {
+    precompute(domObject) {
+        this.attributes["group"] = "";
+
+        return domObject;
+    }
+};
+
+/*
     @name ui.components.Paragraph
 
     @param children any Children or content to include in component. Default: `[]`.

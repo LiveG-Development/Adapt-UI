@@ -54,6 +54,11 @@ div {
     margin: 8px;
 }
 
+div[group] {
+    margin: 0;
+    margin-bottom: 8px;
+}
+
 h1 {
     font-size: var(--sizeH1);
     font-weight: 700;

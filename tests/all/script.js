@@ -76,7 +76,7 @@ ui.screen = [
     ]),
     new Container([
         new Heading(_("labelSelections"), 2),
-        new Container([
+        new GroupContainer([
             new Label([
                 new Text(_("selectionsFruits")),
                 new CheckboxInput("groceries", true)
@@ -90,7 +90,7 @@ ui.screen = [
                 new CheckboxInput("groceries", null)
             ])
         ]),
-        new Container([
+        new GroupContainer([
             new Label([
                 new Text(_("selectionsPasta")),
                 new RadioButtonInput("food")
@@ -104,7 +104,7 @@ ui.screen = [
                 new RadioButtonInput("food")
             ])
         ]),
-        new Container([
+        new GroupContainer([
             new Label([
                 new Text(_("togglesConnect")),
                 new ToggleSwitch("connect")
@@ -117,27 +117,25 @@ ui.screen = [
     ]),
     new Container([
         new Heading(_("labelTextFormats"), 2),
-        new Container([
-            new Label([
-                new Text(_("formatsText")),
-                new FormattedInput(ui.enums.formats.TEXT)
-            ]),
-            new Label([
-                new Text(_("formatsEmail")),
-                new FormattedInput(ui.enums.formats.EMAIL)
-            ]),
-            new Label([
-                new Text(_("formatsNumber")),
-                new FormattedInput(ui.enums.formats.NUMBER)
-            ]),
-            new Label([
-                new Text(_("formatsPhone")),
-                new FormattedInput(ui.enums.formats.PHONE)
-            ]),
-            new Label([
-                new Text(_("formatsURL")),
-                new FormattedInput(ui.enums.formats.URL)
-            ])
+        new Label([
+            new Text(_("formatsText")),
+            new FormattedInput(ui.enums.formats.TEXT)
+        ]),
+        new Label([
+            new Text(_("formatsEmail")),
+            new FormattedInput(ui.enums.formats.EMAIL)
+        ]),
+        new Label([
+            new Text(_("formatsNumber")),
+            new FormattedInput(ui.enums.formats.NUMBER)
+        ]),
+        new Label([
+            new Text(_("formatsPhone")),
+            new FormattedInput(ui.enums.formats.PHONE)
+        ]),
+        new Label([
+            new Text(_("formatsURL")),
+            new FormattedInput(ui.enums.formats.URL)
         ])
     ]),
     new Container([
