@@ -18,6 +18,7 @@
         "textSecondaryButton": "Do that other action",
         "labelSelectionInput": "Selection input",
         "labelSliderInput": "Slider input",
+        "labelProgressBarResult": "Progress bar result",
         "selectionInputApple": "Apple",
         "selectionInputLiveG": "LiveG",
         "selectionInputMicrosoft": "Microsoft",

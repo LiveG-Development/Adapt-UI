@@ -18,6 +18,7 @@
         "textSecondaryButton": "Faire cette autre action",
         "labelSelectionInput": "Entrée de sélection",
         "labelSliderInput": "Entrée du curseur",
+        "labelProgressBarResult": "Résultat de la barre de progression",
         "selectionInputApple": "Apple",
         "selectionInputLiveG": "LiveG",
         "selectionInputMicrosoft": "Microsoft",

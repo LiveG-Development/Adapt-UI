@@ -149,7 +149,7 @@ button[secondary]:hover {
     background-color: var(--secondaryUIPress);
 }
 
-input, select {
+input, select, progress {
     margin: 5px;
     padding: 10px;
     width: 200px;
@@ -208,7 +208,7 @@ input[type="checkbox"]:checked:after {
 input[type="checkbox"]:not([role="switch"]):indeterminate:after {
     position: absolute;
     top: -2px;
-    left: -1.5px;
+    left: -2px;
     content: var(--assetIndeterminateIcon);
 }
 
@@ -224,7 +224,7 @@ input[type="radio"] {
 input[type="radio"]:checked:after {
     position: absolute;
     top: -2px;
-    left: -1.5px;
+    left: -2px;
     content: var(--assetRadioButtonIcon);
 }
 
@@ -264,7 +264,9 @@ input[type="checkbox"][role="switch"]:checked:after {
 }
 
 input[type="range"] {
+    -moz-appearance: none;
     -webkit-appearance: none;
+    appearance: none;
     background-color: var(--secondaryBackground);
     height: 0;
     margin-top: 20px;
@@ -275,7 +277,9 @@ input[type="range"] {
 }
 
 input[type="range"]::-webkit-slider-thumb {
+    -moz-appearance: none;
     -webkit-appearance: none;
+    appearance: none;
     width: 20px;
     height: 20px;
     background-color: var(--primaryUI);
@@ -299,6 +303,29 @@ input[type="range"]::-moz-range-thumb:hover {
     background-color: var(--primaryUIPress);
 }
 
+progress {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 220px;
+    height: 30px;
+    padding: 0;
+    vertical-align: middle;
+    overflow: hidden;
+    cursor: default;
+}
+
+progress::-webkit-progress-bar {
+    background-color: var(--secondaryBackground);
+    border-radius: 10px;
+}
+
+progress::-webkit-progress-value {
+    background-color: var(--primaryUI);
+    border-radius: 10px;
+    transition: width 0.5s;
+}
+
 label > span {
     position: relative;
     top: -2px;
@@ -309,6 +336,7 @@ select {
     background: var(--assetDropdownIcon) no-repeat right var(--secondaryBackground);
     -moz-appearance: none;
     -webkit-appearance: none;
+    appearance: none;
     cursor: default;
 }
 

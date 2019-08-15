@@ -118,25 +118,25 @@ ui.colour.RGBA = class {
         if (typeof(red) == "number" && red >= 0 && red <= 255) {
             this.red = red;
         } else {
-            throw "`red` is either not a number, or is not between 1 and 6 inclusive";
+            throw "`red` is either not a number, or is not between 0 and 255 inclusive";
         }
 
         if (typeof(green) == "number" && green >= 0 && green <= 255) {
             this.green = green;
         } else {
-            throw "`green` is either not a number, or is not between 1 and 6 inclusive";
+            throw "`green` is either not a number, or is not between 0 and 255 inclusive";
         }
 
         if (typeof(blue) == "number" && blue >= 0 && blue <= 255) {
             this.blue = blue;
         } else {
-            throw "`blue` is either not a number, or is not between 1 and 6 inclusive";
+            throw "`blue` is either not a number, or is not between 0 and 255 inclusive";
         }
 
         if (typeof(alpha) == "number" && alpha >= 0 && alpha <= 1) {
             this.alpha = alpha;
         } else {
-            throw "`alpha` is either not a number, or is not between 1 and 6 inclusive";
+            throw "`alpha` is either not a number, or is not between 0 and 1 inclusive";
         }
     }
 
@@ -858,10 +858,8 @@ ui.components.ToggleSwitch = class extends ui.components.Component {
 /*
     @name ui.components.SliderInput
 
-    @param value number Initial value to store in input. Default: `0`.
-    @param minimum number Minimum value to be allowed on slider range. Default: `0`.
-    @param maximum number Maximum value to be allowed on slider range. Default: `100`.
-    @param step number Amount to step when slider is moved. Default: `1`.
+    @param value number Initial value to store in input. Must be between 0 and 1 inclusive. Default: `0`.
+    @param step number Amount to step when slider is moved. Must be between 0 and 1 inclusive. Default: `1`.
     @param style object Styling to use on component. Default: `{}`.
     @param attributes object HTML attributes to use on component. Default: `{}`.
     @param events object Events to listen to on component. Default: `{}`.
@@ -870,30 +868,68 @@ ui.components.ToggleSwitch = class extends ui.components.Component {
     @longDescription Has similar properties to an HTML `input` element with attribute `type` as `"range"`.
 */
 ui.components.SliderInput = class extends ui.components.Component {
-    constructor(value = 0, minimum = 0, maximum = 100, step = 1, style = {}, attributes = {}, events = {}) {
+    constructor(value = 0, step = 0.01, style = {}, attributes = {}, events = {}) {
         super([], style, attributes, events);
 
         this.HTMLTagName = "input";
 
-        this.value = value;
-        this.minimum = minimum;
-        this.maximum = maximum;
-        this.step = step;
+        if (typeof(value) == "number" && value >= 0 && value <= 1) {
+            this.value = value;
+        } else {
+            throw "`value` is either not a number, or is not between 0 and 1 inclusive";
+        }
+
+        if (typeof(step) == "number" && step >= 0 && step <= 1) {
+            this.step = step;
+        } else {
+            throw "`step` is either not a number, or is not between 0 and 1 inclusive";
+        }
     }
 
     precompute(domObject) {
         this.attributes["type"] = "range";
 
-        this.attributes["value"] = this.value;
-        this.attributes["minimum"] = this.minimum;
-        this.attributes["maximum"] = this.maximum;
-        this.attributes["step"] = this.step;
+        this.attributes["value"] = this.value * 100;
+        this.attributes["minimum"] = 0;
+        this.attributes["maximum"] = 1;
+        this.attributes["step"] = this.step * 100;
 
         var thisScope = this;
 
         domObject.events.listen("change", function(event) {
-            thisScope.value = event.target.value;
+            thisScope.value = event.target.value / 100;
         });
+
+        return domObject;
+    }
+};
+
+/*
+    @name ui.components.ProgressBar
+
+    @param value number Initial value to store in input. Must be between 0 and 1 inclusive. Default: `0`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription ProgressBar class, extends `ui.components.Component`.
+    @longDescription Has similar properties to an HTML `progress` element.
+*/
+ui.components.ProgressBar = class extends ui.components.Component {
+    constructor(value = 0, style = {}, attributes = {}, events = {}) {
+        super([], style, attributes, events);
+
+        this.HTMLTagName = "progress";
+
+        if (typeof(value) == "number" && value >= 0 && value <= 1) {
+            this.value = value;
+        } else {
+            throw "`value` is either not a number, or is not between 0 and 1 inclusive";
+        }
+    }
+
+    precompute(domObject) {
+        this.attributes["value"] = this.value;
 
         return domObject;
     }

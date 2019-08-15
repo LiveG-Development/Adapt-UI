@@ -39,6 +39,19 @@ ui.language = lang;
 
 core.unpack(ui.components);
 
+var sliderInputSet = new SliderInput(0.333, 0.001);
+var progressBarResult = new ProgressBar(0.333, 0.001);
+
+function progressBarResultUpdate(value) {
+    progressBarResult.value = value;
+
+    ui.refresh();
+}
+
+sliderInputSet.events.change = function() {
+    progressBarResultUpdate(sliderInputSet.value);
+};
+
 ui.screen = [
     new Container([
         new Heading(_("h1"), 1),
@@ -71,7 +84,11 @@ ui.screen = [
         ]),
         new Label([
             new Text(_("labelSliderInput")),
-            new SliderInput()
+            sliderInputSet
+        ]),
+        new Label([
+            new Text(_("labelProgressBarResult")),
+            progressBarResult
         ])
     ]),
     new Container([
