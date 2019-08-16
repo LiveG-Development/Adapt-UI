@@ -310,6 +310,7 @@ progress {
     width: 220px;
     height: 30px;
     padding: 0;
+    border: none;
     vertical-align: middle;
     overflow: hidden;
     cursor: default;
@@ -321,6 +322,17 @@ progress::-webkit-progress-bar {
 }
 
 progress::-webkit-progress-value {
+    background-color: var(--primaryUI);
+    border-radius: 10px;
+    transition: width 0.5s;
+}
+
+progress::-moz-progress-bar {
+    background-color: var(--secondaryBackground);
+    border-radius: 10px;
+}
+
+progress::-moz-progress-value {
     background-color: var(--primaryUI);
     border-radius: 10px;
     transition: width 0.5s;
