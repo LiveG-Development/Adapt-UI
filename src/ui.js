@@ -724,7 +724,7 @@ ui.components.SelectionInput = class extends ui.components.Component {
     @param events object Events to listen to on component. Default: `{}`.
 
     @shortDescription CheckboxInput class, extends `ui.components.Component`.
-    @longDescription Has similar properties to an HTML `input` element with attrbute `type` as `"checkbox"`.
+    @longDescription Has similar properties to an HTML `input` element with attribute `type` as `"checkbox"`.
 */
 ui.components.CheckboxInput = class extends ui.components.Component {
     constructor(group = "", selected = false, style = {}, attributes = {}, events = {}) {
@@ -778,7 +778,7 @@ ui.components.CheckboxInput = class extends ui.components.Component {
     @param events object Events to listen to on component. Default: `{}`.
 
     @shortDescription RadioButtonInput class, extends `ui.components.Component`.
-    @longDescription Has similar properties to an HTML `input` element with attrbute `type` as `"radio"`.
+    @longDescription Has similar properties to an HTML `input` element with attribute `type` as `"radio"`.
 */
 ui.components.RadioButtonInput = class extends ui.components.Component {
     constructor(group = "", selected = false, style = {}, attributes = {}, events = {}) {
@@ -821,7 +821,7 @@ ui.components.RadioButtonInput = class extends ui.components.Component {
     @param events object Events to listen to on component. Default: `{}`.
 
     @shortDescription ToggleSwitch class, extends `ui.components.Component`.
-    @longDescription Has similar properties to an HTML `input` element with attrbute `type` as `"checkbox"`.
+    @longDescription Has similar properties to an HTML `input` element with attribute `type` as `"checkbox"` and `role` as `"switch"`.
 */
 ui.components.ToggleSwitch = class extends ui.components.Component {
     constructor(group = "", selected = false, style = {}, attributes = {}, events = {}) {
@@ -930,6 +930,40 @@ ui.components.ProgressBar = class extends ui.components.Component {
 
     precompute(domObject) {
         this.attributes["value"] = this.value;
+
+        return domObject;
+    }
+};
+
+/*
+    @name ui.components.Pill
+
+    @param children any Children or content to include in component. Default: `[]`.
+    @param selected boolean Whether to make the pill selected. Use `true` to enable. Default: `false`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription Pill class, extends `ui.components.Component`.
+    @longDescription Has similar properties to an HTML `button` element with attribute `role` as `"tab"`.
+*/
+ui.components.Pill = class extends ui.components.Component {
+    constructor(children = [], selected = false, style = {}, attributes = {}, events = {}) {
+        super(children, style, attributes, events);
+
+        this.HTMLTagName = "button";
+
+        this.selected = selected;
+    }
+
+    precompute(domObject) {
+        this.attributes["role"] = "tab";
+
+        if (this.selected) {
+            this.attributes["aria-selected"] = "true";
+        } else {
+            this.attributes["aria-selected"] = "false";
+        }
 
         return domObject;
     }

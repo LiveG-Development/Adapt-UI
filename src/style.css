@@ -116,6 +116,11 @@ label label {
     display: inline;
 }
 
+label > span {
+    position: relative;
+    top: -2px;
+}
+
 label > span:first-child {
     display: inline-block;
     width: calc(100% - 240px);
@@ -123,7 +128,7 @@ label > span:first-child {
     vertical-align: middle;
 }
 
-button {
+button:not([role="tab"]) {
     margin: 5px;
     padding: 10px;
     font-family: var(--fontCircumference);
@@ -136,17 +141,37 @@ button {
     transition: 0.5s;
 }
 
-button:hover {
+button:not([role="tab"]):hover {
     background-color: var(--primaryUIPress);
 }
 
-button[secondary] {
+button[secondary]:not([role="tab"]) {
     background-color: var(--secondaryUI);
     color: var(--secondaryUIText);
 }
 
-button[secondary]:hover {
+button[secondary]:not([role="tab"]):hover {
     background-color: var(--secondaryUIPress);
+}
+
+button[role="tab"] {
+    margin: 5px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: var(--fontCircumference);
+    font-size: var(--sizeP);
+    background-color: var(--secondaryBackground);
+    color: var(--primaryText);
+    border: none;
+    border-radius: 20px;
+    cursor: default;
+    transition: 0.5s;
+}
+
+button[role="tab"][aria-selected="true"] {
+    background-color: var(--primaryUI);
+    color: var(--primaryUIText);
 }
 
 input, select, progress {
@@ -194,7 +219,7 @@ input[type="checkbox"], input[type="radio"] {
     cursor: default;
 }
 
-input[type="checkbox"]:checked, input[type="radio"]:checked, input[type="checkbox"]:not([role="switch"]):indeterminate {
+input[type="checkbox"]:checked, input[type="radio"]:checked, input[type="checkbox"]:not([role="switch"]):not([role="pill"]):indeterminate {
     background-color: var(--primaryUI);
 }
 
@@ -205,14 +230,14 @@ input[type="checkbox"]:checked:after {
     content: var(--assetCheckmarkIcon);
 }
 
-input[type="checkbox"]:not([role="switch"]):indeterminate:after {
+input[type="checkbox"]:not([role="switch"]):not([role="pill"]):indeterminate:after {
     position: absolute;
     top: -2px;
     left: -2px;
     content: var(--assetIndeterminateIcon);
 }
 
-[dir="rtl"] input[type="checkbox"]:not([role="switch"]):indeterminate:after {
+[dir="rtl"] input[type="checkbox"]:not([role="switch"]):not([role="pill"]):indeterminate:after {
     left: unset;
     right: -2px;
 }
@@ -261,6 +286,10 @@ input[type="checkbox"][role="switch"]:checked:after {
 
 [dir="rtl"] input[type="checkbox"][role="switch"]:checked:after {
     left: 1px;
+}
+
+input[type="checkbox"][role="pill"] {
+    display: none;
 }
 
 input[type="range"] {
@@ -336,11 +365,6 @@ progress::-moz-progress-value {
     background-color: var(--primaryUI);
     border-radius: 10px;
     transition: width 0.5s;
-}
-
-label > span {
-    position: relative;
-    top: -2px;
 }
 
 select {

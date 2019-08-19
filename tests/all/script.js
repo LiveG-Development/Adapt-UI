@@ -133,6 +133,15 @@ ui.screen = [
         ])
     ]),
     new Container([
+        new Heading(_("labelPills"), 2),
+        new Label([
+            new Text(_("labelPillsFilters")),
+            new Pill(_("pillsFavourites")),
+            new Pill(_("pillsUnread"), true),
+            new Pill(_("pillsSpam"))
+        ])
+    ]),
+    new Container([
         new Heading(_("labelTextFormats"), 2),
         new Label([
             new Text(_("formatsText")),
@@ -172,7 +181,7 @@ ui.screen = [
                 new Text(_("siTestRememberMe"))
             ]),
         ]),
-        new Container([
+        new GroupContainer([
             new Button(_("siTestSignIn"))
         ])
     ])
