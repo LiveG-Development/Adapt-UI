@@ -108,6 +108,16 @@ icon {
     font-feature-settings: liga;
 }
 
+a {
+    color: var(--primaryUI);
+    text-decoration: underline;
+    transition: 0.5s;
+}
+
+a:hover {
+    color: var(--secondaryUI);
+}
+
 label {
     display: block;
 }

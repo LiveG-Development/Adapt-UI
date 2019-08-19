@@ -60,7 +60,10 @@ ui.screen = [
         new Heading(_("h4"), 4),
         new Heading(_("h5"), 5),
         new Heading(_("h6"), 6),
-        new Paragraph(_("p")),
+        new Paragraph([
+            new Text(_("p")),
+            new Link(_("a"), "https://github.com/LiveG-Development/Adapt-UI/blob/master/tests/all/script.js")
+        ]),
     ]),
     new Container([
         new Label([

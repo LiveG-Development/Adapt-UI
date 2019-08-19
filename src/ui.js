@@ -474,6 +474,38 @@ ui.components.TextItalicsEffect = class extends ui.components.Component {
 };
 
 /*
+    @name ui.components.Link
+
+    @param text string Text to use in link. Default: `""`.
+
+    @shortDescription Link class, extends `ui.components.Component`.
+*/
+ui.components.Link = class extends ui.components.Component {
+    constructor(text = "", destination = "#", detach = true) {
+        super();
+
+        this.HTMLTagName = "a";
+
+        this.text = text;
+        this.destination = destination;
+        this.detach = true;
+    }
+
+    generateDOMElement() {
+        var currentDOMElement = dom.new(this.HTMLTagName);
+
+        currentDOMElement.text.set(this.text);
+        currentDOMElement.attribute("href").set(this.destination);
+
+        if (this.detach) {
+            currentDOMElement.attribute("target").set("_blank");
+        }
+
+        return currentDOMElement;
+    }
+};
+
+/*
     @name ui.components.Label
 
     @param children any Children or content to include in component. Default: `[]`.
