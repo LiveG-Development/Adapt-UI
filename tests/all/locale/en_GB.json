@@ -20,6 +20,7 @@
         "labelSelectionInput": "Selection input",
         "labelSliderInput": "Slider input",
         "labelProgressBarResult": "Progress bar result",
+        "labelSpinnerLoader": "Spinner loader (below)",
         "selectionInputApple": "Apple",
         "selectionInputLiveG": "LiveG",
         "selectionInputMicrosoft": "Microsoft",

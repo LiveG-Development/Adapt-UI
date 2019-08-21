@@ -25,6 +25,8 @@
     --sizeH5: 16px;
     --sizeH6: 14px;
     --sizeP: 16px;
+    --sizeSpinnerRadius: 30px;
+    --sizeSpinnerBorderWidth: 5px;
     --primaryBackground: rgb(255, 255, 255);
     --primaryText: rgb(0, 0, 0);
     --primaryUI: rgb(80, 145, 247);
@@ -57,6 +59,63 @@ div {
 div[group] {
     margin: 0;
     margin-bottom: 8px;
+}
+
+div[loader], div[loader]::before, div[loader]::after {
+    border-radius: 50%;
+}
+
+div[loader] {
+    position: relative;
+    width: calc(var(--sizeSpinnerRadius) * 2);
+    height: calc(var(--sizeSpinnerRadius) * 2);
+    margin: calc(var(--sizeSpinnerBorderWidth) + 10px) auto;
+    color: var(--primaryUI);
+    box-shadow: inset 0 0 0 10px;
+    -moz-transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+div[loader]::before, div[loader]::after {
+    position: absolute;
+    content: "";
+}
+
+div[loader]::before {
+    top: -1px;
+    left: -1px;
+    width: calc(var(--sizeSpinnerRadius) + 2px);
+    height: calc(calc(var(--sizeSpinnerRadius) * 2) + 2px);
+    background-color: var(--primaryBackground);
+    border-radius: calc(calc(var(--sizeSpinnerRadius) * 2) + 2px) 0 0 calc(calc(var(--sizeSpinnerRadius) * 2) + 2px);
+    -moz-transform-origin: calc(var(--sizeSpinnerRadius) + 2px) calc(var(--sizeSpinnerRadius) + 1px);
+    -webkit-transform-origin: calc(var(--sizeSpinnerRadius) + 2px) calc(var(--sizeSpinnerRadius) + 1px);
+    transform-origin: calc(var(--sizeSpinnerRadius) + 2px) calc(var(--sizeSpinnerRadius) + 1px);
+    -moz-transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    -moz-animation: spinner 2s infinite ease 1.5s;
+    -webkit-animation: spinner 2s infinite ease 1.5s;
+    animation: spinner 2s infinite ease 1.5s;
+}
+
+div[loader]::after {
+    top: -1px;
+    left: var(--sizeSpinnerRadius);
+    width: calc(var(--sizeSpinnerRadius) + 2px);
+    height: calc(calc(var(--sizeSpinnerRadius) * 2) + 2px);
+    background-color: var(--primaryBackground);
+    border-radius: 0 calc(calc(var(--sizeSpinnerRadius) * 2) + 2px) calc(calc(var(--sizeSpinnerRadius) * 2) + 2px) 0;
+    -moz-transform-origin: 0 calc(var(--sizeSpinnerRadius) + 1px);
+    -webkit-transform-origin: 0 calc(var(--sizeSpinnerRadius) + 1px);
+    transform-origin: 0 calc(var(--sizeSpinnerRadius) + 1px);
+    -moz-transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    -moz-animation: spinner 2s infinite ease;
+    -webkit-animation: spinner 2s infinite ease;
+    animation: spinner 2s infinite ease;
 }
 
 h1 {
@@ -437,6 +496,49 @@ button:focus, input:focus, select:focus {
 
 ::-webkit-scrollbar-track {
     background-color: transparent;
+}
+
+/* Animation keyframes */
+@-moz-keyframes spinner {
+    0% {
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spinner {
+    0% {
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spinner {
+    0% {
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(-180deg);
+    }
+
+    100% {
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        transform: rotate(180deg);
+    }
 }
 
 /* Media queries */

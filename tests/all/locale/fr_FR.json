@@ -20,6 +20,7 @@
         "labelSelectionInput": "Entrée de sélection",
         "labelSliderInput": "Entrée du curseur",
         "labelProgressBarResult": "Résultat de la barre de progression",
+        "labelSpinnerLoader": "Chargeur spinner (ci-dessous)",
         "selectionInputApple": "Apple",
         "selectionInputLiveG": "LiveG",
         "selectionInputMicrosoft": "Microsoft",

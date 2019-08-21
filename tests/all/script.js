@@ -92,6 +92,10 @@ ui.screen = [
         new Label([
             new Text(_("labelProgressBarResult")),
             progressBarResult
+        ]),
+        new Container([
+            new Paragraph(_("labelSpinnerLoader")),
+            new SpinnerLoader()
         ])
     ]),
     new Container([

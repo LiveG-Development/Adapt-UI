@@ -968,6 +968,30 @@ ui.components.ProgressBar = class extends ui.components.Component {
 };
 
 /*
+    @name ui.components.SpinnerLoader
+
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription SpinnerLoader class, extends `ui.components.Component`.
+    @longDescription Used for when an object has no definite final loading time.
+*/
+ui.components.SpinnerLoader = class extends ui.components.Component {
+    constructor(style = {}, attributes = {}, events = {}) {
+        super([], style, attributes, events);
+
+        this.HTMLTagName = "div";
+    }
+
+    precompute(domObject) {
+        this.attributes["loader"] = "";
+
+        return domObject;
+    }
+}
+
+/*
     @name ui.components.Pill
 
     @param children any Children or content to include in component. Default: `[]`.
