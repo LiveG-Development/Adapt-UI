@@ -11,6 +11,7 @@
         "h6": "有负荷",
         "p": "如你所见，有很多标题。这只是一些用户界面组件的特色。更多信息如下！",
         "a": "您还可以查看此演示的编程。",
+        "placeholderImageDescription": "占位符图像由圆和三角形组成",
         "labelTextPrimary": "文字输入（主要）",
         "textPrimary": "在这里写点东西……",
         "textPrimaryButton": "做那个动作",

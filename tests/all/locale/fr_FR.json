@@ -11,6 +11,7 @@
         "h6": "Il y a des charges",
         "p": "Comme vous pouvez le voir, il y a beaucoup de titres. Ce ne sont que quelques-uns des composants de l'interface utilisateur présentés. Plus sont ci-dessous ! ",
         "a": "Vous pouvez également voir la programmation de cette démo.",
+        "placeholderImageDescription": "Image d'espace réservé consistant en un cercle et un triangle",
         "labelTextPrimary": "Saisie de texte (primaire)",
         "textPrimary": "Ecrivez quelque chose ici ...",
         "textPrimaryButton": "Faire cette action",

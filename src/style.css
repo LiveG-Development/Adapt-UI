@@ -177,6 +177,12 @@ a:hover {
     color: var(--secondaryUI);
 }
 
+img {
+    max-width: 400px;
+    max-height: 300px;
+    border-radius: 10px;
+}
+
 label {
     display: block;
 }
@@ -542,6 +548,15 @@ button:focus, input:focus, select:focus {
 }
 
 /* Media queries */
+
+@media (max-width: 500px) {
+    img {
+        width: 100%;
+        height: auto;
+        max-width: unset;
+        max-height: unset;
+    }
+}
 
 @media (min-width: 500px) {
     label > span:first-child {

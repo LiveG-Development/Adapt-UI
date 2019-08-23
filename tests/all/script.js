@@ -35,6 +35,12 @@ l10n.use(lang);
 ui.mirroringDirection = l10n.languageData.direction;
 ui.language = lang;
 
+// Asset imports
+
+// @asset assets/placeholder.png
+
+var placeholderImage = importer.generateLink(_assets["placeholder.png"], "image/png");
+
 // UI design
 
 core.unpack(ui.components);
@@ -64,6 +70,11 @@ ui.screen = [
             new Text(_("p")),
             new Link(_("a"), "https://github.com/LiveG-Development/Adapt-UI/blob/master/tests/all/script.js")
         ]),
+        new Image(placeholderImage, _("placeholderImageDescription"), {
+            display: "block",
+            marginLeft: "auto",
+            marginRight: "auto"
+        })
     ]),
     new Container([
         new Label([

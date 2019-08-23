@@ -11,6 +11,7 @@
         "h6": "There's loads",
         "p": "As you can see, there are a lot of headings. This is just some of the UI components featured. More are below! ",
         "a": "You can also view this demo's code.",
+        "placeholderImageDescription": "Placeholder image consisting of a circle and a triangle",
         "labelTextPrimary": "Text input (primary)",
         "textPrimary": "Write something here...",
         "textPrimaryButton": "Do that action",

@@ -477,6 +477,8 @@ ui.components.TextItalicsEffect = class extends ui.components.Component {
     @name ui.components.Link
 
     @param text string Text to use in link. Default: `""`.
+    @param destination string Destination that link goes to. Default: `"#"`.
+    @param detach boolean Whether to make link destination open in new window or browser tab. Default: `true`. 
 
     @shortDescription Link class, extends `ui.components.Component`.
 */
@@ -504,6 +506,36 @@ ui.components.Link = class extends ui.components.Component {
         return currentDOMElement;
     }
 };
+
+/*
+    @name ui.components.Image
+
+    @param source string Source that image is taken from.
+    @param description string Alternative description of image if it doesn't load or can't be seen by the user. Default: `""`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription Image class, extends `ui.components.Component`.
+    @longDescription Has similar properties to an HTML `img` element.
+*/
+ui.components.Image = class extends ui.components.Component {
+    constructor(source, description = "", style = {}, attributes = {}, events = {}) {
+        super([], style, attributes, events);
+
+        this.HTMLTagName = "img";
+
+        this.source = source;
+        this.description = description;
+    }
+
+    precompute(domObject) {
+        this.attributes["src"] = this.source;
+        this.attributes["alt"] = this.description;
+
+        return domObject;
+    }
+}
 
 /*
     @name ui.components.Label
