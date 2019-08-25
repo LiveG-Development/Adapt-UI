@@ -45,13 +45,17 @@ var placeholderImage = importer.generateLink(_assets["placeholder.png"], "image/
 
 core.unpack(ui.components);
 
-var sliderInputSet = new SliderInput(0.333, 0.001);
-var progressBarResult = new ProgressBar(0.333, 0.001);
+var sliderInputSet = new SliderInput(0.33, 0.01, {}, {
+    id: "slider"
+});
+var progressBarResult = new ProgressBar(0.33);
 
 function progressBarResultUpdate(value) {
     progressBarResult.value = value;
 
     ui.refresh();
+
+    dom.element("#slider").reference[0].focus();
 }
 
 sliderInputSet.events.change = function() {
