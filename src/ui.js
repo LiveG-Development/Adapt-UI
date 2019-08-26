@@ -355,7 +355,7 @@ ui.components.Container = class extends ui.components.Component {
     @param events object Events to listen to on component. Default: `{}`.
 
     @shortDescription GroupContainer class, extends `ui.components.Container`.
-    @longDescription Has similar properties to an HTML `div` element.
+    @longDescription Has similar properties to an HTML `div` element with attribute `group`.
     @longDescription Designed to group alike form elements already in a `Container`.
 */
 ui.components.GroupContainer = class extends ui.components.Container {
@@ -365,6 +365,41 @@ ui.components.GroupContainer = class extends ui.components.Container {
         return domObject;
     }
 };
+
+/*
+    @name ui.components.Card
+
+    @param children any Children or content to include in component. Default: `[]`.
+    @param split number Numerator of a twelth fraction used to split card by width. Must be between 1 and 12 inclusive. Default: `1`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription Card class, extends `ui.components.Container`.
+    @longDescription Has similar properties to an HTML `div` element with attribute `card`.
+    @longDescription Designed to hold elements in a more contextual setting.
+*/
+ui.components.Card = class extends ui.components.Container {
+    constructor(children = [], split = 12, style = {}, attributes = {}, events = {}) {
+        super(children, style, attributes, events);
+
+        this.HTMLTagName = "div";
+
+        if (typeof(split) == "number" && split >= 1 && split <= 12) {
+            this.split = split;
+        } else {
+            throw "`split` is either not a number, or is not between 1 and 12 inclusive";
+        }
+        this.split = split;
+    }
+
+    precompute(domObject) {
+        this.attributes["card"] = "";
+        this.attributes["split"] = this.split;
+
+        return domObject;
+    }
+}
 
 /*
     @name ui.components.Paragraph

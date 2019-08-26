@@ -50,6 +50,11 @@
         "siTestUsername": "اسم المستخدم",
         "siTestPassword": "كلمه السر",
         "siTestRememberMe": "تذكرنى",
-        "siTestSignIn": "تسجيل الدخول"
+        "siTestSignIn": "تسجيل الدخول",
+        "labelCardTest": "اختبار البطاقة",
+        "cTestComponents": "المكونات",
+        "cTestContent": "بند",
+        "cTestContentParagraph": "هذه بطاقة مصممة خصيصًا للاحتفاظ بالصورة والعنوان والفقرة والزر.",
+        "cTestContentButton": "أعرف أكثر"
     }
 }

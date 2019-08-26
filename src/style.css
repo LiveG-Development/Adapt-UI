@@ -18,6 +18,7 @@
     --assetCheckmarkIcon: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CgogPGc+CiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPgogIDxyZWN0IGZpbGw9Im5vbmUiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgaGVpZ2h0PSI0MDIiIHdpZHRoPSI1ODIiIHk9Ii0xIiB4PSItMSIvPgogPC9nPgogPGc+CiAgPHRpdGxlPkxheWVyIDE8L3RpdGxlPgogIDxwYXRoIGlkPSJzdmdfMSIgZD0ibTAsMGwyNCwwbDAsMjRsLTI0LDBsMCwtMjR6IiBmaWxsPSJub25lIi8+CiAgPHBhdGggZmlsbD0iI2ZmZmZmZiIgaWQ9InN2Z18yIiBkPSJtOSwxNi4xN2wtMy40NywtMy40N2MtMC4zOSwtMC4zOSAtMS4wMiwtMC4zOSAtMS40MSwwYy0wLjM5LDAuMzkgLTAuMzksMS4wMiAwLDEuNDFsNC4xOCw0LjE4YzAuMzksMC4zOSAxLjAyLDAuMzkgMS40MSwwbDEwLjU4LC0xMC41OGMwLjM5LC0wLjM5IDAuMzksLTEuMDIgMCwtMS40MWMtMC4zOSwtMC4zOSAtMS4wMiwtMC4zOSAtMS40MSwwbC05Ljg4LDkuODd6Ii8+CiA8L2c+Cjwvc3ZnPg==");
     --assetIndeterminateIcon: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CgogPGc+CiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPgogIDxyZWN0IGZpbGw9Im5vbmUiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgaGVpZ2h0PSI0MDIiIHdpZHRoPSI1ODIiIHk9Ii0xIiB4PSItMSIvPgogPC9nPgogPGc+CiAgPHRpdGxlPkxheWVyIDE8L3RpdGxlPgogIDxwYXRoIGlkPSJzdmdfMSIgZD0ibTI1LjIzOTc3OSwxMC45NTQwNjNsMjQsMGwwLDI0bC0yNCwwbDAsLTI0eiIgZmlsbD0ibm9uZSIvPgogIDxyZWN0IHN0cm9rZT0iIzAwMCIgcng9IjEiIGlkPSJzdmdfMyIgaGVpZ2h0PSIxLjk2ODcwMyIgd2lkdGg9IjExLjc2MTczNyIgeT0iMTEuMDM5ODM3IiB4PSI1LjkzNDEyNyIgc3Ryb2tlLXdpZHRoPSIwIiBmaWxsPSIjZmZmIi8+CiA8L2c+Cjwvc3ZnPg==");
     --assetRadioButtonIcon: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CgogPGc+CiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPgogIDxyZWN0IGZpbGw9Im5vbmUiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgaGVpZ2h0PSI0MDIiIHdpZHRoPSI1ODIiIHk9Ii0xIiB4PSItMSIvPgogPC9nPgogPGc+CiAgPHRpdGxlPkxheWVyIDE8L3RpdGxlPgogIDxwYXRoIGlkPSJzdmdfMSIgZD0ibTAsMGwyNCwwbDAsMjRsLTI0LDBsMCwtMjR6IiBmaWxsPSJub25lIi8+CiAgPGNpcmNsZSBmaWxsPSIjZmZmZmZmIiBpZD0ic3ZnXzMiIHI9IjUiIGN5PSIxMiIgY3g9IjEyIi8+CiA8L2c+Cjwvc3ZnPg==");
+    --sizeCardReservation: 32px;
     --sizeH1: 36px;
     --sizeH2: 30px;
     --sizeH3: 24px;
@@ -59,6 +60,162 @@ div {
 div[group] {
     margin: 0;
     margin-bottom: 8px;
+}
+
+div[card] {
+    display: inline-block;
+    padding: 8px;
+    background-color: var(--secondaryBackground);
+    border-radius: 10px;
+}
+
+div[card][split="1"] {
+    width: calc(8.333% - var(--sizeCardReservation));
+}
+
+div[card][split="2"] {
+    width: calc(16.667% - var(--sizeCardReservation));
+}
+
+div[card][split="3"] {
+    width: calc(25% - var(--sizeCardReservation));
+}
+
+div[card][split="4"] {
+    width: calc(33.333% - var(--sizeCardReservation));
+}
+
+div[card][split="5"] {
+    width: calc(41.667% - var(--sizeCardReservation));
+}
+
+div[card][split="6"] {
+    width: calc(50% - var(--sizeCardReservation));
+}
+
+div[card][split="7"] {
+    width: calc(58.333% - var(--sizeCardReservation));
+}
+
+div[card][split="8"] {
+    width: calc(66.667% - var(--sizeCardReservation));
+}
+
+div[card][split="9"] {
+    width: calc(75% - var(--sizeCardReservation));
+}
+
+div[card][split="10"] {
+    width: calc(83.333% - var(--sizeCardReservation));
+}
+
+div[card][split="11"] {
+    width: calc(91.667% - var(--sizeCardReservation));
+}
+
+div[card][split="12"] {
+    width: calc(100% - var(--sizeCardReservation));
+}
+
+div[card] img {
+    width: 100%;
+}
+
+div[card] img:first-of-type {
+    width: calc(100% + 16px);
+    min-width: unset;
+    max-width: unset;
+    margin: -8px;
+    filter: brightness(0.8);
+    border-radius: 8px 8px 0 0;
+}
+
+div[card] img:first-of-type + h1 {
+    position: relative;
+    top: -70px;
+    margin-bottom: -70px;
+    color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+div[card] img:first-of-type + h2 {
+    position: relative;
+    top: -65px;
+    margin-bottom: -65px;
+    color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+div[card] img:first-of-type + h3 {
+    position: relative;
+    top: -60px;
+    margin-bottom: -60px;
+    color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+div[card] img:first-of-type + h4 {
+    position: relative;
+    top: -50px;
+    margin-bottom: -50px;
+    color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+div[card] img:first-of-type + h5 {
+    position: relative;
+    top: -50px;
+    margin-bottom: -50px;
+    color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+div[card] img:first-of-type + h6 {
+    position: relative;
+    top: -50px;
+    margin-bottom: -50px;
+    color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+div[card] img:first-of-type ~ button:not([role="tab"]) {
+    float: right;
+}
+
+div[card] input:not(:checked), div[card] select {
+    background-color: var(--primaryBackground);
+}
+
+div[card] input[secondary]:not(:checked), div[card] select[secondary] {
+    background-color: var(--secondaryBackground);
+}
+
+div[card] progress::-webkit-progress-bar {
+    background-color: var(--primaryBackground);
+}
+
+div[card] progress::-moz-progress-bar {
+    background-color: var(--primaryBackground);
+}
+
+div[card] button[role="tab"][aria-selected="false"] {
+    background-color: var(--primaryBackground);
+}
+
+div[card] div[loader]::before, div[card] div[loader]::after {
+    background-color: var(--secondaryBackground);
 }
 
 div[loader], div[loader]::before, div[loader]::after {
@@ -231,6 +388,7 @@ button[secondary]:not([role="tab"]):hover {
 
 button[role="tab"] {
     margin: 5px;
+    margin-top: 10px;
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
@@ -298,21 +456,21 @@ input[type="checkbox"]:checked, input[type="radio"]:checked, input[type="checkbo
     background-color: var(--primaryUI);
 }
 
-input[type="checkbox"]:checked:after {
+input[type="checkbox"]:checked::after {
     position: absolute;
     top: -2px;
     left: -2px;
     content: var(--assetCheckmarkIcon);
 }
 
-input[type="checkbox"]:not([role="switch"]):not([role="pill"]):indeterminate:after {
+input[type="checkbox"]:not([role="switch"]):not([role="pill"]):indeterminate::after {
     position: absolute;
     top: -2px;
     left: -2px;
     content: var(--assetIndeterminateIcon);
 }
 
-[dir="rtl"] input[type="checkbox"]:not([role="switch"]):not([role="pill"]):indeterminate:after {
+[dir="rtl"] input[type="checkbox"]:not([role="switch"]):not([role="pill"]):indeterminate::after {
     left: unset;
     right: -2px;
 }
@@ -321,14 +479,14 @@ input[type="radio"] {
     border-radius: 10px;
 }
 
-input[type="radio"]:checked:after {
+input[type="radio"]:checked::after {
     position: absolute;
     top: -2px;
     left: -2px;
     content: var(--assetRadioButtonIcon);
 }
 
-[dir="rtl"] input[type="radio"]:indeterminate:after {
+[dir="rtl"] input[type="radio"]:checked::after {
     left: unset;
     right: -2px;
 }
@@ -340,7 +498,7 @@ input[type="checkbox"][role="switch"] {
     border-radius: 15px;
 }
 
-input[type="checkbox"][role="switch"]:after {
+input[type="checkbox"][role="switch"]::after {
     position: absolute;
     top: -6px;
     left: 1px;
@@ -350,16 +508,16 @@ input[type="checkbox"][role="switch"]:after {
     transition: 0.5s;
 }
 
-input[type="checkbox"][role="switch"]:checked:after {
+input[type="checkbox"][role="switch"]:checked::after {
     left: 15px;
     color: var(--primaryBackground);
 }
 
-[dir="rtl"] input[type="checkbox"][role="switch"]:after {
+[dir="rtl"] input[type="checkbox"][role="switch"]::after {
     left: 15px;
 }
 
-[dir="rtl"] input[type="checkbox"][role="switch"]:checked:after {
+[dir="rtl"] input[type="checkbox"][role="switch"]:checked::after {
     left: 1px;
 }
 
@@ -549,7 +707,17 @@ button:focus, input:focus, select:focus {
 
 /* Media queries */
 
+@media (max-width: 800px) {
+    div[card][split="1"], div[card][split="2"], div[card][split="3"] {
+        width: calc(50% - var(--sizeCardReservation));
+    }
+}
+
 @media (max-width: 500px) {
+    div[card][split] {
+        width: calc(100% - var(--sizeCardReservation));
+    }
+    
     img {
         width: 100%;
         height: auto;

@@ -50,6 +50,11 @@
         "siTestUsername": "Username",
         "siTestPassword": "Password",
         "siTestRememberMe": "Remember me",
-        "siTestSignIn": "Sign in"
+        "siTestSignIn": "Sign in",
+        "labelCardTest": "Card test",
+        "cTestComponents": "Components",
+        "cTestContent": "Content",
+        "cTestContentParagraph": "This is a card which is specifically designed to hold an image, a title, a paragraph and a button.",
+        "cTestContentButton": "Learn more"
     }
 }

@@ -50,6 +50,11 @@
         "siTestUsername": "用户名",
         "siTestPassword": "密码",
         "siTestRememberMe": "记住账号",
-        "siTestSignIn": "登入"
+        "siTestSignIn": "登入",
+        "labelCardTest": "卡测试",
+        "cTestComponents": "组件",
+        "cTestContent": "项目",
+        "cTestContentParagraph": "这是一张专门用于存放图像，标题，段落和按钮的卡片。",
+        "cTestContentButton": "学到更多"
     }
 }

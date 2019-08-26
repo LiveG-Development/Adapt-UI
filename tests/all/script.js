@@ -50,6 +50,13 @@ var sliderInputSet = new SliderInput(0.33, 0.01, {}, {
 });
 var progressBarResult = new ProgressBar(0.33);
 
+var sliderInputSetCard = new SliderInput(0.33, 0.01, {}, {
+    id: "sliderCard"
+});
+var progressBarResultCard = new ProgressBar(0.33);
+
+sliderInputSetCard.attributes["id"] = "sliderCard"
+
 function progressBarResultUpdate(value) {
     progressBarResult.value = value;
 
@@ -58,8 +65,20 @@ function progressBarResultUpdate(value) {
     dom.element("#slider").reference[0].focus();
 }
 
+function progressBarResultUpdateCard(value) {
+    progressBarResultCard.value = value;
+
+    ui.refresh();
+
+    dom.element("#sliderCard").reference[0].focus();
+}
+
 sliderInputSet.events.change = function() {
     progressBarResultUpdate(sliderInputSet.value);
+};
+
+sliderInputSetCard.events.change = function() {
+    progressBarResultUpdateCard(sliderInputSetCard.value);
 };
 
 ui.screen = [
@@ -206,5 +225,107 @@ ui.screen = [
         new GroupContainer([
             new Button(_("siTestSignIn"))
         ])
+    ]),
+    new Container([
+        new Heading(_("labelCardTest"), 2),
+        new Card([
+            new Heading(_("cTestComponents"), 3),
+            new Label([
+                new Text(_("labelTextPrimary")),
+                new TextInput("", _("textPrimary")),
+                new Button(_("textPrimaryButton"))
+            ]),
+            new Label([
+                new Text(_("labelTextSecondary")),
+                new TextInput("", _("textSecondary"), true),
+                new Button(_("textSecondaryButton"), true)
+            ]),
+            new Label([
+                new Text(_("labelSelectionInput")),
+                new SelectionInput({
+                    "apple": _("selectionInputApple"),
+                    "liveg": _("selectionInputLiveG"),
+                    "microsoft": _("selectionInputMicrosoft"),
+                    "google": _("selectionInputGoogle")
+                }, "liveg")
+            ]),
+            new Label([
+                new Text(_("labelSliderInput")),
+                sliderInputSetCard
+            ]),
+            new Label([
+                new Text(_("labelProgressBarResult")),
+                progressBarResultCard
+            ]),
+            new Label([
+                new Text(_("selectionsFruits")),
+                new CheckboxInput("groceriesCard", true)
+            ]),
+            new Label([
+                new Text(_("selectionsVegetables")),
+                new CheckboxInput("groceriesCard")
+            ]),
+            new Label([
+                new Text(_("selectionsMeats")),
+                new CheckboxInput("groceriesCard", null)
+            ]),
+            new Label([
+                new Text(_("selectionsPasta")),
+                new RadioButtonInput("foodCard")
+            ]),
+            new Label([
+                new Text(_("selectionsPizza")),
+                new RadioButtonInput("foodCard", true)
+            ]),
+            new Label([
+                new Text(_("selectionsSteak")),
+                new RadioButtonInput("foodCard")
+            ]),
+            new Label([
+                new Text(_("togglesConnect")),
+                new ToggleSwitch("connectCard")
+            ]),
+            new Label([
+                new Text(_("togglesGoThere")),
+                new ToggleSwitch("goThereCard", true)
+            ]),
+            new Label([
+                new Text(_("labelPillsFilters")),
+                new Pill(_("pillsFavourites")),
+                new Pill(_("pillsUnread"), true),
+                new Pill(_("pillsSpam"))
+            ]),
+            new SpinnerLoader()
+        ]),
+        new Card([
+            new Image(placeholderImage),
+            new Heading(_("cTestContent"), 3),
+            new Paragraph(_("cTestContentParagraph")),
+            new Button(_("cTestContentButton"))
+        ], 4),
+        new Card([
+            new Image(placeholderImage),
+            new Heading(_("cTestContent"), 3),
+            new Paragraph(_("cTestContentParagraph")),
+            new Button(_("cTestContentButton"))
+        ], 4),
+        new Card([
+            new Image(placeholderImage),
+            new Heading(_("cTestContent"), 3),
+            new Paragraph(_("cTestContentParagraph")),
+            new Button(_("cTestContentButton"))
+        ], 4),
+        new Card([
+            new Heading(l10n.formatLocale(new Number(6), l10n.language), 3)
+        ], 6),
+        new Card([
+            new Heading(l10n.formatLocale(new Number(3), l10n.language), 3)
+        ], 3),
+        new Card([
+            new Heading(l10n.formatLocale(new Number(2), l10n.language), 3)
+        ], 2),
+        new Card([
+            new Heading(l10n.formatLocale(new Number(1), l10n.language), 3)
+        ], 1)
     ])
 ];

@@ -50,6 +50,11 @@
         "siTestUsername": "Nom d'utilisateur",
         "siTestPassword": "Mot de passe",
         "siTestRememberMe": "Souviens-toi de moi",
-        "siTestSignIn": "Se connecter"
+        "siTestSignIn": "Se connecter",
+        "labelCardTest": "Test de carte",
+        "cTestComponents": "Composants",
+        "cTestContent": "Contenu",
+        "cTestContentParagraph": "Cette carte est spécialement conçue pour contenir une image, un titre, un paragraphe et un bouton.",
+        "cTestContentButton": "Apprendre encore plus"
     }
 }
