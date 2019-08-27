@@ -363,6 +363,8 @@ label > span:first-child {
     width: calc(100% - 240px);
     margin-left: 10px;
     vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 button:not([role="tab"]) {
