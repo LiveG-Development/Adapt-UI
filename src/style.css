@@ -41,6 +41,7 @@
     --scrollbar: rgba(0, 0, 0, 0.5);
     --scrollbarHover: rgba(0, 0, 0, 0.6);
     --scrollbarPress: rgba(0, 0, 0, 0.8);
+    --blur:rgba(0, 0, 0, 0.5);
 }
 
 html, body {

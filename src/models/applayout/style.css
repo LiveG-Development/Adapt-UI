@@ -4,17 +4,70 @@
     --menuBarText: var(--primaryUIText);
 }
 
+body {
+    z-index: -2;
+}
+
 div[menubar] {
+    position: relative;
     margin: 0;
     padding: 10px;
     height: calc(var(--sizeMenuBarText) + 5px);
     background-color: var(--menuBarBackground);
     color: var(--menuBarText);
     font-size: var(--sizeMenuBarText);
+    z-index: -2;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+div[menu] {
+    position: absolute;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100vh;
+    margin: 0;
+    background-color: var(--primaryBackground);
+    transition: left 0.5s;
+}
+
+div[menu][open] {
+    left: 0;
+}
+
+[dir="rtl"] div[menu] {
+    left: 100vw;
+}
+
+[dir="rtl"] div[menu][open] {
+    left: calc(100vw - 250px);
+}
+
+div[menublur] {
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background-color: var(--blur);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.5s;
+}
+
+div[menu][open] > div[menublur] {
+    display: unset;
+    opacity: 1;
 }
 
 div[appcontent] {
+    position: absolute;
     margin: 0;
     height: calc(100vh - 25px - var(--sizeMenuBarText));
     overflow: auto;
+    z-index: -2;
 }

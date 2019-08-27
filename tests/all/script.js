@@ -85,7 +85,8 @@ sliderInputSetCard.events.change = function() {
 };
 
 ui.screen = [
-    new appLayout.MenuBar([new Text("My App")]),
+    new appLayout.MenuBar([new Text(_("h1"))]),
+    new appLayout.Menu(),
     new appLayout.Content([
         new Container([
             new Heading(_("h1"), 1),
