@@ -194,6 +194,10 @@ div[card] img:first-of-type ~ button:not([role="tab"]) {
     float: right;
 }
 
+[dir="rtl"] div[card] img:first-of-type ~ button:not([role="tab"]) {
+    float: left;
+}
+
 div[card] input:not(:checked), div[card] select {
     background-color: var(--primaryBackground);
 }
