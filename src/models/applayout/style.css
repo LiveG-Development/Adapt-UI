@@ -1,0 +1,20 @@
+:root {
+    --sizeMenuBarText: var(--sizeH4);
+    --menuBarBackground: var(--primaryUI);
+    --menuBarText: var(--primaryUIText);
+}
+
+div[menubar] {
+    margin: 0;
+    padding: 10px;
+    height: calc(var(--sizeMenuBarText) + 5px);
+    background-color: var(--menuBarBackground);
+    color: var(--menuBarText);
+    font-size: var(--sizeMenuBarText);
+}
+
+div[appcontent] {
+    margin: 0;
+    height: calc(100vh - 25px - var(--sizeMenuBarText));
+    overflow: auto;
+}

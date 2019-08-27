@@ -15,6 +15,7 @@ var ui = {
     language: "en_GB",
 
     components: {},
+    models: {},
     colour: {},
     enums: {},
     screen: [],
@@ -205,7 +206,6 @@ ui.theming = {
 ui.components.Component = class {
     constructor(children = [], style = {}, attributes = {}, events = {}) {
         this.HTMLTagName = "div";
-        this.HTMLAttributes = {};
         
         this.children = children;
         this.style = style;

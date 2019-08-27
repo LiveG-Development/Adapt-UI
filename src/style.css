@@ -464,6 +464,7 @@ input[type="checkbox"]:checked::after {
     position: absolute;
     top: -2px;
     left: -2px;
+    font-size: 16px;
     content: var(--assetCheckmarkIcon);
 }
 
@@ -471,6 +472,7 @@ input[type="checkbox"]:not([role="switch"]):not([role="pill"]):indeterminate::af
     position: absolute;
     top: -2px;
     left: -2px;
+    font-size: 16px;
     content: var(--assetIndeterminateIcon);
 }
 
@@ -487,6 +489,7 @@ input[type="radio"]:checked::after {
     position: absolute;
     top: -2px;
     left: -2px;
+    font-size: 16px;
     content: var(--assetRadioButtonIcon);
 }
 
@@ -506,6 +509,7 @@ input[type="checkbox"][role="switch"]::after {
     position: absolute;
     top: -6px;
     left: 1px;
+    font-size: 16px;
     content: "\2022";
     color: var(--primaryUI);
     zoom: 2.5;
