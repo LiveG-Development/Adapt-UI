@@ -29,7 +29,7 @@ ui.models.appLayout.Component = class extends ui.components.Component {
                 
         dom.element("head").newChild(importer.generateLinkDOMElement(_assets["style.css"]));
     }
-}
+};
 
 /*
     @name ui.models.appLayout.MenuBar
@@ -48,7 +48,7 @@ ui.models.appLayout.MenuBar = class extends ui.models.appLayout.Component {
 
         return domObject;
     }
-}
+};
 
 /*
     @name ui.models.appLayout.Menu
@@ -78,7 +78,7 @@ ui.models.appLayout.Menu = class extends ui.models.appLayout.Component {
 
         return domObject;
     }
-}
+};
 
 /*
     @name ui.models.appLayout.Content
@@ -97,4 +97,4 @@ ui.models.appLayout.Content = class extends ui.models.appLayout.Component {
 
         return domObject;
     }
-}
+};
