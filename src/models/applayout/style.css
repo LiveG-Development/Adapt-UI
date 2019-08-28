@@ -66,8 +66,11 @@ div[menu][open] > div[menublur] {
 
 div[appcontent] {
     position: absolute;
-    margin: 0;
     height: calc(100vh - 25px - var(--sizeMenuBarText));
+    margin: 0;
+    padding-left: 10px;
+    padding-right: 10px;
     overflow: auto;
+    overflow: overlay;
     z-index: -2;
 }
