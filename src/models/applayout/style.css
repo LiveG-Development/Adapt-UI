@@ -53,6 +53,7 @@ button[actionbutton] {
     color: var(--actionButtonText)!important;
     font-size: 20px!important;
     border-radius: 25px!important;
+    z-index: -1;
 }
 
 button[actionbutton]:hover {

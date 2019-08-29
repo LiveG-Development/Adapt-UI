@@ -34,7 +34,7 @@ appLayoutFunctions.menus.register = function(domObject = dom.element("div[menu]"
 
     domObject.newChild(dom.new("button")
         .attribute("menuclose").set("")
-        .text.set(l10n.translate("appLayout_closeMenu") || "Close menu")
+        .text.set(l10n.translate("ui_appLayout_closeMenu") || "Close menu")
         .events.listen("click", function() {
             appLayoutFunctions.menus.close(domObject);
         })
@@ -47,18 +47,24 @@ appLayoutFunctions.menus.register = function(domObject = dom.element("div[menu]"
     });
 
     setInterval(function() {
-        if (!domObject.reference[0].contains(document.activeElement) && domObject.attribute("open").get() != null) {
+        if (!domObject.reference[0].contains(document.activeElement) && domObject.attribute("open").get() != null && document.activeElement != document.body) {
+            console.log("activated", document.activeElement, domObject.reference[0].contains(document.activeElement));
             domObject.children(1).reference[0].focus();
         }
     });
 
     domObject.children().attribute("tabindex").set("-1");
+    domObject.children().attribute("aria-hidden").set("true");
 
     try {
         domObject.children(3).children().attribute("tabindex").set("-1");
+        domObject.children(3).children().attribute("aria-hidden").set("true");
     } catch {
         domObject.children(1).children().attribute("tabindex").set("-1");
+        domObject.children(1).children().attribute("aria-hidden").set("true");
     }
+
+    dom.element("div[menublur], div[menutitle], div[menucontent], div[menutext], hr[menudivider]").attribute("aria-hidden").set("true");
 };
 
 /*
@@ -73,14 +79,18 @@ appLayoutFunctions.menus.open = function(domObject = dom.element("div[menu]")) {
 
     domObject.attribute("open").set("");
     domObject.children().attribute("tabindex").set("0");
+    domObject.children().attribute("aria-hidden").delete();
 
     try {
         domObject.children(3).children().attribute("tabindex").set("0");
+        domObject.children(3).children().attribute("aria-hidden").delete();
     } catch {
         domObject.children(1).children().attribute("tabindex").set("0");
+        domObject.children(1).children().attribute("aria-hidden").delete();
     }
 
     dom.element("div[menublur], div[menutitle], div[menucontent], div[menutext], hr[menudivider]").attribute("tabindex").set("-1");
+    dom.element("div[menublur], div[menutitle], div[menucontent], div[menutext], hr[menudivider]").attribute("aria-hidden").delete();
 
     try {
         domObject.children(3).reference[0].focus();
@@ -99,12 +109,17 @@ appLayoutFunctions.menus.open = function(domObject = dom.element("div[menu]")) {
 appLayoutFunctions.menus.close = function(domObject = dom.element("div[menu]")) {
     domObject.attribute("open").delete();
     domObject.children().attribute("tabindex").set("-1");
+    domObject.children().attribute("aria-hidden").set("true");
 
     try {
         domObject.children(3).children().attribute("tabindex").set("-1");
+        domObject.children(3).children().attribute("aria-hidden").set("true");
     } catch {
         domObject.children(1).children().attribute("tabindex").set("-1");
+        domObject.children(1).children().attribute("aria-hidden").set("true");
     }
+
+    dom.element("div[menublur], div[menutitle], div[menucontent], div[menutext], hr[menudivider]").attribute("aria-hidden").set("true");
 
     appLayoutFunctions.menus.focusStack.pop().focus();
 };
@@ -295,6 +310,7 @@ ui.models.appLayout.MenuButton = class extends ui.models.appLayout.Component {
     precompute(domObject) {
         this.attributes["menubutton"] = "";
         this.attributes["tabindex"] = "-1";
+        this.attributes["aria-hidden"] = "true";
 
         return domObject;
     }
@@ -365,3 +381,7 @@ ui.models.appLayout.Content = class extends ui.models.appLayout.Component {
         return domObject;
     }
 };
+
+setInterval(function() {
+    dom.element("div[menu]:not([open]) div[menublur], div[menu]:not([open]) div[menutitle], div[menu]:not([open]) div[menucontent], div[menu]:not([open]) div[menutext], div[menu]:not([open]) hr[menudivider]").attribute("aria-hidden").set("true");    
+});

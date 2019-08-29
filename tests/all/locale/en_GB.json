@@ -3,7 +3,7 @@
     "friendlyNameShort": "English",
     "direction": "ltr",
     "strings": {
-        "appLayout_closeMenu": "Close menu",
+        "ui_appLayout_closeMenu": "Close menu",
         "menuOpen": "Open menu",
         "menuTitle": "Menu test",
         "menuDescription": "This is a demo of menu components.",
