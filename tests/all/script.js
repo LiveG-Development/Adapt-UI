@@ -85,8 +85,33 @@ sliderInputSetCard.events.change = function() {
 };
 
 ui.screen = [
-    new appLayout.MenuBar([new Text(_("h1"))]),
-    new appLayout.Menu(),
+    new appLayout.MenuBar([
+        new appLayout.MenuBarButton([new Icon("menu", _("menuOpen"))], {}, {}, {
+            "click": function() {
+                appLayoutFunctions.menus.open();
+            }
+        }),
+        new Text(_("h1"))
+    ]),
+    new appLayout.Menu([
+        new appLayout.MenuTitle(_("menuTitle")),
+        new appLayout.MenuContent([
+            new appLayout.MenuText(_("menuDescription")),
+            new appLayout.MenuButton(_("menuInstall")),
+            new appLayout.MenuButton(_("menuLearnMore")),
+            new appLayout.MenuButton(_("menuQuestion")),
+            new appLayout.MenuDivider(),
+            new appLayout.MenuButton(_("menuViewCode"), {}, {}, {}, {
+                "click": function() {
+                    appLayoutFunctions.menus.close();
+
+                    setTimeout(function() {
+                        window.open("https://github.com/LiveG-Development/Adapt-UI/blob/master/tests/all/script.js");
+                    }, 500);
+                }
+            })
+        ])
+    ]),
     new appLayout.Content([
         new Container([
             new Heading(_("h1"), 1),

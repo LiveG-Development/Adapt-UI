@@ -2,6 +2,11 @@
     --sizeMenuBarText: var(--sizeH4);
     --menuBarBackground: var(--primaryUI);
     --menuBarText: var(--primaryUIText);
+    --menuTitleBackground: var(--primaryUI);
+    --menuTitleText: var(--primaryUIText);
+    --menuButtonHover: rgba(0, 0, 0, 0.2);
+    --menuTextText: var(--blur);
+    --menuDivider: var(--menuButtonHover);
 }
 
 body {
@@ -20,6 +25,18 @@ div[menubar] {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    cursor: default;
+}
+
+div[menubar] span, div[menutitle] span {
+    margin: 0 2.5px 0 2.5px;
+}
+
+button[menubarbutton] {
+    margin: -5px 2.5px 0 2.5px!important;
+    padding: 5px 5px 0 5px!important;
+    font-size: calc(var(--sizeMenuBarText) + 2px)!important;
+    vertical-align: middle!important;
 }
 
 div[menu] {
@@ -38,16 +55,18 @@ div[menu][open] {
 }
 
 [dir="rtl"] div[menu] {
-    left: 100vw;
+    left: unset;
+    right: -250px;
+    transition: right 0.5s;
 }
 
 [dir="rtl"] div[menu][open] {
-    left: calc(100vw - 250px);
+    left: unset;
+    right: 0;
 }
 
 div[menublur] {
     position: fixed;
-    display: none;
     top: 0;
     left: 0;
     width: 100vw;
@@ -56,12 +75,82 @@ div[menublur] {
     background-color: var(--blur);
     opacity: 0;
     z-index: -1;
+    pointer-events: none;
     transition: opacity 0.5s;
 }
 
 div[menu][open] > div[menublur] {
-    display: unset;
     opacity: 1;
+    pointer-events: unset;
+}
+
+button[menuclose] {
+    position: absolute;
+    top: -55px;
+    left: 0;
+    width: 240px;
+    height: 50px;
+    background-color: var(--secondaryUI)!important;
+    color: var(--secondaryUIText)!important;
+    z-index: 1;
+    transition: 0.5s top;
+}
+
+button[menuclose]:focus {
+    top: 0;
+}
+
+div[menutitle] {
+    position: relative;
+    margin: 0;
+    padding: 10px;
+    height: calc(var(--sizeMenuBarText) + 5px);
+    background-color: var(--menuTitleBackground);
+    color: var(--menuTitleText);
+    font-size: var(--sizeMenuBarText);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: default;
+    outline: none;
+}
+
+div[menucontent] {
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 25px - var(--sizeMenuBarText));
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    overflow: overlay;
+    outline: none!important;
+}
+
+button[menubutton], div[menutext] {
+    display: block!important;
+    width: 100%!important;
+    margin: 0!important;
+    background-color: transparent!important;
+    color: var(--primaryText)!important;
+    border-radius: 0!important;
+    text-align: left!important;
+}
+
+button[menubutton]:hover {
+    background-color: var(--menuButtonHover)!important;
+}
+
+div[menutext] {
+    width: calc(100% - 20px)!important;
+    padding: 10px!important;
+    color: var(--menuTextText)!important;
+    cursor: default!important;
+    outline: none!important;
+}
+
+hr[menudivider] {
+    border: 1px solid var(--menuDivider);
+    outline: none!important;
 }
 
 div[appcontent] {
@@ -73,4 +162,14 @@ div[appcontent] {
     overflow: auto;
     overflow: overlay;
     z-index: -2;
+}
+
+@media (max-width: 500px) {
+    button[menubutton]:hover {
+        background-color: transparent!important;
+    }
+
+    button[menubutton]:active {
+        background-color: var(--menuButtonHover)!important;
+    }
 }

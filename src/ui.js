@@ -448,23 +448,28 @@ ui.components.Heading = class extends ui.components.Component {
     @name ui.components.Icon
 
     @param name string Name of icon to use.
+    @param description string Description of icon for accessibility. Default: `""`.
 
     @shortDescription Icon class, extends `ui.components.Component`.
     @longDescription Uses icons from from the Clarity icon set. An `i` element is generated.
 */
 ui.components.Icon = class extends ui.components.Component {
-    constructor(name) {
+    constructor(name, description = "") {
         super();
 
-        this.HTMLTagName = "i";
+        this.HTMLTagName = "icon";
 
         this.name = name;
+        this.description = description;
     }
 
     generateDOMElement() {
         var currentDOMElement = dom.new(this.HTMLTagName);
 
-        currentDOMElement.text.set(this.name);
+        currentDOMElement
+            .text.set(this.name)
+            .attribute("aria-label").set(this.description)
+        ;
 
         return currentDOMElement;
     }
