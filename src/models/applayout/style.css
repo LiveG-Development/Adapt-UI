@@ -2,6 +2,9 @@
     --sizeMenuBarText: var(--sizeH4);
     --menuBarBackground: var(--primaryUI);
     --menuBarText: var(--primaryUIText);
+    --actionButton: var(--secondaryUI);
+    --actionButtonText: var(--secondaryUIText);
+    --actionButtonPress: var(--secondaryUIPress);
     --menuTitleBackground: var(--primaryUI);
     --menuTitleText: var(--primaryUIText);
     --menuButtonHover: rgba(0, 0, 0, 0.2);
@@ -37,6 +40,42 @@ button[menubarbutton] {
     padding: 5px 5px 0 5px!important;
     font-size: calc(var(--sizeMenuBarText) + 2px)!important;
     vertical-align: middle!important;
+}
+
+button[actionbutton] {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    float: right;
+    background-color: var(--actionButton)!important;
+    color: var(--actionButtonText)!important;
+    font-size: 20px!important;
+    border-radius: 25px!important;
+}
+
+button[actionbutton]:hover {
+    background-color: var(--actionButtonPress)!important;
+}
+
+[dir="rtl"] button[actionbutton] {
+    right: unset;
+    left: 10px;
+}
+
+button[actionbutton] icon {
+    position: relative;
+    top: 2px;
+}
+
+button[actionbutton] + div[menubar] {
+    padding-right: 80px;
+}
+
+[dir="rtl"] button[actionbutton] + div[menubar] {
+    padding-right: 10px;
+    padding-left: 80px;
 }
 
 div[menu] {

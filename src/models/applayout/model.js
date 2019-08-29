@@ -174,7 +174,33 @@ ui.models.appLayout.MenuBarButton = class extends ui.models.appLayout.Component 
 
         return domObject;
     }
-}
+};
+
+/*
+    @name ui.models.appLayout.ActionButton
+
+    @param children any Children or content to include in component. Default: `[]`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription ActionButton class, extends `ui.models.appLayout.Component`.
+    @longDescription Has similar properties to an HTML `button` element with attribute `menubaractionbutton`.
+    @longDescription It is recommended to only have an icon representing the button.
+*/
+ui.models.appLayout.ActionButton = class extends ui.models.appLayout.Component {
+    constructor(children = [], style = {}, attributes = {}, events = {}) {
+        super(children, style, attributes, events);
+
+        this.HTMLTagName = "button";
+    }
+
+    precompute(domObject) {
+        this.attributes["actionbutton"] = "";
+
+        return domObject;
+    }
+};
 
 /*
     @name ui.models.appLayout.Menu
@@ -260,12 +286,10 @@ ui.models.appLayout.MenuContent = class extends ui.models.appLayout.Component {
     @longDescription Has similar properties to an HTML `button` element with attribute `menubutton`.
 */
 ui.models.appLayout.MenuButton = class extends ui.models.appLayout.Component {
-    constructor(children = [], secondary = false, style = {}, attributes = {}, events = {}) {
+    constructor(children = [], style = {}, attributes = {}, events = {}) {
         super(children, style, attributes, events);
 
         this.HTMLTagName = "button";
-
-        this.secondary = secondary;
     }
 
     precompute(domObject) {
