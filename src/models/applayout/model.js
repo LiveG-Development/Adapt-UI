@@ -12,23 +12,23 @@
 ui.models.appLayout = {};
 
 var appLayoutFunctions = {
-    menus: {
+    dialogs: {
         focusStack: []
     }
 };
 
 /*
-    @name appLayoutFunctions.menus.register
+    @name appLayoutFunctions.dialogs.register
 
     @param domObject object DOM object of menu to register. Default: `dom.element("div[menu]")`.
 
     @shortDescription Register any menu for events and accessibility which is an instance of `ui.models.appLayout.Menu`.
 */
-appLayoutFunctions.menus.register = function(domObject = dom.element("div[menu]")) {
+appLayoutFunctions.dialogs.register = function(domObject = dom.element("div[menu]")) {
     domObject.newChild(dom.new("div")
         .attribute("menublur").set("")
         .events.listen("click", function() {
-            appLayoutFunctions.menus.close(domObject);
+            appLayoutFunctions.dialogs.close(domObject);
         })
     );
 
@@ -36,13 +36,13 @@ appLayoutFunctions.menus.register = function(domObject = dom.element("div[menu]"
         .attribute("menuclose").set("")
         .text.set(l10n.translate("ui_appLayout_closeMenu") || "Close menu")
         .events.listen("click", function() {
-            appLayoutFunctions.menus.close(domObject);
+            appLayoutFunctions.dialogs.close(domObject);
         })
     );
 
     dom.element().events.listen("keyup", function(event) {
         if (event.keyCode == 27) {
-            appLayoutFunctions.menus.close(domObject);
+            appLayoutFunctions.dialogs.close(domObject);
         }
     });
 
@@ -67,14 +67,14 @@ appLayoutFunctions.menus.register = function(domObject = dom.element("div[menu]"
 };
 
 /*
-    @name appLayoutFunctions.menus.open
+    @name appLayoutFunctions.dialogs.open
 
     @param domObject object DOM object of menu to open. Default: `dom.element("div[menu]")`.
 
     @shortDescription Open any menu which is an instance of `ui.models.appLayout.Menu`.
 */
-appLayoutFunctions.menus.open = function(domObject = dom.element("div[menu]")) {
-    appLayoutFunctions.menus.focusStack.push(document.activeElement);
+appLayoutFunctions.dialogs.open = function(domObject = dom.element("div[menu]")) {
+    appLayoutFunctions.dialogs.focusStack.push(document.activeElement);
 
     domObject.attribute("open").set("");
     domObject.children().attribute("tabindex").set("0");
@@ -99,13 +99,13 @@ appLayoutFunctions.menus.open = function(domObject = dom.element("div[menu]")) {
 };
 
 /*
-    @name appLayoutFunctions.menus.close
+    @name appLayoutFunctions.dialogs.close
 
     @param domObject object DOM object of menu to close. Default: `dom.element("div[menu]")`.
 
     @shortDescription Close any menu which is an instance of `ui.models.appLayout.Menu`.
 */
-appLayoutFunctions.menus.close = function(domObject = dom.element("div[menu]")) {
+appLayoutFunctions.dialogs.close = function(domObject = dom.element("div[menu]")) {
     domObject.attribute("open").delete();
     domObject.children().attribute("tabindex").set("-1");
     domObject.children().attribute("aria-hidden").set("true");
@@ -120,7 +120,7 @@ appLayoutFunctions.menus.close = function(domObject = dom.element("div[menu]")) 
 
     dom.element("div[menublur], div[menutitle], div[menucontent], div[menutext], hr[menudivider]").attribute("aria-hidden").set("true");
 
-    appLayoutFunctions.menus.focusStack.pop().focus();
+    appLayoutFunctions.dialogs.focusStack.pop().focus();
 };
 
 /*
@@ -248,9 +248,7 @@ ui.models.appLayout.Menu = class extends ui.models.appLayout.Component {
     precompute(domObject) {
         this.attributes["menu"] = "";
 
-        this._menuObject = domObject;
-
-        appLayoutFunctions.menus.register(domObject);
+        appLayoutFunctions.dialogs.register(domObject);
 
         clearInterval(this._openChecker);
 
@@ -270,9 +268,9 @@ ui.models.appLayout.Menu = class extends ui.models.appLayout.Component {
         setTimeout(function() {
             if (thisScope._programmaticOpenClose != null) {
                 if (thisScope._programmaticOpenClose) {
-                    appLayoutFunctions.menus.open(domObject);
+                    appLayoutFunctions.dialogs.open(domObject);
                 } else {
-                    appLayoutFunctions.menus.close(domObject);  
+                    appLayoutFunctions.dialogs.close(domObject);  
                 }
 
                 thisScope._programmaticOpenClose = null;

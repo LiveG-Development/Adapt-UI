@@ -116,6 +116,7 @@ div[menublur] {
     opacity: 0;
     z-index: -1;
     pointer-events: none;
+    outline: none;
     transition: opacity 0.5s;
 }
 
