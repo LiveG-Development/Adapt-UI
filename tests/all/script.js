@@ -48,6 +48,28 @@ var placeholderImage = importer.generateLink(_assets["placeholder.png"], "image/
 core.unpack(ui.components);
 core.unpack(ui.models);
 
+var menu = new appLayout.Menu([
+    new appLayout.MenuTitle(_("menuTitle")),
+    new appLayout.MenuContent([
+        new appLayout.MenuText(_("menuDescription")),
+        new appLayout.MenuButton(_("menuInstall")),
+        new appLayout.MenuButton(_("menuLearnMore")),
+        new appLayout.MenuButton(_("menuQuestion")),
+        new appLayout.MenuDivider(),
+        new appLayout.MenuButton(_("menuViewCode"), {}, {}, {
+            "click": function() {
+                menu.isOpen = false;
+
+                ui.refresh();
+
+                setTimeout(function() {
+                    window.open("https://github.com/LiveG-Development/Adapt-UI/blob/master/tests/all/script.js");
+                }, 500);
+            }
+        })
+    ])
+]);
+
 var sliderInputSet = new SliderInput(0.33, 0.01, {}, {
     id: "slider"
 });
@@ -93,30 +115,14 @@ ui.screen = [
     new appLayout.MenuBar([
         new appLayout.MenuBarButton([new Icon("menu", _("menuOpen"))], {}, {}, {
             "click": function() {
-                appLayoutFunctions.menus.open();
+                menu.isOpen = true;
+
+                ui.refresh();
             }
         }),
         new Text(_("h1"))
     ]),
-    new appLayout.Menu([
-        new appLayout.MenuTitle(_("menuTitle")),
-        new appLayout.MenuContent([
-            new appLayout.MenuText(_("menuDescription")),
-            new appLayout.MenuButton(_("menuInstall")),
-            new appLayout.MenuButton(_("menuLearnMore")),
-            new appLayout.MenuButton(_("menuQuestion")),
-            new appLayout.MenuDivider(),
-            new appLayout.MenuButton(_("menuViewCode"), {}, {}, {
-                "click": function() {
-                    appLayoutFunctions.menus.close();
-
-                    setTimeout(function() {
-                        window.open("https://github.com/LiveG-Development/Adapt-UI/blob/master/tests/all/script.js");
-                    }, 500);
-                }
-            })
-        ])
-    ]),
+    menu,
     new appLayout.Content([
         new Container([
             new Heading(_("h1"), 1),

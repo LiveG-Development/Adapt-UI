@@ -48,7 +48,6 @@ appLayoutFunctions.menus.register = function(domObject = dom.element("div[menu]"
 
     setInterval(function() {
         if (!domObject.reference[0].contains(document.activeElement) && domObject.attribute("open").get() != null && document.activeElement != document.body) {
-            console.log("activated", document.activeElement, domObject.reference[0].contains(document.activeElement));
             domObject.children(1).reference[0].focus();
         }
     });
@@ -232,12 +231,53 @@ ui.models.appLayout.ActionButton = class extends ui.models.appLayout.Component {
 ui.models.appLayout.Menu = class extends ui.models.appLayout.Component {
     constructor(children = [], style = {}, attributes = {}, events = {}) {
         super(children, style, attributes, events);
+
+        this._isDetectedOpen = false;
+        this._programmaticOpenClose = null;
+        this._openChecker = setInterval(function() {});
+    }
+
+    set isOpen(value) {
+        this._programmaticOpenClose = value;
+    }
+
+    get isOpen() {
+        return this._isDetectedOpen;
     }
 
     precompute(domObject) {
         this.attributes["menu"] = "";
 
+        this._menuObject = domObject;
+
         appLayoutFunctions.menus.register(domObject);
+
+        clearInterval(this._openChecker);
+
+        var thisScope = this;
+
+        this._openChecker = setInterval(function() {
+            thisScope._isDetectedOpen = domObject.attribute("open").get() != null;
+        });
+
+        if (this._isDetectedOpen) {
+            this.attributes["open"] = "";
+        } else {
+            delete this.attributes["open"];
+        }
+
+        // We want this section to run after this method, so we run it in the next available frame
+        setTimeout(function() {
+            if (thisScope._programmaticOpenClose != null) {
+                if (thisScope._programmaticOpenClose) {
+                    appLayoutFunctions.menus.open(domObject);
+                } else {
+                    appLayoutFunctions.menus.close(domObject);  
+                }
+
+                thisScope._programmaticOpenClose = null;
+            }
+        });
 
         return domObject;
     }
