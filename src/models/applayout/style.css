@@ -179,6 +179,10 @@ button[menubutton], div[menutext] {
     text-overflow: ellipsis!important;
 }
 
+[dir="rtl"] button[menubutton], [dir="rtl"] div[menutext] {
+    text-align: right!important;
+}
+
 button[menubutton]:hover {
     background-color: var(--menuButtonHover)!important;
 }
