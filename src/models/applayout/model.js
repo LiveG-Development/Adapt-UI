@@ -62,7 +62,7 @@ appLayoutFunctions.dialogs.register = function(domObject = dom.element("div[menu
             .attribute("tabindex").set("-1")
             .attribute("aria-hidden").set("true")
         ;
-    } catch {
+    } catch (error) {
         domObject.children(1).children()
             .attribute("tabindex").set("-1")
             .attribute("aria-hidden").set("true")
@@ -93,7 +93,7 @@ appLayoutFunctions.dialogs.open = function(domObject = dom.element("div[menu]"))
             .attribute("tabindex").set("0")
             .attribute("aria-hidden").delete()
         ;
-    } catch {
+    } catch (error) {
         domObject.children(1).children()
             .attribute("tabindex").set("0")
             .attribute("aria-hidden").delete()
@@ -107,7 +107,7 @@ appLayoutFunctions.dialogs.open = function(domObject = dom.element("div[menu]"))
 
     try {
         domObject.children(3).reference[0].focus();
-    } catch {
+    } catch (error) {
         domObject.children(1).reference[0].focus();
     }
 };
@@ -129,7 +129,7 @@ appLayoutFunctions.dialogs.close = function(domObject = dom.element("div[menu]")
             .attribute("tabindex").set("-1")
             .attribute("aria-hidden").set("true")
         ;
-    } catch {
+    } catch (error) {
         domObject.children(1).children()
             .attribute("tabindex").set("-1")
             .attribute("aria-hidden").set("true")
