@@ -52,15 +52,21 @@ appLayoutFunctions.dialogs.register = function(domObject = dom.element("div[menu
         }
     });
 
-    domObject.children().attribute("tabindex").set("-1");
-    domObject.children().attribute("aria-hidden").set("true");
+    domObject.children()
+        .attribute("tabindex").set("-1")
+        .attribute("aria-hidden").set("true")
+    ;
 
     try {
-        domObject.children(3).children().attribute("tabindex").set("-1");
-        domObject.children(3).children().attribute("aria-hidden").set("true");
+        domObject.children(3).children()
+            .attribute("tabindex").set("-1")
+            .attribute("aria-hidden").set("true")
+        ;
     } catch {
-        domObject.children(1).children().attribute("tabindex").set("-1");
-        domObject.children(1).children().attribute("aria-hidden").set("true");
+        domObject.children(1).children()
+            .attribute("tabindex").set("-1")
+            .attribute("aria-hidden").set("true")
+        ;
     }
 
     dom.element("div[menublur], div[menutitle], div[menucontent], div[menutext], hr[menudivider]").attribute("aria-hidden").set("true");
@@ -77,19 +83,27 @@ appLayoutFunctions.dialogs.open = function(domObject = dom.element("div[menu]"))
     appLayoutFunctions.dialogs.focusStack.push(document.activeElement);
 
     domObject.attribute("open").set("");
-    domObject.children().attribute("tabindex").set("0");
-    domObject.children().attribute("aria-hidden").delete();
+    domObject.children()
+        .attribute("tabindex").set("0")
+        .attribute("aria-hidden").delete()
+    ;
 
     try {
-        domObject.children(3).children().attribute("tabindex").set("0");
-        domObject.children(3).children().attribute("aria-hidden").delete();
+        domObject.children(3).children()
+            .attribute("tabindex").set("0")
+            .attribute("aria-hidden").delete()
+        ;
     } catch {
-        domObject.children(1).children().attribute("tabindex").set("0");
-        domObject.children(1).children().attribute("aria-hidden").delete();
+        domObject.children(1).children()
+            .attribute("tabindex").set("0")
+            .attribute("aria-hidden").delete()
+        ;
     }
 
-    dom.element("div[menublur], div[menutitle], div[menucontent], div[menutext], hr[menudivider]").attribute("tabindex").set("-1");
-    dom.element("div[menublur], div[menutitle], div[menucontent], div[menutext], hr[menudivider]").attribute("aria-hidden").delete();
+    dom.element("div[menublur], div[menutitle], div[menucontent], div[menutext], hr[menudivider]")
+        .attribute("tabindex").set("-1")
+        .attribute("aria-hidden").delete()
+    ;
 
     try {
         domObject.children(3).reference[0].focus();
@@ -111,11 +125,15 @@ appLayoutFunctions.dialogs.close = function(domObject = dom.element("div[menu]")
     domObject.children().attribute("aria-hidden").set("true");
 
     try {
-        domObject.children(3).children().attribute("tabindex").set("-1");
-        domObject.children(3).children().attribute("aria-hidden").set("true");
+        domObject.children(3).children()
+            .attribute("tabindex").set("-1")
+            .attribute("aria-hidden").set("true")
+        ;
     } catch {
-        domObject.children(1).children().attribute("tabindex").set("-1");
-        domObject.children(1).children().attribute("aria-hidden").set("true");
+        domObject.children(1).children()
+            .attribute("tabindex").set("-1")
+            .attribute("aria-hidden").set("true")
+        ;
     }
 
     dom.element("div[menublur], div[menutitle], div[menucontent], div[menutext], hr[menudivider]").attribute("aria-hidden").set("true");
