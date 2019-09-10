@@ -203,6 +203,10 @@ div[card] img:first-of-type ~ button:not([role="tab"]) {
     float: left;
 }
 
+div[card] button:not([role="tab"]):disabled, div[card] button:not([role="tab"]):hover:disabled {
+    background-color: var(--primaryBackground);
+}
+
 div[card] input:not(:checked), div[card] select {
     background-color: var(--primaryBackground);
 }
@@ -398,6 +402,12 @@ button[secondary]:not([role="tab"]) {
 
 button[secondary]:not([role="tab"]):hover {
     background-color: var(--secondaryUIPress);
+}
+
+button:not([role="tab"]):disabled, button:not([role="tab"]):disabled:hover {
+    background-color: var(--secondaryBackground);
+    color: var(--secondaryText);
+    cursor: not-allowed;
 }
 
 button[role="tab"] {
