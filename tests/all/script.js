@@ -368,7 +368,21 @@ ui.screen = [
             ], 2),
             new Card([
                 new Heading(l10n.formatLocale(new Number(1), l10n.language), 3)
-            ], 1)
+            ], 1),
+            new Container([
+                new Container([
+                    new Heading(l10n.formatLocale(new Number(1), l10n.language), 3)                    
+                ], 1),
+                new Container([
+                    new Heading(l10n.formatLocale(new Number(2), l10n.language), 3)                    
+                ], 2),
+                new Container([
+                    new Heading(l10n.formatLocale(new Number(3), l10n.language), 3)                    
+                ], 3),
+                new Container([
+                    new Heading(l10n.formatLocale(new Number(6), l10n.language), 3)                    
+                ], 6)
+            ])
         ])
     ])
 ];

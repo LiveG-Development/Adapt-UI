@@ -18,6 +18,7 @@
     --assetCheckmarkIcon: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CgogPGc+CiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPgogIDxyZWN0IGZpbGw9Im5vbmUiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgaGVpZ2h0PSI0MDIiIHdpZHRoPSI1ODIiIHk9Ii0xIiB4PSItMSIvPgogPC9nPgogPGc+CiAgPHRpdGxlPkxheWVyIDE8L3RpdGxlPgogIDxwYXRoIGlkPSJzdmdfMSIgZD0ibTAsMGwyNCwwbDAsMjRsLTI0LDBsMCwtMjR6IiBmaWxsPSJub25lIi8+CiAgPHBhdGggZmlsbD0iI2ZmZmZmZiIgaWQ9InN2Z18yIiBkPSJtOSwxNi4xN2wtMy40NywtMy40N2MtMC4zOSwtMC4zOSAtMS4wMiwtMC4zOSAtMS40MSwwYy0wLjM5LDAuMzkgLTAuMzksMS4wMiAwLDEuNDFsNC4xOCw0LjE4YzAuMzksMC4zOSAxLjAyLDAuMzkgMS40MSwwbDEwLjU4LC0xMC41OGMwLjM5LC0wLjM5IDAuMzksLTEuMDIgMCwtMS40MWMtMC4zOSwtMC4zOSAtMS4wMiwtMC4zOSAtMS40MSwwbC05Ljg4LDkuODd6Ii8+CiA8L2c+Cjwvc3ZnPg==");
     --assetIndeterminateIcon: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CgogPGc+CiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPgogIDxyZWN0IGZpbGw9Im5vbmUiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgaGVpZ2h0PSI0MDIiIHdpZHRoPSI1ODIiIHk9Ii0xIiB4PSItMSIvPgogPC9nPgogPGc+CiAgPHRpdGxlPkxheWVyIDE8L3RpdGxlPgogIDxwYXRoIGlkPSJzdmdfMSIgZD0ibTI1LjIzOTc3OSwxMC45NTQwNjNsMjQsMGwwLDI0bC0yNCwwbDAsLTI0eiIgZmlsbD0ibm9uZSIvPgogIDxyZWN0IHN0cm9rZT0iIzAwMCIgcng9IjEiIGlkPSJzdmdfMyIgaGVpZ2h0PSIxLjk2ODcwMyIgd2lkdGg9IjExLjc2MTczNyIgeT0iMTEuMDM5ODM3IiB4PSI1LjkzNDEyNyIgc3Ryb2tlLXdpZHRoPSIwIiBmaWxsPSIjZmZmIi8+CiA8L2c+Cjwvc3ZnPg==");
     --assetRadioButtonIcon: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CgogPGc+CiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPgogIDxyZWN0IGZpbGw9Im5vbmUiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgaGVpZ2h0PSI0MDIiIHdpZHRoPSI1ODIiIHk9Ii0xIiB4PSItMSIvPgogPC9nPgogPGc+CiAgPHRpdGxlPkxheWVyIDE8L3RpdGxlPgogIDxwYXRoIGlkPSJzdmdfMSIgZD0ibTAsMGwyNCwwbDAsMjRsLTI0LDBsMCwtMjR6IiBmaWxsPSJub25lIi8+CiAgPGNpcmNsZSBmaWxsPSIjZmZmZmZmIiBpZD0ic3ZnXzMiIHI9IjUiIGN5PSIxMiIgY3g9IjEyIi8+CiA8L2c+Cjwvc3ZnPg==");
+    --sizeContainerReservation: 16px;    
     --sizeCardReservation: 32px;
     --sizeH1: 36px;
     --sizeH2: 30px;
@@ -65,6 +66,58 @@ div {
 div[group] {
     margin: 0;
     margin-bottom: 8px;
+}
+
+div[split] {
+    display: inline-block;
+}
+
+div[split="1"] {
+    width: calc(8.333% - var(--sizeContainerReservation));
+}
+
+div[split="2"] {
+    width: calc(16.667% - var(--sizeContainerReservation));
+}
+
+div[split="3"] {
+    width: calc(25% - var(--sizeContainerReservation));
+}
+
+div[split="4"] {
+    width: calc(33.333% - var(--sizeContainerReservation));
+}
+
+div[split="5"] {
+    width: calc(41.667% - var(--sizeContainerReservation));
+}
+
+div[split="6"] {
+    width: calc(50% - var(--sizeContainerReservation));
+}
+
+div[split="7"] {
+    width: calc(58.333% - var(--sizeContainerReservation));
+}
+
+div[split="8"] {
+    width: calc(66.667% - var(--sizeContainerReservation));
+}
+
+div[split="9"] {
+    width: calc(75% - var(--sizeContainerReservation));
+}
+
+div[split="10"] {
+    width: calc(83.333% - var(--sizeContainerReservation));
+}
+
+div[split="11"] {
+    width: calc(91.667% - var(--sizeContainerReservation));
+}
+
+div[split="12"] {
+    display: block;
 }
 
 div[card] {
@@ -738,12 +791,21 @@ button:focus, input:focus, select:focus {
 /* Media queries */
 
 @media (max-width: 800px) {
+    div[split="1"], div[split="2"], div[split="3"] {
+        width: calc(50% - var(--sizeContainerReservation));
+    }
+
     div[card][split="1"], div[card][split="2"], div[card][split="3"] {
+        
         width: calc(50% - var(--sizeCardReservation));
     }
 }
 
 @media (max-width: 500px) {
+    div[split] {
+        width: 100%;
+    }
+
     div[card][split] {
         width: calc(100% - var(--sizeCardReservation));
     }

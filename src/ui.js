@@ -331,6 +331,7 @@ ui.components.HTML = class extends ui.components.Component {
     @name ui.components.Container
 
     @param children any Children or content to include in component. Default: `[]`.
+    @param split number Numerator of a twelth fraction used to split container by width. Must be between 1 and 12 inclusive. Default: `12`.
     @param style object Styling to use on component. Default: `{}`.
     @param attributes object HTML attributes to use on component. Default: `{}`.
     @param events object Events to listen to on component. Default: `{}`.
@@ -339,10 +340,26 @@ ui.components.HTML = class extends ui.components.Component {
     @longDescription Has similar properties to an HTML `div` element.
 */
 ui.components.Container = class extends ui.components.Component {
-    constructor(children = [], style = {}, attributes = {}, events = {}) {
+    constructor(children = [], split = 12, style = {}, attributes = {}, events = {}) {
         super(children, style, attributes, events);
 
         this.HTMLTagName = "div";
+
+        console.log(split, children);
+
+        if (typeof(split) == "number" && split >= 1 && split <= 12) {
+            this.split = split;
+        } else {
+            throw "`split` is either not a number, or is not between 1 and 12 inclusive";
+        }
+        
+        this.split = split;
+    }
+
+    precompute(domObject) {
+        this.attributes["split"] = this.split;
+
+        return domObject;
     }
 };
 
@@ -359,6 +376,12 @@ ui.components.Container = class extends ui.components.Component {
     @longDescription Designed to group alike form elements already in a `Container`.
 */
 ui.components.GroupContainer = class extends ui.components.Container {
+    constructor(children = [], style = {}, attributes = {}, events = {}) {
+        super(children, 12, style, attributes, events);
+
+        this.HTMLTagName = "div";
+    }
+
     precompute(domObject) {
         this.attributes["group"] = "";
 
@@ -370,7 +393,7 @@ ui.components.GroupContainer = class extends ui.components.Container {
     @name ui.components.Card
 
     @param children any Children or content to include in component. Default: `[]`.
-    @param split number Numerator of a twelth fraction used to split card by width. Must be between 1 and 12 inclusive. Default: `1`.
+    @param split number Numerator of a twelth fraction used to split card by width. Must be between 1 and 12 inclusive. Default: `12`.
     @param style object Styling to use on component. Default: `{}`.
     @param attributes object HTML attributes to use on component. Default: `{}`.
     @param events object Events to listen to on component. Default: `{}`.
@@ -380,19 +403,6 @@ ui.components.GroupContainer = class extends ui.components.Container {
     @longDescription Designed to hold elements in a more contextual setting.
 */
 ui.components.Card = class extends ui.components.Container {
-    constructor(children = [], split = 12, style = {}, attributes = {}, events = {}) {
-        super(children, style, attributes, events);
-
-        this.HTMLTagName = "div";
-
-        if (typeof(split) == "number" && split >= 1 && split <= 12) {
-            this.split = split;
-        } else {
-            throw "`split` is either not a number, or is not between 1 and 12 inclusive";
-        }
-        this.split = split;
-    }
-
     precompute(domObject) {
         this.attributes["card"] = "";
         this.attributes["split"] = this.split;
