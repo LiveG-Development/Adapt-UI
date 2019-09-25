@@ -59,6 +59,14 @@ var ui = {
             }
         }
 
+        for (var themeDefinition in ui.theme) {
+            if (ui.theme[themeDefinition] instanceof ui.colour.RGBA) {
+                document.documentElement.style.setProperty("--" + themeDefinition, ui.theme[themeDefinition].generateCSS());
+            } else {
+                document.documentElement.style.setProperty("--" + themeDefinition, ui.theme[themeDefinition]);
+            }
+        }
+
         dom.element().children().delete();
         dom.element().attribute("dir").set(ui.mirroringDirection);
         
@@ -192,7 +200,7 @@ ui.utilities.getScreenSize = function() {
     return new ui.Vector(window.innerWidth, window.innerHeight);
 };
 
-ui.theming = {
+ui.theme = {
     primaryBackground: new ui.colour.RGBA(255, 255, 255),
     primaryText: new ui.colour.RGBA(0, 0, 0),
     primaryUI: new ui.colour.RGBA(80, 145, 247),
@@ -202,7 +210,11 @@ ui.theming = {
     secondaryText: new ui.colour.RGBA(0, 0, 0),
     secondaryUI: new ui.colour.RGBA(150, 184, 247),
     secondaryUIText: new ui.colour.RGBA(255, 255, 255),
-    secondaryUIPress: new ui.colour.RGBA(180, 196, 224)
+    secondaryUIPress: new ui.colour.RGBA(180, 196, 224),
+    scrollbar: new ui.colour.RGBA(0, 0, 0, 0.5),
+    scrollbarHover: new ui.colour.RGBA(0, 0, 0, 0.6),
+    scrollbarPress: new ui.colour.RGBA(0, 0, 0, 0.8),
+    blur: new ui.colour.RGBA(0, 0, 0, 0.5)
 };
 
 /*
