@@ -13,9 +13,10 @@ ui.models.appLayout = {};
 
 var appLayoutFunctions = {
     dialogs: {
-        focusStack: [],
-        scrollPosition: new ui.Vector(0, 0)
-    }
+        focusStack: []
+    },
+
+    scrollPosition: new ui.Vector(0, 0)
 };
 
 /*
@@ -143,14 +144,43 @@ appLayoutFunctions.dialogs.close = function(domObject = dom.element("div[menu]")
 };
 
 /*
+    @name appLayoutFunctions.scrollContent
+
+    @param scrollTo object Vector class to scroll content to. Default: `new ui.Vector(0, 0)`.
+
+    @shortDescription Scroll the main UI content to the specified vector.
+*/
+appLayoutFunctions.scrollContent = function(scrollTo = new ui.Vector(0, 0)) {
+    if (dom.element("div[appcontent]").reference.length > 0) {
+        dom.element("div[appcontent]").reference[0].scrollLeft = scrollTo.x;
+        dom.element("div[appcontent]").reference[0].scrollTop = scrollTo.y;
+    }
+};
+
+/*
+    @name appLayoutFunctions.getContentScrollPosition
+
+    @return object Vector class of scroll position.
+
+    @shortDescription Get the vector of the scroll position of the main UI content.
+*/
+appLayoutFunctions.getContentScrollPosition = function() {
+    if (dom.element("div[appcontent]").reference.length > 0) {
+        return new ui.Vector(dom.element("div[appcontent]").reference[0].scrollLeft, dom.element("div[appcontent]").reference[0].scrollTop);
+    } else {
+        return new ui.Vector(0, 0);
+    }
+};
+
+/*
     @name ui.models.appLayout._preRefresh
 
     @shortDescription Save any volatile component properties before refresh.
 */
 ui.models.appLayout._preRefresh = function() {
     if (dom.element("div[appcontent]").reference.length > 0) {
-        appLayoutFunctions.dialogs.scrollPosition.x = dom.element("div[appcontent]").reference[0].scrollLeft;
-        appLayoutFunctions.dialogs.scrollPosition.y = dom.element("div[appcontent]").reference[0].scrollTop;
+        appLayoutFunctions.scrollPosition.x = dom.element("div[appcontent]").reference[0].scrollLeft;
+        appLayoutFunctions.scrollPosition.y = dom.element("div[appcontent]").reference[0].scrollTop;
     }
 };
 
@@ -161,8 +191,8 @@ ui.models.appLayout._preRefresh = function() {
 */
 ui.models.appLayout._postRefresh = function() {
     if (dom.element("div[appcontent]").reference.length > 0) {
-        dom.element("div[appcontent]").reference[0].scrollLeft = appLayoutFunctions.dialogs.scrollPosition.x;
-        dom.element("div[appcontent]").reference[0].scrollTop = appLayoutFunctions.dialogs.scrollPosition.y;
+        dom.element("div[appcontent]").reference[0].scrollLeft = appLayoutFunctions.scrollPosition.x;
+        dom.element("div[appcontent]").reference[0].scrollTop = appLayoutFunctions.scrollPosition.y;
     }
 };
 
@@ -460,6 +490,14 @@ ui.models.appLayout.Content = class extends ui.models.appLayout.Component {
         this.attributes["appcontent"] = "";
 
         return domObject;
+    }
+
+    get scrollPosition() {
+        return appLayoutFunctions.getContentScrollPosition();
+    }
+    
+    set scrollPosition(vector) {
+        appLayoutFunctions.scrollContent(vector);
     }
 };
 
