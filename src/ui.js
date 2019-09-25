@@ -345,8 +345,6 @@ ui.components.Container = class extends ui.components.Component {
 
         this.HTMLTagName = "div";
 
-        console.log(split, children);
-
         if (typeof(split) == "number" && split >= 1 && split <= 12) {
             this.split = split;
         } else {
