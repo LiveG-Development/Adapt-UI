@@ -13,7 +13,8 @@ ui.models.appLayout = {};
 
 var appLayoutFunctions = {
     dialogs: {
-        focusStack: []
+        focusStack: [],
+        scrollPosition: new ui.Vector(0, 0)
     }
 };
 
@@ -139,6 +140,30 @@ appLayoutFunctions.dialogs.close = function(domObject = dom.element("div[menu]")
     dom.element("div[menublur], div[menutitle], div[menucontent], div[menutext], hr[menudivider]").attribute("aria-hidden").set("true");
 
     appLayoutFunctions.dialogs.focusStack.pop().focus();
+};
+
+/*
+    @name ui.models.appLayout._preRefresh
+
+    @shortDescription Save any volatile component properties before refresh.
+*/
+ui.models.appLayout._preRefresh = function() {
+    if (dom.element("div[appcontent]").reference.length > 0) {
+        appLayoutFunctions.dialogs.scrollPosition.x = dom.element("div[appcontent]").reference[0].scrollLeft;
+        appLayoutFunctions.dialogs.scrollPosition.y = dom.element("div[appcontent]").reference[0].scrollTop;
+    }
+};
+
+/*
+    @name ui.models.appLayout._postRefresh
+
+    @shortDescription Restore any volatile component properties after refresh.
+*/
+ui.models.appLayout._postRefresh = function() {
+    if (dom.element("div[appcontent]").reference.length > 0) {
+        dom.element("div[appcontent]").reference[0].scrollLeft = appLayoutFunctions.dialogs.scrollPosition.x;
+        dom.element("div[appcontent]").reference[0].scrollTop = appLayoutFunctions.dialogs.scrollPosition.y;
+    }
 };
 
 /*

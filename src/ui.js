@@ -53,6 +53,12 @@ var ui = {
         @shortDescription Regenerate the DOM to reflect the UI layout in `ui.screen`.
     */
     refresh: function() {
+        for (var model in ui.models) {
+            if (typeof(ui.models[model]._preRefresh) == "function") {
+                ui.models[model]._preRefresh();
+            }
+        }
+
         dom.element().children().delete();
         dom.element().attribute("dir").set(ui.mirroringDirection);
         
@@ -101,6 +107,12 @@ var ui = {
         dom.element().events.listen("click", function() {
             dom.element("style[data-ui-helper='focus']").delete();
         });
+
+        for (var model in ui.models) {
+            if (typeof(ui.models[model]._postRefresh) == "function") {
+                ui.models[model]._postRefresh();
+            }
+        }
     }
 };
 
