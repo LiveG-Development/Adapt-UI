@@ -802,8 +802,9 @@ button:focus, input:focus, select:focus {
 }
 
 @media (max-width: 500px) {
-    div[split] {
-        width: 100%;
+    div[split]:not([card]) {
+        display: block;
+        width: unset;
     }
 
     div[card][split] {
