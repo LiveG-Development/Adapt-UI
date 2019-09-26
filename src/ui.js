@@ -580,6 +580,44 @@ ui.components.Link = class extends ui.components.Component {
 };
 
 /*
+    @name ui.components.TextCode
+
+    @param children any Children or content to include in component. Default: `[]`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription TextCode class, extends `ui.components.Component`.
+    @longDescription Displays text in italics. Has similar properties to an HTML `code` element. 
+*/
+ui.components.TextCode = class extends ui.components.Component {
+    constructor(children = [], style = {}, attributes = {}, events = {}) {
+        super(children, style, attributes, events);
+
+        this.HTMLTagName = "code";
+    }
+};
+
+/*
+    @name ui.components.CodeBlock
+
+    @param children any Children or content to include in component. Default: `[]`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription CodeBlock class, extends `ui.components.Component`.
+    @longDescription Displays text in italics. Has similar properties to an HTML `pre` element. 
+*/
+ui.components.CodeBlock = class extends ui.components.Component {
+    constructor(children = [], style = {}, attributes = {}, events = {}) {
+        super(children, style, attributes, events);
+
+        this.HTMLTagName = "pre";
+    }
+};
+
+/*
     @name ui.components.Image
 
     @param source string Source that image is taken from.

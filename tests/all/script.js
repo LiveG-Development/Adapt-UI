@@ -269,6 +269,17 @@ ui.screen = [
             ])
         ]),
         new Container([
+            new Heading(_("labelTextTest"), 2),
+            new Paragraph([
+                new Text(_("textTestNormal")),
+                new TextBoldEffect(_("textTestBold")),
+                new TextItalicsEffect(_("textTestItalics")),
+                new TextBoldEffect(new TextItalicsEffect(_("textTestBoldItalics"))),
+                new TextCode(_("textTestTextCode"))
+            ], 2),
+            new CodeBlock(_("textTestCodeBlock"))
+        ]),
+        new Container([
             new Heading(_("labelCardTest"), 2),
             new Card([
                 new Heading(_("cTestComponents"), 3),

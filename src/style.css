@@ -13,6 +13,8 @@
 
 :root {
     --fontCircumference: "Circumference", "Century Gothic", "CenturyGothic", "URW Gothic L Book", "AppleGothic", sans-serif;
+    --fontTerminal: "Terminal", "Overpass Mono", "Roboto Mono", "Lucida Console", monospace;
+    --fontPublication: "Publication", "Source Serif Pro", "Times New Roman", serif;
     --fontClarity: "Clarity", var(--fontCircumference), sans-serif;
     --assetDropdownIcon: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNyAxMGw1IDUgNS01eiIvPjxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz48L3N2Zz4=");
     --assetCheckmarkIcon: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CgogPGc+CiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPgogIDxyZWN0IGZpbGw9Im5vbmUiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgaGVpZ2h0PSI0MDIiIHdpZHRoPSI1ODIiIHk9Ii0xIiB4PSItMSIvPgogPC9nPgogPGc+CiAgPHRpdGxlPkxheWVyIDE8L3RpdGxlPgogIDxwYXRoIGlkPSJzdmdfMSIgZD0ibTAsMGwyNCwwbDAsMjRsLTI0LDBsMCwtMjR6IiBmaWxsPSJub25lIi8+CiAgPHBhdGggZmlsbD0iI2ZmZmZmZiIgaWQ9InN2Z18yIiBkPSJtOSwxNi4xN2wtMy40NywtMy40N2MtMC4zOSwtMC4zOSAtMS4wMiwtMC4zOSAtMS40MSwwYy0wLjM5LDAuMzkgLTAuMzksMS4wMiAwLDEuNDFsNC4xOCw0LjE4YzAuMzksMC4zOSAxLjAyLDAuMzkgMS40MSwwbDEwLjU4LC0xMC41OGMwLjM5LC0wLjM5IDAuMzksLTEuMDIgMCwtMS40MWMtMC4zOSwtMC4zOSAtMS4wMiwtMC4zOSAtMS40MSwwbC05Ljg4LDkuODd6Ii8+CiA8L2c+Cjwvc3ZnPg==");
@@ -406,6 +408,25 @@ a {
 
 a:hover {
     color: var(--secondaryUI);
+}
+
+code, pre {
+    padding: 2px;
+    background-color: var(--secondaryBackground);
+    color: var(--secondaryText);
+    font-family: var(--fontTerminal);
+    border-radius: 5px;
+    overflow: none;
+}
+
+pre {
+    width: calc(100% - 32px);
+    max-width: calc(100vw - 68px);
+    margin: 8px;
+    padding: 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+    overflow-x: auto;
 }
 
 img {
