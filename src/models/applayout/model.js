@@ -227,12 +227,16 @@ ui.models.appLayout.Component = class extends ui.components.Component {
     @param events object Events to listen to on component. Default: `{}`.
 
     @shortDescription MenuBar class, extends `ui.models.appLayout.Component`.
-    @longDescription Has similar properties to an HTML `div` element with attribute `menubar`.
+    @longDescription Has similar properties to an HTML `header` element.
 */
 ui.models.appLayout.MenuBar = class extends ui.models.appLayout.Component {
-    precompute(domObject) {
-        this.attributes["menubar"] = "";
+    constructor(children = [], style = {}, attributes = {}, events = {}) {
+        super(children, style, attributes, events);
 
+        this.HTMLTagName = "header";
+    }
+
+    precompute(domObject) {
         return domObject;
     }
 };

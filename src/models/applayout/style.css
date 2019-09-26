@@ -16,7 +16,7 @@ body {
     z-index: -2;
 }
 
-div[menubar] {
+header {
     position: relative;
     margin: 0;
     padding: 10px;
@@ -31,7 +31,7 @@ div[menubar] {
     cursor: default;
 }
 
-div[menubar] span, div[menutitle] span {
+header span, div[menutitle] span {
     margin: 0 2.5px 0 2.5px;
 }
 
@@ -70,11 +70,11 @@ button[actionbutton] icon {
     top: 2px;
 }
 
-button[actionbutton] + div[menubar] {
+button[actionbutton] + header {
     padding-right: 80px;
 }
 
-[dir="rtl"] button[actionbutton] + div[menubar] {
+[dir="rtl"] button[actionbutton] + header {
     padding-right: 10px;
     padding-left: 80px;
 }
