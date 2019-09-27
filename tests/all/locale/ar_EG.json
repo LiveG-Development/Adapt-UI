@@ -3,6 +3,7 @@
     "friendlyNameShort": "العربية",
     "direction": "rtl",
     "strings": {
+        "ui_loading": "جار التحميل...",
         "appLayout_closeMenu": "إغلاق القائمة",
         "menuOpen": "فتح القائمة",
         "menuTitle": "اختبارات القائمة",

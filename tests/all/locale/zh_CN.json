@@ -3,6 +3,7 @@
     "friendlyNameShort": "中文",
     "direction": "ltr",
     "strings": {
+        "ui_loading": "载入中……",
         "appLayout_closeMenu": "关闭菜单",
         "menuOpen": "打开菜单",
         "menuTitle": "菜单测试",

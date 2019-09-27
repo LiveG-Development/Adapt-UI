@@ -3,6 +3,7 @@
     "friendlyNameShort": "Français",
     "direction": "ltr",
     "strings": {
+        "ui_loading": "Chargement...",
         "appLayout_closeMenu": "Fermer le menu",
         "menuOpen": "Ouvrir le menu",
         "menuTitle": "Test de menu",

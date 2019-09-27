@@ -9,6 +9,7 @@
 
 // @import https://opensource.liveg.tech/ZaprCoreLibs/src/dom/dom
 // @import https://opensource.liveg.tech/ZaprCoreLibs/src/importer/importer
+// @import https://opensource.liveg.tech/ZaprCoreLibs/src/l10n/l10n
 
 var ui = {
     mirroringDirection: "ltr",
@@ -1128,6 +1129,8 @@ ui.components.SpinnerLoader = class extends ui.components.Component {
 
     precompute(domObject) {
         this.attributes["loader"] = "";
+        this.attributes["role"] = "progressbar";
+        this.attributes["aria-label"] = l10n.translate("ui_loading") || "Loading...";
 
         return domObject;
     }

@@ -3,6 +3,7 @@
     "friendlyNameShort": "English",
     "direction": "ltr",
     "strings": {
+        "ui_loading": "Loading...",
         "ui_appLayout_closeMenu": "Close menu",
         "menuOpen": "Open menu",
         "menuTitle": "Menu test",
