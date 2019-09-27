@@ -1118,6 +1118,7 @@ ui.components.ProgressBar = class extends ui.components.Component {
     @param events object Events to listen to on component. Default: `{}`.
 
     @shortDescription SpinnerLoader class, extends `ui.components.Component`.
+    @longDescription Has similar properties to an HTML `div` element with attribute `loader`.
     @longDescription Used for when an object has no definite final loading time.
 */
 ui.components.SpinnerLoader = class extends ui.components.Component {
