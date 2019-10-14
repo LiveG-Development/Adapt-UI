@@ -72,6 +72,7 @@ div[group] {
 
 div[split] {
     display: inline-block;
+    vertical-align: top;
 }
 
 div[split="1"] {
@@ -127,6 +128,7 @@ div[card] {
     padding: 8px;
     background-color: var(--secondaryBackground);
     border-radius: 10px;
+    vertical-align: top;
 }
 
 div[card][split="1"] {
