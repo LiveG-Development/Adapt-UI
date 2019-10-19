@@ -75,6 +75,10 @@ div[split] {
     vertical-align: top;
 }
 
+div[split] img {
+    width: 100%;
+}
+
 div[split="1"] {
     width: calc(8.333% - var(--sizeContainerReservation));
 }
