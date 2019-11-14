@@ -761,7 +761,7 @@ select::-ms-expand {
     background: var(--assetDropdownIcon) no-repeat left var(--primaryBackground);
 }
 
-/* Keyboard focus prevention, is disabled when focusing keyboard input is sent */
+/* Keyboard focus outline prevention, is disabled when focusing keyboard input is sent */
 
 button:focus, input:focus, textarea:focus, select:focus {
     outline: none;
