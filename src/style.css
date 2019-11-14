@@ -730,12 +730,6 @@ progress::-moz-progress-bar {
     border-radius: 10px;
 }
 
-/* progress::-moz-progress-value {
-    background-color: var(--primaryUI);
-    border-radius: 10px;
-    transition: width 0.5s;
-} */
-
 select {
     width: 220px;
     background: var(--assetDropdownIcon) no-repeat right var(--secondaryBackground);
