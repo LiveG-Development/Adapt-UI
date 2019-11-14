@@ -3,7 +3,7 @@
     "friendlyNameShort": "العربية",
     "direction": "rtl",
     "strings": {
-        "ui_loading": "جار التحميل...",
+        "ui_loading": "جار التحميل ...",
         "appLayout_closeMenu": "إغلاق القائمة",
         "menuOpen": "فتح القائمة",
         "menuTitle": "اختبارات القائمة",
@@ -67,6 +67,7 @@
         "textTestBoldItalics": "نص غامق ومائل، ",
         "textTestTextCode": "نص الرمز.",
         "textTestCodeBlock": "هذا هو كتلة رمز.",
+        "textTestMultilineTextInput": "اكتب أي شيء هنا ...",
         "labelCardTest": "اختبار البطاقة",
         "cTestComponents": "المكونات",
         "cTestContent": "بند",

@@ -67,6 +67,7 @@
         "textTestBoldItalics": "bold and italic text, ",
         "textTestTextCode": "code text.",
         "textTestCodeBlock": "This is a code block.",
+        "textTestMultilineTextInput": "Type anything here...",
         "labelCardTest": "Card test",
         "cTestComponents": "Components",
         "cTestContent": "Content",

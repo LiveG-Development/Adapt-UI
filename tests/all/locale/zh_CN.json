@@ -67,6 +67,7 @@
         "textTestBoldItalics": "粗体和斜体文字，",
         "textTestTextCode": "代码文字。",
         "textTestCodeBlock": "这是一个代码块。",
+        "textTestMultilineTextInput": "在这里输入任何内容……",
         "labelCardTest": "卡测试",
         "cTestComponents": "组件",
         "cTestContent": "项目",

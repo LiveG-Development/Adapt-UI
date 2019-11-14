@@ -277,7 +277,8 @@ ui.screen = [
                 new TextBoldEffect(new TextItalicsEffect(_("textTestBoldItalics"))),
                 new TextCode(_("textTestTextCode"))
             ], 2),
-            new CodeBlock(_("textTestCodeBlock"))
+            new CodeBlock(_("textTestCodeBlock")),
+            new MultilineTextInput("", _("textTestMultilineTextInput"))
         ]),
         new Container([
             new Heading(_("labelCardTest"), 2),

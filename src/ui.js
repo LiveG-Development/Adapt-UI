@@ -831,6 +831,51 @@ ui.components.FormattedInput = class extends ui.components.TextInput {
 };
 
 /*
+    @name ui.components.MultilineTextInput
+
+    @param value string Initial value to store in input. Default: `""`.
+    @param placeholder string Value to show in input if it is empty. Default: `""`.
+    @param secondary boolean Whether to make the input secondary. Use `true` to enable. Default: `false`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription MultilineTextInput class, extends `ui.components.Component`.
+    @longDescription Has similar properties to an HTML `textarea` element.
+*/
+ui.components.MultilineTextInput = class extends ui.components.Component {
+    constructor(value = "", placeholder = "", secondary = false, style = {}, attributes = {}, events = {}) {
+        super([], style, attributes, events);
+
+        this.HTMLTagName = "textarea";
+
+        this.value = value;
+        this.placeholder = placeholder;
+        this.secondary = secondary;
+    }
+
+    precompute(domObject) {
+        this.attributes["placeholder"] = this.placeholder;
+
+        if (this.secondary) {
+            this.attributes["secondary"] = this.secondary;
+        } else {
+            delete this.attributes["secondary"];
+        }
+
+        var thisScope = this;
+
+        domObject.text.set(this.value);
+
+        domObject.events.listen("change", function(event) {
+            thisScope.value = event.target.innerText;
+        });
+
+        return domObject;
+    }
+};
+
+/*
     @name ui.components.SelectionInput
 
     @param candidates object Candidates to display in input. Default: `{}`.

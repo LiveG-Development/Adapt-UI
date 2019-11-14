@@ -67,6 +67,7 @@
         "textTestBoldItalics": "texte en gras et en italique, ",
         "textTestTextCode": "code texte.",
         "textTestCodeBlock": "Ceci est un bloc de code.",
+        "textTestMultilineTextInput": "Tapez n'importe quoi ici ...",
         "labelCardTest": "Test de carte",
         "cTestComponents": "Composants",
         "cTestContent": "Contenu",

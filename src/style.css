@@ -678,6 +678,28 @@ input[type="range"]::-moz-range-thumb:hover {
     background-color: var(--primaryUIPress);
 }
 
+textarea {
+    width: calc(100% - 32px);
+    max-width: calc(100vw - 68px);
+    height: 5em;
+    margin: 8px;
+    padding: 8px;
+    background-color: var(--secondaryBackground);
+    color: var(--secondaryText);
+    font-family: var(--fontCircumference);
+    font-size: var(--sizeP);
+    border: none;
+    border-radius: 10px;
+    overflow-x: none;
+    overflow-y: auto;
+    resize: none;
+}
+
+textarea[secondary] {
+    background-color: var(--primaryBackground);
+    color: var(--primaryText);
+}
+
 progress {
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -741,7 +763,7 @@ select::-ms-expand {
 
 /* Keyboard focus prevention, is disabled when focusing keyboard input is sent */
 
-button:focus, input:focus, select:focus {
+button:focus, input:focus, textarea:focus, select:focus {
     outline: none;
 }
 
