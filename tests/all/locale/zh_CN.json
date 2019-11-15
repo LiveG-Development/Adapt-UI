@@ -4,7 +4,8 @@
     "direction": "ltr",
     "strings": {
         "ui_loading": "载入中……",
-        "appLayout_closeMenu": "关闭菜单",
+        "ui_appLayout_closeMenu": "关闭菜单",
+        "ui_appLayout_closeDialog": "关闭对话框",
         "menuOpen": "打开菜单",
         "menuTitle": "菜单测试",
         "menuDescription": "这是菜单组件的演示。",
@@ -12,6 +13,8 @@
         "menuLearnMore": "学到更多",
         "menuQuestion": "爱它？",
         "menuViewCode": "查看编程",
+        "dialogTitle": "测试对话框",
+        "dialogContent": "这是对对话框系统的测试。",
         "h1": "所有用户界面组件",
         "h2": "测试所有这些",
         "h3": "正如你所看到的那样",

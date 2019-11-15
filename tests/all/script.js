@@ -70,6 +70,11 @@ var menu = new appLayout.Menu([
     ])
 ]);
 
+var dialog = new appLayout.Dialog([
+    new appLayout.DialogTitle(_("dialogTitle")),
+    new appLayout.DialogContent(_("dialogContent"))
+]);
+
 var sliderInputSet = new SliderInput(0.33, 0.01, {}, {
     id: "slider"
 });
@@ -123,6 +128,7 @@ ui.screen = [
         new Text(_("h1"))
     ]),
     menu,
+    dialog,
     new appLayout.Content([
         new Container([
             new Heading(_("h1"), 1),
@@ -145,7 +151,13 @@ ui.screen = [
             new Label([
                 new Text(_("labelTextPrimary")),
                 new TextInput("", _("textPrimary")),
-                new Button(_("textPrimaryButton"))
+                new Button(_("textPrimaryButton"), false, {}, {}, {
+                    click: function() {
+                        dialog.isOpen = true;
+
+                        ui.refresh();
+                    }
+                })
             ]),
             new Label([
                 new Text(_("labelTextSecondary")),

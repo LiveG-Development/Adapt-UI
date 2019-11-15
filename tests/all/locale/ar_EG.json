@@ -4,7 +4,8 @@
     "direction": "rtl",
     "strings": {
         "ui_loading": "جار التحميل ...",
-        "appLayout_closeMenu": "إغلاق القائمة",
+        "ui_appLayout_closeMenu": "إغلاق القائمة",
+        "ui_appLayout_closeDialog": "إغلاق الحوار",
         "menuOpen": "فتح القائمة",
         "menuTitle": "اختبارات القائمة",
         "menuDescription": "هذا هو عرض مكونات القائمة.",
@@ -12,6 +13,8 @@
         "menuLearnMore": "أعرف أكثر",
         "menuQuestion": "أعجبتني؟",
         "menuViewCode": "عرض البرمجة",
+        "dialogTitle": "مربع الحوار اختبار",
+        "dialogContent": "هذا اختبار لنظام الحوار.",
         "h1": "جميع مكونات واجهة المستخدم",
         "h2": "اختبار كل منهم",
         "h3": "كما ترون",

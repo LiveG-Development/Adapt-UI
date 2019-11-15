@@ -5,6 +5,7 @@
     "strings": {
         "ui_loading": "Loading...",
         "ui_appLayout_closeMenu": "Close menu",
+        "ui_appLayout_closeDialog": "Close dialog",
         "menuOpen": "Open menu",
         "menuTitle": "Menu test",
         "menuDescription": "This is a demo of menu components.",
@@ -12,6 +13,8 @@
         "menuLearnMore": "Learn more",
         "menuQuestion": "Loving it?",
         "menuViewCode": "View code",
+        "dialogTitle": "Test dialog",
+        "dialogContent": "This is a test of the dialog system.",
         "h1": "All UI components",
         "h2": "Testing all of them",
         "h3": "As you can see",

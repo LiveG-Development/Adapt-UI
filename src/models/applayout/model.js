@@ -120,6 +120,8 @@ appLayoutFunctions.dialogs.open = function(domObject = dom.element("div[menu]"))
         .attribute("aria-hidden").delete()
     ;
 
+    dom.element("div[dialogtitle] *, div[dialogcontent] *").attribute("tabindex").delete();
+
     try {
         domObject.children(3).reference[0].focus();
     } catch (error) {

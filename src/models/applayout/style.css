@@ -263,12 +263,18 @@ button[dialogclose] {
     right: 0;
     width: 32px;
     height: 32px;
-    padding: 8px;
+    padding: calc(var(--sizeMenuBarText) / 3)!important;
     background-color: transparent!important;
     color: var(--primaryUIText)!important;
+    font-size: var(--sizeMenuBarText)!important;
     opacity: 0;
     z-index: 1;
     transition: opacity 0.5s;
+}
+
+[dir="rtl"] button[dialogclose] {
+    left: 0;
+    right: unset;
 }
 
 div[dialog][open] > button[dialogclose] {
@@ -296,6 +302,11 @@ div[dialogtitle] {
     cursor: default;
     outline: none;
     transition: opacity 0.5s;
+}
+
+[dir="rtl"] div[dialogtitle] {
+    padding-left: 40px;
+    padding-right: 10px;
 }
 
 div[dialog][open] > div[dialogtitle] {
