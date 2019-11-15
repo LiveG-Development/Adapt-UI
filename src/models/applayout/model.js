@@ -26,21 +26,32 @@ var appLayoutFunctions = {
 
     @shortDescription Register any menu for events and accessibility which is an instance of `ui.models.appLayout.Menu`.
 */
-appLayoutFunctions.dialogs.register = function(domObject = dom.element("div[menu]")) {
+appLayoutFunctions.dialogs.register = function(domObject = dom.element("div[menu]"), isMenu = true) {
     domObject.newChild(dom.new("div")
-        .attribute("menublur").set("")
+        .attribute(isMenu ? "menublur" : "dialogblur").set("")
         .events.listen("click", function() {
             appLayoutFunctions.dialogs.close(domObject);
         })
     );
 
-    domObject.newChild(dom.new("button")
-        .attribute("menuclose").set("")
-        .text.set(l10n.translate("ui_appLayout_closeMenu") || "Close menu")
-        .events.listen("click", function() {
-            appLayoutFunctions.dialogs.close(domObject);
-        })
-    );
+    if (isMenu) {
+        domObject.newChild(dom.new("button")
+            .attribute("menuclose").set("")
+            .text.set(l10n.translate("ui_appLayout_closeMenu") || "Close menu")
+            .events.listen("click", function() {
+                appLayoutFunctions.dialogs.close(domObject);
+            })
+        );
+    } else {
+        domObject.newChild(dom.new("button")
+            .attribute("dialogclose").set("")
+            .attribute("aria-label").set(l10n.translate("ui_appLayout_closeDialog") || "Close dialog")
+            .newChild(dom.new("icon").text.set("close"))
+            .events.listen("click", function() {
+                appLayoutFunctions.dialogs.close(domObject);
+            })
+        );
+    }
 
     dom.element().events.listen("keyup", function(event) {
         if (event.keyCode == 27) {
@@ -71,7 +82,7 @@ appLayoutFunctions.dialogs.register = function(domObject = dom.element("div[menu
         ;
     }
 
-    dom.element("div[menublur], div[menutitle], div[menucontent], div[menutext], hr[menudivider]").attribute("aria-hidden").set("true");
+    dom.element("div[menublur], div[menutitle], div[menucontent], div[menubutton], div[menutext], hr[menudivider], div[dialogblur], div[dialogtitle], div[dialogcontent]").attribute("aria-hidden").set("true");
 };
 
 /*
@@ -85,6 +96,8 @@ appLayoutFunctions.dialogs.open = function(domObject = dom.element("div[menu]"))
     appLayoutFunctions.dialogs.focusStack.push(document.activeElement);
 
     domObject.attribute("open").set("");
+    domObject.attribute("preclose").delete();         
+
     domObject.children()
         .attribute("tabindex").set("0")
         .attribute("aria-hidden").delete()
@@ -102,7 +115,7 @@ appLayoutFunctions.dialogs.open = function(domObject = dom.element("div[menu]"))
         ;
     }
 
-    dom.element("div[menublur], div[menutitle], div[menucontent], div[menutext], hr[menudivider]")
+    dom.element("div[menublur], div[menutitle], div[menucontent], div[menubutton], div[menutext], hr[menudivider], div[dialogblur], div[dialogtitle], div[dialogcontent]")
         .attribute("tabindex").set("-1")
         .attribute("aria-hidden").delete()
     ;
@@ -122,7 +135,18 @@ appLayoutFunctions.dialogs.open = function(domObject = dom.element("div[menu]"))
     @shortDescription Close any menu which is an instance of `ui.models.appLayout.Menu`.
 */
 appLayoutFunctions.dialogs.close = function(domObject = dom.element("div[menu]")) {
-    domObject.attribute("open").delete();
+    if (domObject.attribute("menu").get() != null) {
+        domObject.attribute("open").delete();
+    }
+
+    domObject.attribute("preclose").set("");
+
+    setTimeout(function() {
+        domObject.attribute("open").delete();
+        domObject.attribute("preclose").delete();         
+    }, 500);
+
+
     domObject.children().attribute("tabindex").set("-1");
     domObject.children().attribute("aria-hidden").set("true");
 
@@ -138,7 +162,7 @@ appLayoutFunctions.dialogs.close = function(domObject = dom.element("div[menu]")
         ;
     }
 
-    dom.element("div[menublur], div[menutitle], div[menucontent], div[menutext], hr[menudivider]").attribute("aria-hidden").set("true");
+    dom.element("div[menublur], div[menutitle], div[menucontent], div[menubutton], div[menutext], hr[menudivider], div[dialogblur], div[dialogtitle], div[dialogcontent]").attribute("aria-hidden").set("true");
 
     appLayoutFunctions.dialogs.focusStack.pop().focus();
 };
@@ -276,7 +300,7 @@ ui.models.appLayout.MenuBarButton = class extends ui.models.appLayout.Component 
     @param events object Events to listen to on component. Default: `{}`.
 
     @shortDescription ActionButton class, extends `ui.models.appLayout.Component`.
-    @longDescription Has similar properties to an HTML `button` element with attribute `menubaractionbutton`.
+    @longDescription Has similar properties to an HTML `button` element with attribute `actionbutton`.
     @longDescription It is recommended to only have an icon representing the button.
 */
 ui.models.appLayout.ActionButton = class extends ui.models.appLayout.Component {
@@ -479,6 +503,117 @@ ui.models.appLayout.MenuDivider = class extends ui.models.appLayout.Component {
 };
 
 /*
+    @name ui.models.appLayout.Dialog
+
+    @param children any Children or content to include in component. Default: `[]`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription Dialog class, extends `ui.models.appLayout.Component`.
+    @longDescription Has similar properties to an HTML `div` element with attribute `Dialog`.
+    @longDescription Should have children `ui.models.appLayout.DialogTitle` and `ui.models.appLayout.DialogContent`.
+*/
+ui.models.appLayout.Dialog = class extends ui.models.appLayout.Component {
+    constructor(children = [], style = {}, attributes = {}, events = {}) {
+        super(children, style, attributes, events);
+
+        this._isDetectedOpen = false;
+        this._programmaticOpenClose = null;
+        this._openChecker = setInterval(function() {});
+    }
+
+    set isOpen(value) {
+        this._programmaticOpenClose = value;
+    }
+
+    get isOpen() {
+        return this._isDetectedOpen;
+    }
+
+    precompute(domObject) {
+        this.attributes["dialog"] = "";
+
+        appLayoutFunctions.dialogs.register(domObject, false);
+
+        clearInterval(this._openChecker);
+
+        var thisScope = this;
+
+        this._openChecker = setInterval(function() {
+            thisScope._isDetectedOpen = domObject.attribute("open").get() != null;
+        });
+
+        if (this._isDetectedOpen) {
+            this.attributes["open"] = "";
+        } else {
+            delete this.attributes["open"];
+        }
+
+        // We want this section to run after this method, so we run it in the next available frame
+        setTimeout(function() {
+            if (thisScope._programmaticOpenClose != null) {
+                if (thisScope._programmaticOpenClose) {
+                    appLayoutFunctions.dialogs.open(domObject);
+                } else {
+                    appLayoutFunctions.dialogs.close(domObject);  
+                }
+
+                thisScope._programmaticOpenClose = null;
+            }
+        });
+
+        return domObject;
+    }
+};
+
+/*
+    @name ui.models.appLayout.DialogTitle
+
+    @param children any Children or content to include in component. Default: `[]`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription DialogTitle class, extends `ui.models.appLayout.Component`.
+    @longDescription Has similar properties to an HTML `div` element with attribute `dialogtitle`.
+*/
+ui.models.appLayout.DialogTitle = class extends ui.models.appLayout.Component {
+    constructor(children = [], style = {}, attributes = {}, events = {}) {
+        super(children, style, attributes, events);
+    }
+
+    precompute(domObject) {
+        this.attributes["dialogtitle"] = "";
+
+        return domObject;
+    }
+};
+
+/*
+    @name ui.models.appLayout.DialogContent
+
+    @param children any Children or content to include in component. Default: `[]`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription DialogContent class, extends `ui.models.appLayout.Component`.
+    @longDescription Has similar properties to an HTML `div` element with attribute `dialogcontent`.
+*/
+ui.models.appLayout.DialogContent = class extends ui.models.appLayout.Component {
+    constructor(children = [], style = {}, attributes = {}, events = {}) {
+        super(children, style, attributes, events);
+    }
+
+    precompute(domObject) {
+        this.attributes["dialogcontent"] = "";
+
+        return domObject;
+    }
+};
+
+/*
     @name ui.models.appLayout.Content
 
     @param children any Children or content to include in component. Default: `[]`.
@@ -506,5 +641,5 @@ ui.models.appLayout.Content = class extends ui.models.appLayout.Component {
 };
 
 setInterval(function() {
-    dom.element("div[menu]:not([open]) div[menublur], div[menu]:not([open]) div[menutitle], div[menu]:not([open]) div[menucontent], div[menu]:not([open]) div[menutext], div[menu]:not([open]) hr[menudivider]").attribute("aria-hidden").set("true");    
+    dom.element("div[menu]:not([open]) div[menublur], div[menu]:not([open]) div[menutitle], div[menu]:not([open]) div[menucontent], div[menu]:not([open]) div[menubutton], div[menu]:not([open]) div[menutext], div[menu]:not([open]) hr[menudivider] div[dialog]:not([open]) div[dialogblur], div[dialog]:not([open]) div[dialogtitle], div[dialog]:not([open]) div[dialogcontent]").attribute("aria-hidden").set("true");    
 });

@@ -213,6 +213,122 @@ hr[menudivider] {
     outline: none!important;
 }
 
+div[dialog] {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 500px;
+    height: 300px;
+    margin: auto;
+    border-radius: 10px;
+    opacity: 0;
+}
+
+div[dialog]:not([open]) {
+    pointer-events: none;
+}
+
+div[dialog][open] {
+    opacity: 1;
+}
+
+div[dialogblur] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background-color: var(--blur);
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+    outline: none;
+    transition: opacity 0.5s;
+}
+
+div[dialog][open] > div[dialogblur] {
+    opacity: 1;
+    pointer-events: unset;
+}
+
+div[dialog][preclose] > div[dialogblur] {
+    opacity: 0;
+}
+
+button[dialogclose] {
+    position: absolute;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+    background-color: transparent!important;
+    color: var(--primaryUIText)!important;
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.5s;
+}
+
+div[dialog][open] > button[dialogclose] {
+    opacity: 1;
+}
+
+div[dialog][preclose] > button[dialogclose] {
+    opacity: 0;
+}
+
+div[dialogtitle] {
+    position: relative;
+    margin: 0;
+    padding: 10px;
+    padding-right: 40px;
+    height: calc(var(--sizeMenuBarText) + 5px);
+    background-color: var(--menuTitleBackground);
+    color: var(--menuTitleText);
+    opacity: 0;
+    border-radius: 10px 10px 0 0;
+    font-size: var(--sizeMenuBarText);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: default;
+    outline: none;
+    transition: opacity 0.5s;
+}
+
+div[dialog][open] > div[dialogtitle] {
+    opacity: 1;
+}
+
+div[dialog][preclose] > div[dialogtitle] {
+    opacity: 0;
+}
+
+div[dialogcontent] {
+    position: relative;
+    width: calc(100% - 20px);
+    height: calc(100% - 25px - var(--sizeMenuBarText) - 20px);
+    margin: 0;
+    padding: 10px;
+    background-color: var(--primaryBackground);
+    border-radius: 0 0 10px 10px;
+    opacity: 0;
+    overflow: auto;
+    overflow: overlay;
+    outline: none!important;
+    transition: opacity 0.5s;
+}
+
+div[dialog][open] > div[dialogcontent] {
+    opacity: 1;
+}
+
+div[dialog][preclose] > div[dialogcontent] {
+    opacity: 0;
+}
+
 div[appcontent] {
     position: absolute;
     height: calc(100vh - 25px - var(--sizeMenuBarText));
@@ -222,6 +338,12 @@ div[appcontent] {
     overflow: auto;
     overflow: overlay;
     z-index: -2;
+}
+
+@media (max-width: 520px) {
+    div[dialog] {
+        width: calc(100vw - 20px);
+    }
 }
 
 @media (max-width: 500px) {
