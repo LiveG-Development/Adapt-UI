@@ -432,7 +432,7 @@ ui.components.Card = class extends ui.components.Container {
 
         return domObject;
     }
-}
+};
 
 /*
     @name ui.components.Paragraph
