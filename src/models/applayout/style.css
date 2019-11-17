@@ -327,7 +327,6 @@ div[dialogcontent] {
     border-radius: 0 0 10px 10px;
     opacity: 0;
     overflow: auto;
-    overflow: overlay;
     outline: none!important;
     transition: opacity 0.5s;
 }

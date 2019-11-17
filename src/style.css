@@ -55,6 +55,7 @@ html, body {
     margin: 0;
     width: 100%;
     min-height: 100vh;
+    user-select: none;
 }
 
 html {
@@ -355,6 +356,7 @@ div[loader]::after {
 
 h1, h2, h3, h4, h5, h6, p {
     cursor: default;
+    user-select: text;
 }
 
 h1 {
@@ -423,6 +425,7 @@ code, pre {
     font-family: var(--fontTerminal);
     border-radius: 5px;
     overflow: none;
+    user-select: text;
 }
 
 pre {
