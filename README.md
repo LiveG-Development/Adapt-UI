@@ -23,7 +23,7 @@ If you want to include the `AppLayout` model to create a proper app layout (incl
 // @import https://opensource.liveg.tech/Adapt-UI/src/models/applayout/model.js
 ```
 
-You'll also need to include the basic structure that makes up the skeleton of your app's UI design, as shown in our [Hello](https://opensource.liveg.tech/Adapt-UI/tests/hello/build/tech.liveg.opensource.hello-0.1.0.html) example; [the source code is on GitHub](https://github.com/LiveG-Development/Adapt-UI/tree/master/tests/hello) and is also open-source.
+You'll also need to include the basic structure that makes up the skeleton of your app's UI design as shown in our [Hello](https://opensource.liveg.tech/Adapt-UI/tests/hello/build/tech.liveg.opensource.hello-0.1.0.html) example ─ [the source code is on GitHub](https://github.com/LiveG-Development/Adapt-UI/tree/master/tests/hello) and is also open-source.
 
 When you need to build and test your project, just run these commands in your app's directory:
 
