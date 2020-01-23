@@ -9,7 +9,7 @@ Want to see how good it looks? [Try out our live demo!](https://opensource.liveg
 </div>
 
 ## Using Adapt UI
-To use Adapt UI, you'll need [Zapr](https://github.com/LiveG-Development/Zapr) installed ─ Zapr is a tool made by LiveG that allows you to integrate libraries with ease and package your apps into single, standalone HTML files.
+To use Adapt UI, it is highly recommended for you to have [Zapr](https://github.com/LiveG-Development/Zapr) installed ─ Zapr is a tool made by LiveG that allows you to integrate libraries with ease and package your apps into single, standalone HTML files.
 
 In your script file for your project, you'll need the following Zapr directive line:
 
