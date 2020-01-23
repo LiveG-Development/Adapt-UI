@@ -14,13 +14,13 @@ To use Adapt UI, you'll need [Zapr](https://github.com/LiveG-Development/Zapr) i
 In your script file for your project, you'll need the following Zapr directive line:
 
 ```javascript
-// @import https://opensource.liveg.tech/Adapt-UI/src/ui.js
+// @import https://opensource.liveg.tech/Adapt-UI/src/ui
 ```
 
 If you want to include the `AppLayout` model to create a proper app layout (including headers, sidebar menus and dialogs), you'll need the following Zapr line too:
 
 ```javascript
-// @import https://opensource.liveg.tech/Adapt-UI/src/models/applayout/model.js
+// @import https://opensource.liveg.tech/Adapt-UI/src/models/applayout/model
 ```
 
 You'll also need to include the basic structure that makes up the skeleton of your app's UI design as shown in our [Hello](https://opensource.liveg.tech/Adapt-UI/tests/hello/build/tech.liveg.opensource.hello-0.1.0.html) example ─ [the source code is on GitHub](https://github.com/LiveG-Development/Adapt-UI/tree/master/tests/hello) and is also open-source.
