@@ -8,6 +8,11 @@ Want to see how good it looks? [Try out our live demo!](https://opensource.liveg
     <p>Designers: We're busily compiling a guide for Adapt UI and its specifications. It will be available soon!</p>
 </div>
 
+## Prerequisites
+In order to use (and contribute to) Adapt UI, you'll need the following installed:
+* [Zapr](https://github.com/LiveG-Development/Zapr) (with Zapr added to your PATH)
+* [Python 3](https://www.python.org/downloads) (with the `py` utility added to your PATH)
+
 ## Using Adapt UI
 To use Adapt UI, it is highly recommended for you to have [Zapr](https://github.com/LiveG-Development/Zapr) installed ─ Zapr is a tool made by LiveG that allows you to integrate libraries with ease and package your apps into single, standalone HTML files.
 
