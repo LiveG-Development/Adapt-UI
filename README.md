@@ -8,22 +8,29 @@ Want to see how good it looks? [Try out our live demo!](https://opensource.liveg
     <p>Designers: We're busily compiling a guide for Adapt UI and its specifications. It will be available soon!</p>
 </div>
 
+## Prerequisites
+In order to use (and contribute to) Adapt UI, you'll need the following installed:
+* [Zapr](https://github.com/LiveG-Development/Zapr) (with Zapr added to your PATH)
+* [Python 3](https://www.python.org/downloads) (with the `py` utility added to your PATH)
+
 ## Using Adapt UI
-To use Adapt UI, you'll need [Zapr](https://github.com/LiveG-Development/Zapr) installed ─ Zapr is a tool made by LiveG that allows you to integrate libraries with ease and package your apps into single, standalone HTML files.
+To use Adapt UI, it is highly recommended for you to have [Zapr](https://github.com/LiveG-Development/Zapr) installed ─ Zapr is a tool made by LiveG that allows you to integrate libraries with ease and package your apps into single, standalone HTML files.
 
 In your script file for your project, you'll need the following Zapr directive line:
 
 ```javascript
-// @import https://opensource.liveg.tech/Adapt-UI/src/ui.js
+// @import https://opensource.liveg.tech/Adapt-UI/src/ui
 ```
 
 If you want to include the `AppLayout` model to create a proper app layout (including headers, sidebar menus and dialogs), you'll need the following Zapr line too:
 
 ```javascript
-// @import https://opensource.liveg.tech/Adapt-UI/src/models/applayout/model.js
+// @import https://opensource.liveg.tech/Adapt-UI/src/models/applayout/model
 ```
 
 You'll also need to include the basic structure that makes up the skeleton of your app's UI design as shown in our [Hello](https://opensource.liveg.tech/Adapt-UI/tests/hello/build/tech.liveg.opensource.hello-0.1.0.html) example ─ [the source code is on GitHub](https://github.com/LiveG-Development/Adapt-UI/tree/master/tests/hello) and is also open-source.
+
+> **Note:** If you're using our Hello example, you won't need the `build` directory as that is automatically generated every time you use Zapr to build your app. The `build` directory contains the final product in which the code inside it is generally unreadable by humans (obfuscated) in order to save space.
 
 When you need to build and test your project, just run these commands in your app's directory:
 
