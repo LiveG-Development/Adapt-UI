@@ -794,37 +794,19 @@ ui.components.PasswordInput = class extends ui.components.TextInput {
 */
 ui.components.FormattedInput = class extends ui.components.TextInput {
     constructor(format = ui.enums.formats.TEXT, value = "", placeholder = "", secondary = false, style = {}, attributes = {}, events = {}) {
-        super([], style, attributes, events);
-
-        this.HTMLTagName = "input";
+        super(value, placeholder, secondary, style, attributes, events);
 
         this.format = format;
-        this.value = value;
-        this.placeholder = placeholder;
-        this.secondary = secondary;
     }
 
     precompute(domObject) {
+        domObject = super.precompute(domObject);
+
         if (Object.values(ui.enums.formats).indexOf(this.format) > -1) {
             this.attributes["type"] = this.format;
         } else {
             throw "Invalid format";
         }
-
-        this.attributes["value"] = this.value;
-        this.attributes["placeholder"] = this.placeholder;
-
-        if (this.secondary) {
-            this.attributes["secondary"] = this.secondary;
-        } else {
-            delete this.attributes["secondary"];
-        }
-
-        var thisScope = this;
-
-        domObject.events.listen("change", function(event) {
-            thisScope.value = event.target.value;
-        });
 
         return domObject;
     }
