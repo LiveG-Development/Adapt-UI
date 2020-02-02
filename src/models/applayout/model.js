@@ -616,6 +616,52 @@ ui.models.appLayout.DialogContent = class extends ui.models.appLayout.Component 
 };
 
 /*
+    @name ui.models.appLayout.ButtonedContent
+
+    @param children any Children or content to include in component. Default: `[]`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription ButtonedContent class, extends `ui.models.appLayout.Component`.
+    @longDescription Has similar properties to an HTML `div` element with attribute `buttonedcontent`.
+*/
+ui.models.appLayout.ButtonedContent = class extends ui.models.appLayout.Component {
+    constructor(children = [], style = {}, attributes = {}, events = {}) {
+        super(children, style, attributes, events);
+    }
+
+    precompute(domObject) {
+        this.attributes["buttonedcontent"] = "";
+
+        return domObject;
+    }
+};
+
+/*
+    @name ui.models.appLayout.ButtonedFooter
+
+    @param children any Children or content to include in component. Default: `[]`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription ButtonedFooter class, extends `ui.models.appLayout.Component`.
+    @longDescription Has similar properties to an HTML `div` element with attribute `buttonedfooter`.
+*/
+ui.models.appLayout.ButtonedFooter = class extends ui.models.appLayout.Component {
+    constructor(children = [], style = {}, attributes = {}, events = {}) {
+        super(children, style, attributes, events);
+    }
+
+    precompute(domObject) {
+        this.attributes["buttonedfooter"] = "";
+
+        return domObject;
+    }
+};
+
+/*
     @name ui.models.appLayout.Content
 
     @param children any Children or content to include in component. Default: `[]`.

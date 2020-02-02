@@ -15,6 +15,8 @@
         "menuViewCode": "查看编程",
         "dialogTitle": "测试对话框",
         "dialogContent": "这是对对话框系统的测试。",
+        "dialogOK": "好",
+        "dialogCancel": "取消",
         "h1": "所有用户界面组件",
         "h2": "测试所有这些",
         "h3": "正如你所看到的那样",

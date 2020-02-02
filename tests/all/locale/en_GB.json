@@ -15,6 +15,8 @@
         "menuViewCode": "View code",
         "dialogTitle": "Test dialog",
         "dialogContent": "This is a test of the dialog system.",
+        "dialogOK": "OK",
+        "dialogCancel": "Cancel",
         "h1": "All UI components",
         "h2": "Testing all of them",
         "h3": "As you can see",

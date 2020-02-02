@@ -72,7 +72,35 @@ var menu = new appLayout.Menu([
 
 var dialog = new appLayout.Dialog([
     new appLayout.DialogTitle(_("dialogTitle")),
-    new appLayout.DialogContent(_("dialogContent"))
+    new appLayout.DialogContent([
+        new appLayout.ButtonedContent([
+            new Paragraph(_("dialogContent")),
+            new Label([
+                new Text(_("labelTextPrimary")),
+                new TextInput("", _("textPrimary"))
+            ]),
+            new Label([
+                new Text(_("labelTextSecondary")),
+                new TextInput("", _("textSecondary"), true)
+            ])
+        ]),
+        new appLayout.ButtonedFooter([
+            new Button(_("dialogOK"), false, {}, {}, {
+                click: function() {
+                    dialog.isOpen = false;
+
+                    ui.refresh();
+                }
+            }),
+            new Button(_("dialogCancel"), true, {}, {}, {
+                click: function() {
+                    dialog.isOpen = false;
+
+                    ui.refresh();
+                }
+            })
+        ])
+    ])
 ]);
 
 var sliderInputSet = new SliderInput(0.33, 0.01, {}, {
