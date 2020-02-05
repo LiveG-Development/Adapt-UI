@@ -478,6 +478,63 @@ ui.components.Heading = class extends ui.components.Component {
 };
 
 /*
+    @name ui.components.UnorderedList
+
+    @param children any Children or content to include in component. Default: `[]`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription UnorderedList class, extends `ui.components.Component`.
+    @longDescription Has similar properties to an HTML `ul` element.
+*/
+ui.components.UnorderedList = class extends ui.components.Component {
+    constructor(children = [], style = {}, attributes = {}, events = {}) {
+        super(children, style, attributes, events);
+
+        this.HTMLTagName = "ul";
+    }
+};
+
+/*
+    @name ui.components.OrderedList
+
+    @param children any Children or content to include in component. Default: `[]`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription OrderedList class, extends `ui.components.Component`.
+    @longDescription Has similar properties to an HTML `ol` element.
+*/
+ui.components.OrderedList = class extends ui.components.Component {
+    constructor(children = [], style = {}, attributes = {}, events = {}) {
+        super(children, style, attributes, events);
+
+        this.HTMLTagName = "ol";
+    }
+};
+
+/*
+    @name ui.components.ListItem
+
+    @param children any Children or content to include in component. Default: `[]`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription ListItem class, extends `ui.components.Component`.
+    @longDescription Has similar properties to an HTML `li` element.
+*/
+ui.components.ListItem = class extends ui.components.Component {
+    constructor(children = [], style = {}, attributes = {}, events = {}) {
+        super(children, style, attributes, events);
+
+        this.HTMLTagName = "li";
+    }
+};
+
+/*
     @name ui.components.Icon
 
     @param name string Name of icon to use.

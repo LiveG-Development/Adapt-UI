@@ -317,6 +317,17 @@ ui.screen = [
                 new TextBoldEffect(new TextItalicsEffect(_("textTestBoldItalics"))),
                 new TextCode(_("textTestTextCode"))
             ], 2),
+            new UnorderedList([
+                new ListItem(_("selectionsPasta")),
+                new ListItem(_("selectionsPizza")),
+                new ListItem(_("selectionsSteak"))
+            ]),
+            new OrderedList([
+                new ListItem(_("selectionInputLiveG")),
+                new ListItem(_("selectionInputGoogle")),
+                new ListItem(_("selectionInputMicrosoft")),
+                new ListItem(_("selectionInputApple"))
+            ]),
             new CodeBlock(_("textTestCodeBlock")),
             new MultilineTextInput("", _("textTestMultilineTextInput"))
         ]),
