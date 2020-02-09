@@ -41,6 +41,7 @@
     --secondaryUI: rgb(150, 184, 247);
     --secondaryUIText: rgb(255, 255, 255);
     --secondaryUIPress: rgb(191, 217, 245);
+    --extra: rgba(0, 0, 0, 0.5);
     --scrollbar: rgba(0, 0, 0, 0.5);
     --scrollbarHover: rgba(0, 0, 0, 0.6);
     --scrollbarPress: rgba(0, 0, 0, 0.8);
