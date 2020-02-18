@@ -1,7 +1,7 @@
 # Adapt UI
 Adapt UI, the user interface design language by LiveG Technologies.
 
-Want to see how good it looks? [Try out our live demo!](https://opensource.liveg.tech/Adapt-UI/tests/all/build/tech.liveg.opensource.allTests-0.1.0.html)
+Want to see how good it looks? [Try out our live demo!](https://opensource.liveg.tech/Adapt-UI/tests/all/build/tech.liveg.opensource.allTests-0.1.0.html) You can also see the [script behind it](https://github.com/LiveG-Development/Adapt-UI/blob/master/tests/all/script.js) too.
 
 <div align="center">
     <img src="bumper.png" alt="A preview thumbnail of Adapt UI." width="75%" align="center" />
