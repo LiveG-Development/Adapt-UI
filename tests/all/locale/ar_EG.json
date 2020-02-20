@@ -77,6 +77,14 @@
         "cTestComponents": "المكونات",
         "cTestContent": "بند",
         "cTestContentParagraph": "هذه بطاقة مصممة خصيصًا للاحتفاظ بالصورة والعنوان والفقرة والزر.",
-        "cTestContentButton": "أعرف أكثر"
+        "cTestContentButton": "أعرف أكثر",
+        "labelSidebarTest": "اختبار الشريط الجانبي",
+        "sidebarSwitch": "تبديل الشريط الجانبي",
+        "sidebarDescription": "هذا هو الشريط الجانبي الذي يمكن أن تعقد مكونات القائمة مثل الأزرار والنص.",
+        "sidebarHome": "الصفحة الرئيسية",
+        "sidebarAbout": "معلومات عنا",
+        "sidebarContact": "اتصل بنا",
+        "sidebarSignIn": "تسجيل الدخول",
+        "sidebarSignUp": "اشترك"
     }
 }

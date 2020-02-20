@@ -77,6 +77,14 @@
         "cTestComponents": "Components",
         "cTestContent": "Content",
         "cTestContentParagraph": "This is a card which is specifically designed to hold an image, a title, a paragraph and a button.",
-        "cTestContentButton": "Learn more"
+        "cTestContentButton": "Learn more",
+        "labelSidebarTest": "Sidebar test",
+        "sidebarSwitch": "Toggle sidebar",
+        "sidebarDescription": "This is a sidebar which can hold menu components such as buttons and text.",
+        "sidebarHome": "Home",
+        "sidebarAbout": "About us",
+        "sidebarContact": "Contact us",
+        "sidebarSignIn": "Sign in",
+        "sidebarSignUp": "Sign up"
     }
 }

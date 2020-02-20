@@ -21,7 +21,7 @@
     --menuTitleBackground: var(--primaryUI);
     --menuTitleText: var(--primaryUIText);
     --menuButtonHover: rgba(0, 0, 0, 0.2);
-    --menuTextText: var(--blur);
+    --menuTextText: var(--extra);
     --menuDivider: var(--menuButtonHover);
 }
 
@@ -94,6 +94,7 @@ button[actionbutton] + header {
 
 div[menu] {
     position: absolute;
+    display: none;
     top: 0;
     left: -250px;
     width: 250px;
@@ -215,6 +216,7 @@ hr[menudivider] {
 
 div[dialog] {
     position: absolute;
+    display: none;
     top: 0;
     bottom: 0;
     left: 0;
@@ -379,6 +381,19 @@ div[buttonedfooter] {
     text-align: left;
 }
 
+aside {
+    display: inline-block;
+    position: absolute;
+    width: 250px;
+    height: calc(100vh - 25px - var(--sizeMenuBarText));
+    margin: 0;
+    background-color: var(--secondaryBackground);
+    color: var(--secondaryText);
+    overflow: auto;
+    overflow: overlay;
+    z-index: -2;
+}
+
 div[appcontent] {
     position: absolute;
     height: calc(100vh - 25px - var(--sizeMenuBarText));
@@ -388,6 +403,17 @@ div[appcontent] {
     overflow: auto;
     overflow: overlay;
     z-index: -2;
+}
+
+aside ~ div[appcontent] {
+    display: inline-block;
+    left: 250px;
+    width: calc(100vw - 270px);
+}
+
+[dir="rtl"] aside ~ div[appcontent] {
+    left: unset;
+    right: 250px;
 }
 
 @media (max-width: 520px) {

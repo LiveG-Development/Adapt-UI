@@ -77,6 +77,14 @@
         "cTestComponents": "Composants",
         "cTestContent": "Contenu",
         "cTestContentParagraph": "Cette carte est spécialement conçue pour contenir une image, un titre, un paragraphe et un bouton.",
-        "cTestContentButton": "Apprendre encore plus"
+        "cTestContentButton": "Apprendre encore plus",
+        "labelSidebarTest": "Test de la barre latérale",
+        "sidebarSwitch": "Basculer la barre latérale",
+        "sidebarDescription": "Ceci est une barre latérale qui peut contenir des composants de menu tels que des boutons et du texte.",
+        "sidebarHome": "Accueil",
+        "sidebarAbout": "À propos de nous",
+        "sidebarContact": "Nous contacter",
+        "sidebarSignIn": "Se connecter",
+        "sidebarSignUp": "S'inscrire"
     }
 }

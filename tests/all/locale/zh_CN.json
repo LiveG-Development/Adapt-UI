@@ -77,6 +77,14 @@
         "cTestComponents": "组件",
         "cTestContent": "项目",
         "cTestContentParagraph": "这是一张专门用于存放图像，标题，段落和按钮的卡片。",
-        "cTestContentButton": "学到更多"
+        "cTestContentButton": "学到更多",
+        "labelSidebarTest": "侧边栏测试",
+        "sidebarSwitch": "切换侧栏",
+        "sidebarDescription": "这是一个侧边栏，可以容纳菜单组件，例如按钮和文本。",
+        "sidebarHome": "主页",
+        "sidebarAbout": "关于我们",
+        "sidebarContact": "联系我们",
+        "sidebarSignIn": "登入",
+        "sidebarSignUp": "注册"
     }
 }

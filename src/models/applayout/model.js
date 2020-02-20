@@ -93,10 +93,14 @@ appLayoutFunctions.dialogs.register = function(domObject = dom.element("div[menu
     @shortDescription Open any menu which is an instance of `ui.models.appLayout.Menu`.
 */
 appLayoutFunctions.dialogs.open = function(domObject = dom.element("div[menu]")) {
+    domObject.style.set("display", "unset");
+
     appLayoutFunctions.dialogs.focusStack.push(document.activeElement);
 
-    domObject.attribute("open").set("");
-    domObject.attribute("preclose").delete();         
+    setTimeout(function() {
+        domObject.attribute("open").set("");
+        domObject.attribute("preclose").delete(); 
+    });   
 
     domObject.children()
         .attribute("tabindex").set("0")
@@ -114,6 +118,11 @@ appLayoutFunctions.dialogs.open = function(domObject = dom.element("div[menu]"))
             .attribute("aria-hidden").delete()
         ;
     }
+
+    domObject
+        .attribute("tabindex").set("0")
+        .attribute("aria-hidden").delete()
+    ;
 
     dom.element("div[menublur], div[menutitle], div[menucontent], div[menubutton], div[menutext], hr[menudivider], div[dialogblur], div[dialogtitle], div[dialogcontent]")
         .attribute("tabindex").set("-1")
@@ -137,6 +146,10 @@ appLayoutFunctions.dialogs.open = function(domObject = dom.element("div[menu]"))
     @shortDescription Close any menu which is an instance of `ui.models.appLayout.Menu`.
 */
 appLayoutFunctions.dialogs.close = function(domObject = dom.element("div[menu]")) {
+    setTimeout(function() {
+        domObject.style.set("display", "none");
+    }, 500);
+
     if (domObject.attribute("menu").get() != null) {
         domObject.attribute("open").delete();
     }
@@ -163,6 +176,11 @@ appLayoutFunctions.dialogs.close = function(domObject = dom.element("div[menu]")
             .attribute("aria-hidden").set("true")
         ;
     }
+
+    domObject
+        .attribute("tabindex").set("-1")
+        .attribute("aria-hidden").set("true")
+    ;
 
     dom.element("div[menublur], div[menutitle], div[menucontent], div[menubutton], div[menutext], hr[menudivider], div[dialogblur], div[dialogtitle], div[dialogcontent]").attribute("aria-hidden").set("true");
 
@@ -363,8 +381,12 @@ ui.models.appLayout.Menu = class extends ui.models.appLayout.Component {
 
         if (this._isDetectedOpen) {
             this.attributes["open"] = "";
+            
+            domObject.style.set("display", "unset");
         } else {
             delete this.attributes["open"];
+
+            domObject.style.set("display", "none");
         }
 
         // We want this section to run after this method, so we run it in the next available frame
@@ -450,8 +472,6 @@ ui.models.appLayout.MenuButton = class extends ui.models.appLayout.Component {
 
     precompute(domObject) {
         this.attributes["menubutton"] = "";
-        this.attributes["tabindex"] = "-1";
-        this.attributes["aria-hidden"] = "true";
 
         return domObject;
     }
@@ -548,8 +568,12 @@ ui.models.appLayout.Dialog = class extends ui.models.appLayout.Component {
 
         if (this._isDetectedOpen) {
             this.attributes["open"] = "";
+
+            domObject.style.set("display", "unset");
         } else {
             delete this.attributes["open"];
+
+            domObject.style.set("display", "none");
         }
 
         // We want this section to run after this method, so we run it in the next available frame
@@ -660,6 +684,25 @@ ui.models.appLayout.ButtonedFooter = class extends ui.models.appLayout.Component
         return domObject;
     }
 };
+
+/*
+    @name ui.models.appLayout.Sidebar
+
+    @param children any Children or content to include in component. Default: `[]`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription Sidebar class, extends `ui.models.appLayout.Sidebar`.
+    @longDescription Has similar properties to an HTML `aside` element.
+*/
+ui.models.appLayout.Sidebar = class extends ui.models.appLayout.Component {
+    constructor(children = [], style = {}, attributes = {}, events = {}) {
+        super(children, style, attributes, events);
+
+        this.HTMLTagName = "aside";
+    }
+}
 
 /*
     @name ui.models.appLayout.Content
