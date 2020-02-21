@@ -426,8 +426,8 @@ aside ~ div[appcontent] {
 
     aside ~ div[appcontent] {
         top: calc(150px + 42px); /* 42px to factor in header */
-        left: unset;
-        right: unset;
+        left: unset!important;
+        right: unset!important;
         width: unset;
         height: calc(100vh - 150px - 42px);
     }
