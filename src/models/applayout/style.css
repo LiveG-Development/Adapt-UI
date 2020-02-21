@@ -416,6 +416,23 @@ aside ~ div[appcontent] {
     right: 250px;
 }
 
+/* Media queries */
+
+@media (max-width: 600px) {
+    aside {
+        width: 100vw;
+        height: 150px;
+    }
+
+    aside ~ div[appcontent] {
+        top: calc(150px + 42px); /* 42px to factor in header */
+        left: unset;
+        right: unset;
+        width: unset;
+        height: calc(100vh - 150px - 42px);
+    }
+}
+
 @media (max-width: 520px) {
     div[dialog] {
         width: calc(100vw - 20px);

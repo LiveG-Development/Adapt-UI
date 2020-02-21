@@ -797,6 +797,7 @@ button:focus, input:focus, textarea:focus, select:focus {
 }
 
 /* Animation keyframes */
+
 @-moz-keyframes spinner {
     0% {
         -moz-transform: rotate(0deg);
