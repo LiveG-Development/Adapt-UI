@@ -215,6 +215,7 @@ ui.theme = {
     scrollbar: new ui.colour.RGBA(0, 0, 0, 0.5),
     scrollbarHover: new ui.colour.RGBA(0, 0, 0, 0.6),
     scrollbarPress: new ui.colour.RGBA(0, 0, 0, 0.8),
+    extra: new ui.colour.RGBA(0, 0, 0, 0.5),
     blur: new ui.colour.RGBA(0, 0, 0, 0.5)
 };
 
