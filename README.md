@@ -1,6 +1,8 @@
 # Adapt UI
 Adapt UI, the user interface design language by LiveG Technologies.
 
+Adapt UI is a library that allows developers to easily create stylish apps and sites using pre-built components an models. The library provides theming, localisation support, accessibility support and more!
+
 Want to see how good it looks? [Try out our live demo!](https://opensource.liveg.tech/Adapt-UI/tests/all/build/tech.liveg.opensource.allTests-0.1.0.html) You can also see the [script behind it](https://github.com/LiveG-Development/Adapt-UI/blob/master/tests/all/script.js) too.
 
 <div align="center">
