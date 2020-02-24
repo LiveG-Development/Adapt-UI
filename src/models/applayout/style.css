@@ -420,16 +420,33 @@ aside ~ div[appcontent] {
 
 @media (max-width: 600px) {
     aside {
+        display: flex;
+        bottom: 0;
         width: 100vw;
-        height: 150px;
+        height: 50px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    aside button[menubutton] {
+        text-align: center!important;
+    }
+
+    aside div[menutext], aside hr[menudivider] {
+        display: none!important;
+    }
+
+    aside button[menubutton] {
+        min-width: 100px;
     }
 
     aside ~ div[appcontent] {
-        top: calc(150px + 42px); /* 42px to factor in header */
         left: unset!important;
         right: unset!important;
         width: unset;
-        height: calc(100vh - 150px - 42px);
+        height: calc(100vh - 50px - 25px - var(--sizeMenuBarText));
     }
 }
 
