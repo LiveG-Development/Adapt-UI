@@ -43,7 +43,16 @@ var ui = {
 
                 ui.refresh();
             });
-        }
+        },
+
+        /*
+            @name ui.events.resized
+
+            @param callback function Callback function to call when screen has resized.
+
+            @shortDescription Call callback function when screen has resized.
+        */
+       resized: function() {}
     },
 
     utilities: {},
@@ -1255,5 +1264,12 @@ ui.components.Pill = class extends ui.components.Component {
         return domObject;
     }
 };
+
+// Event binding
+
+window.addEventListener("resize", function() {
+    // We're not passing any arguments here, the user should instead use `ui.utilities.getScreenSize` to get size information
+    ui.events.resized();
+});
 
 ui.events.loaded(function() {});

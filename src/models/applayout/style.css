@@ -430,7 +430,7 @@ aside ~ div[appcontent] {
         text-align: center;
     }
 
-    aside button[menubutton] {
+    aside button[menubutton], [dir="rtl"] aside button[menubutton] {
         text-align: center!important;
     }
 

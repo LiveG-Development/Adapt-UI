@@ -107,7 +107,6 @@ var sidebar = new HTML("");
 
 var sidebarSwitch = new ToggleSwitch("sidebar", false, {}, {}, {
     change: function() {
-        console.log(sidebarSwitch.selected);
         if (sidebarSwitch.selected) {
             sidebar = new appLayout.Sidebar([
                 new appLayout.MenuText(_("sidebarDescription")),

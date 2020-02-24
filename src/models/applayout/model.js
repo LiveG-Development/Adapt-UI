@@ -702,7 +702,7 @@ ui.models.appLayout.Sidebar = class extends ui.models.appLayout.Component {
 
         this.HTMLTagName = "aside";
     }
-}
+};
 
 /*
     @name ui.models.appLayout.Content
