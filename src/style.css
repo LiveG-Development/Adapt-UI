@@ -45,17 +45,19 @@
     --scrollbar: rgba(0, 0, 0, 0.5);
     --scrollbarHover: rgba(0, 0, 0, 0.6);
     --scrollbarPress: rgba(0, 0, 0, 0.8);
-    --blur:rgba(0, 0, 0, 0.5);
+    --blur: rgba(0, 0, 0, 0.5);
 }
 
 html, body {
     position: absolute;
     top: 0;
-    font-family: var(--fontCircumference);
-    font-size: 16px;
     margin: 0;
     width: 100%;
     min-height: 100vh;
+    background-color: var(--primaryBackground);
+    color: var(--primaryText);
+    font-family: var(--fontCircumference);
+    font-size: 16px;
     user-select: none;
 }
 
@@ -885,18 +887,19 @@ button:focus, input:focus, textarea:focus, select:focus {
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --primaryBackground: rgb(33, 33, 33);
-        --primaryText: rgb(255, 255, 255);
-        --secondaryBackground: rgb(77, 77, 77);
-        --secondaryText: rgb(255, 255, 255);
-        --scrollbar: rgba(255, 255, 255, 0.5);
-        --scrollbarHover: rgba(255, 255, 255, 0.6);
-        --scrollbarPress: rgba(255, 255, 255, 0.8);
-        --blur: rgba(255, 255, 255, 0.5);
+        --primaryBackground: rgb(33, 33, 33)!important;
+        --primaryText: rgb(255, 255, 255)!important;
+        --secondaryBackground: rgb(77, 77, 77)!important;
+        --secondaryText: rgb(255, 255, 255)!important;
+        --extra: rgba(255, 255, 255, 0.5)!important;
+        --scrollbar: rgba(255, 255, 255, 0.5)!important;
+        --scrollbarHover: rgba(255, 255, 255, 0.6)!important;
+        --scrollbarPress: rgba(255, 255, 255, 0.8)!important;
+        --blur: rgba(255, 255, 255, 0.5)!important;
     }
 }
 
-/* Browser specific fixes */
+/* Browser-specific fixes */
 
 @-moz-document url-prefix() {
     input[type="checkbox"][role="switch"]::after {
