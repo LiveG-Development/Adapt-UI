@@ -456,6 +456,7 @@ ui.models.appLayout.MenuContent = class extends ui.models.appLayout.Component {
     @name ui.models.appLayout.MenuButton
 
     @param children any Children or content to include in component. Default: `[]`.
+    @param selected Whether to make the button selected. Use `true` to enable. Default: `false`.
     @param style object Styling to use on component. Default: `{}`.
     @param attributes object HTML attributes to use on component. Default: `{}`.
     @param events object Events to listen to on component. Default: `{}`.
@@ -464,14 +465,22 @@ ui.models.appLayout.MenuContent = class extends ui.models.appLayout.Component {
     @longDescription Has similar properties to an HTML `button` element with attribute `menubutton`.
 */
 ui.models.appLayout.MenuButton = class extends ui.models.appLayout.Component {
-    constructor(children = [], style = {}, attributes = {}, events = {}) {
+    constructor(children = [], selected = false, style = {}, attributes = {}, events = {}) {
         super(children, style, attributes, events);
 
         this.HTMLTagName = "button";
+
+        this.selected = selected;
     }
 
     precompute(domObject) {
         this.attributes["menubutton"] = "";
+
+        if (this.selected) {
+            this.attributes["selected"] = "";
+        } else {
+            delete this.attributes["selected"];
+        }
 
         return domObject;
     }

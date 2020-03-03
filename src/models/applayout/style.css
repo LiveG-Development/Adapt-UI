@@ -21,6 +21,7 @@
     --menuTitleBackground: var(--primaryUI);
     --menuTitleText: var(--primaryUIText);
     --menuButtonHover: rgba(0, 0, 0, 0.2);
+    --menuButtonSelected: rgba(0, 0, 0, 0.1);
     --menuTextText: var(--extra);
     --menuDivider: var(--menuButtonHover);
 }
@@ -198,6 +199,14 @@ button[menubutton], div[menutext] {
 }
 
 button[menubutton]:hover {
+    background-color: var(--menuButtonHover)!important;
+}
+
+button[menubutton][selected] {
+    background-color: var(--menuButtonSelected)!important;
+}
+
+button[menubutton][selected]:hover {
     background-color: var(--menuButtonHover)!important;
 }
 

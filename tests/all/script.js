@@ -52,11 +52,12 @@ var menu = new appLayout.Menu([
     new appLayout.MenuTitle(_("menuTitle")),
     new appLayout.MenuContent([
         new appLayout.MenuText(_("menuDescription")),
+        new appLayout.MenuButton(_("menuHome"), true),
         new appLayout.MenuButton(_("menuInstall")),
         new appLayout.MenuButton(_("menuLearnMore")),
         new appLayout.MenuButton(_("menuQuestion")),
         new appLayout.MenuDivider(),
-        new appLayout.MenuButton(_("menuViewCode"), {}, {}, {
+        new appLayout.MenuButton(_("menuViewCode"), false, {}, {}, {
             "click": function() {
                 menu.isOpen = false;
 
@@ -110,7 +111,7 @@ var sidebarSwitch = new ToggleSwitch("sidebar", false, {}, {}, {
         if (sidebarSwitch.selected) {
             sidebar = new appLayout.Sidebar([
                 new appLayout.MenuText(_("sidebarDescription")),
-                new appLayout.MenuButton(_("sidebarHome")),
+                new appLayout.MenuButton(_("sidebarHome"), true),
                 new appLayout.MenuButton(_("sidebarAbout")),
                 new appLayout.MenuButton(_("sidebarContact")),
                 new appLayout.MenuDivider(),
