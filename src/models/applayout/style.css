@@ -21,6 +21,7 @@
     --menuTitleBackground: var(--primaryUI);
     --menuTitleText: var(--primaryUIText);
     --menuButtonHover: rgba(0, 0, 0, 0.2);
+    --menuButtonSelected: rgba(0, 0, 0, 0.1);
     --menuTextText: var(--extra);
     --menuDivider: var(--menuButtonHover);
 }
@@ -198,6 +199,14 @@ button[menubutton], div[menutext] {
 }
 
 button[menubutton]:hover {
+    background-color: var(--menuButtonHover)!important;
+}
+
+button[menubutton][selected] {
+    background-color: var(--menuButtonSelected)!important;
+}
+
+button[menubutton][selected]:hover {
     background-color: var(--menuButtonHover)!important;
 }
 
@@ -385,7 +394,7 @@ aside {
     display: inline-block;
     position: absolute;
     width: 250px;
-    height: calc(100vh - 25px - var(--sizeMenuBarText));
+    height: 100vh;
     margin: 0;
     background-color: var(--secondaryBackground);
     color: var(--secondaryText);
@@ -394,15 +403,23 @@ aside {
     z-index: -2;
 }
 
+header ~ aside {
+    height: calc(100vh - 25px - var(--sizeMenuBarText));
+}
+
 div[appcontent] {
     position: absolute;
-    height: calc(100vh - 25px - var(--sizeMenuBarText));
+    height: 100vh;
     margin: 0;
     padding-left: 10px;
     padding-right: 10px;
     overflow: auto;
     overflow: overlay;
     z-index: -2;
+}
+
+header ~ div[appcontent] {
+    height: calc(100vh - 25px - var(--sizeMenuBarText));
 }
 
 aside ~ div[appcontent] {
@@ -446,6 +463,10 @@ aside ~ div[appcontent] {
         left: unset!important;
         right: unset!important;
         width: unset;
+        height: calc(100vh - 50px);
+    }
+
+    header ~ aside ~ div[appcontent] {
         height: calc(100vh - 50px - 25px - var(--sizeMenuBarText));
     }
 }
