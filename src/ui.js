@@ -548,7 +548,7 @@ ui.components.ListItem = class extends ui.components.Component {
     @name ui.components.Icon
 
     @param name string Name of icon to use.
-    @param description string Description of icon for accessibility. Default: `""`.
+    @param description string Description of icon for accessibility. If blank, the icon will not be read out by screen readers. Default: `""`.
 
     @shortDescription Icon class, extends `ui.components.Component`.
     @longDescription Uses icons from from the Clarity icon set. An `i` element is generated.
@@ -566,10 +566,13 @@ ui.components.Icon = class extends ui.components.Component {
     generateDOMElement() {
         var currentDOMElement = dom.new(this.HTMLTagName);
 
-        currentDOMElement
-            .text.set(this.name)
-            .attribute("aria-label").set(this.description)
-        ;
+        currentDOMElement.text.set(this.name);
+
+        if (this.description != "") {
+            currentDOMElement.attribute("aria-label").set(this.description);
+        } else {
+            currentDOMElement.attribute("aria-hidden").set("true");
+        }
 
         return currentDOMElement;
     }
@@ -849,6 +852,7 @@ ui.components.PasswordInput = class extends ui.components.TextInput {
 /*
     @name ui.components.FormattedInput
 
+    @param format number Format that input should be in. Default: `ui.enums.formats.TEXT`.
     @param value string Initial value to store in input. Default: `""`.
     @param placeholder string Value to show in input if it is empty. Default: `""`.
     @param secondary boolean Whether to make the input secondary. Use `true` to enable. Default: `false`.
