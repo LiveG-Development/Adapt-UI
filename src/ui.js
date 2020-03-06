@@ -852,7 +852,7 @@ ui.components.PasswordInput = class extends ui.components.TextInput {
 /*
     @name ui.components.FormattedInput
 
-    @param format number Format that input should be in. Default: `ui.enums.formats.TEXT`.
+    @param format number Format that input should be in, chosen from the `ui.enums.formats` enum. Default: `ui.enums.formats.TEXT`.
     @param value string Initial value to store in input. Default: `""`.
     @param placeholder string Value to show in input if it is empty. Default: `""`.
     @param secondary boolean Whether to make the input secondary. Use `true` to enable. Default: `false`.
