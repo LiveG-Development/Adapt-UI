@@ -355,7 +355,15 @@ function setScreen() {
                     new ListItem(_("selectionInputApple"))
                 ]),
                 new CodeBlock(_("textTestCodeBlock")),
-                new MultilineTextInput("", _("textTestMultilineTextInput"))
+                new MultilineTextInput("", _("textTestMultilineTextInput")),
+                new Accordion([
+                    new AccordionSummary(_("textTestAccordionOpen")),
+                    new Paragraph(_("textTestAccordionOpenContent"))
+                ], true),
+                new Accordion([
+                    new AccordionSummary(_("textTestAccordionClosed")),
+                    new Paragraph(_("textTestAccordionClosedContent"))
+                ])
             ]),
             new Container([
                 new Heading(_("labelCardTest"), 2),

@@ -1269,6 +1269,63 @@ ui.components.Pill = class extends ui.components.Component {
     }
 };
 
+/*
+    @name ui.components.Accordion
+
+    @param children any Children or content to include in component. The first child should be a `ui.components.AccordonSummary` component. Default: `[]`.
+    @param open boolean Whether to make the accordion open. Use `true` to enable. Default: `false`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription Accordion class, extends `ui.components.Component`.
+    @longDescription Has similar properties to an HTML `details` element.
+*/
+ui.components.Accordion = class extends ui.components.Component {
+    constructor(children = [], open = false, style = {}, attributes = {}, events = {}) {
+        super(children, style, attributes, events);
+
+        this.HTMLTagName = "details";
+
+        this.open = open;
+    }
+
+    precompute(domObject) {
+        if (this.open) {
+            this.attributes["open"] = this.open;
+        } else {
+            delete this.attributes["open"];
+        }
+
+        var thisScope = this;
+
+        domObject.events.listen("toggle", function(event) {
+            thisScope.open = event.target.open;
+        });
+
+        return domObject;
+    }
+};
+
+/*
+    @name ui.components.AccordionSummary
+
+    @param children any Children or content to include in component. Default: `[]`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription AccordionSummary class, extends `ui.components.Component`.
+    @longDescription Has similar properties to an HTML `summary` element.
+*/
+ui.components.AccordionSummary = class extends ui.components.Component {
+    constructor(children = [], style = {}, attributes = {}, events = {}) {
+        super(children, style, attributes, events);
+
+        this.HTMLTagName = "summary";
+    }
+};
+
 // Event binding
 
 window.addEventListener("resize", function() {
