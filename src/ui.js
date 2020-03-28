@@ -1291,17 +1291,17 @@ ui.components.Accordion = class extends ui.components.Component {
     }
 
     precompute(domObject) {
-        if (this.open) {
-            this.attributes["open"] = this.open;
-        } else {
-            delete this.attributes["open"];
-        }
-
         var thisScope = this;
 
         domObject.events.listen("toggle", function(event) {
             thisScope.open = event.target.open;
         });
+        
+        if (this.open) {
+            this.attributes["open"] = this.open;
+        } else {
+            delete this.attributes["open"];
+        }
 
         return domObject;
     }

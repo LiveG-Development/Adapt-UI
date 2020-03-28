@@ -124,12 +124,17 @@ appLayoutFunctions.dialogs.open = function(domObject = dom.element("div[menu]"))
         .attribute("aria-hidden").delete()
     ;
 
-    dom.element("div[menublur], div[menutitle], div[menucontent], div[menubutton], div[menutext], hr[menudivider], div[dialogblur], div[dialogtitle], div[dialogcontent]")
+    dom.element("button[actionbutton], header, div[appcontent]")
         .attribute("tabindex").set("-1")
-        .attribute("aria-hidden").delete()
+        .attribute("aria-hidden").set("true")
     ;
 
-    dom.element("div[dialogtitle] *, div[dialogcontent] *").attribute("tabindex").delete();
+    setTimeout(function() {
+        dom.element("div[menublur], div[menutitle], div[menucontent], div[menutitle] *, div[menucontent] *, div[dialogblur], div[dialogtitle], div[dialogcontent], div[dialogtitle] *, div[dialogcontent] *")
+            .attribute("tabindex").delete()
+            .attribute("aria-hidden").delete()
+        ;
+    }, 500);
 
     try {
         domObject.children(3).reference[0].focus();
@@ -166,11 +171,21 @@ appLayoutFunctions.dialogs.close = function(domObject = dom.element("div[menu]")
     domObject.children().attribute("aria-hidden").set("true");
 
     try {
+        domObject.children(3)
+            .attribute("tabindex").set("-1")
+            .attribute("aria-hidden").set("true")
+        ;
+
         domObject.children(3).children()
             .attribute("tabindex").set("-1")
             .attribute("aria-hidden").set("true")
         ;
     } catch (error) {
+        domObject.children(1)
+            .attribute("tabindex").set("-1")
+            .attribute("aria-hidden").set("true")
+        ;
+
         domObject.children(1).children()
             .attribute("tabindex").set("-1")
             .attribute("aria-hidden").set("true")
@@ -183,6 +198,11 @@ appLayoutFunctions.dialogs.close = function(domObject = dom.element("div[menu]")
     ;
 
     dom.element("div[menublur], div[menutitle], div[menucontent], div[menubutton], div[menutext], hr[menudivider], div[dialogblur], div[dialogtitle], div[dialogcontent]").attribute("aria-hidden").set("true");
+
+    dom.element("button[actionbutton], header, div[appcontent]")
+        .attribute("tabindex").delete()
+        .attribute("aria-hidden").delete()
+    ;
 
     appLayoutFunctions.dialogs.focusStack.pop().focus();
 };
