@@ -359,6 +359,11 @@ div[dialogcontent] label input:not([type="checkbox"]):not([type="radio"]), div[d
     flex: 1;
 }
 
+div[dialogcontent] label input[type="checkbox"], div[dialogcontent] label input[type="radio"], div[dialogcontent] label input[type="checkbox"][role="switch"] {
+    top: unset;
+    bottom: 2px;
+}
+
 div[dialog][open] > div[dialogcontent] {
     opacity: 1;
 }
