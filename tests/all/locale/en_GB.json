@@ -34,6 +34,7 @@
         "textSecondary": "Looking camouflaged!",
         "textSecondaryButton": "Do that other action",
         "labelSelectionInput": "Selection input",
+        "textNavigationButton": "Find out more",
         "labelSliderInput": "Slider input",
         "labelProgressBarResult": "Progress bar result",
         "labelSpinnerLoader": "Spinner loader (below)",

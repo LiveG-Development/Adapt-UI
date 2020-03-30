@@ -34,6 +34,7 @@
         "textSecondary": "Je cherche camouflé !",
         "textSecondaryButton": "Faire cette autre action",
         "labelSelectionInput": "Entrée de sélection",
+        "textNavigationButton": "En savoir plus",
         "labelSliderInput": "Entrée du curseur",
         "labelProgressBarResult": "Résultat de la barre de progression",
         "labelSpinnerLoader": "Chargeur spinner (ci-dessous)",

@@ -236,6 +236,7 @@ div[dialog] {
     z-index: 1;
     border-radius: 10px;
     opacity: 0;
+    outline: none!important;
 }
 
 div[dialog]:not([open]) {

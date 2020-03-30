@@ -225,7 +225,8 @@ function setScreen() {
                         "liveg": _("selectionInputLiveG"),
                         "microsoft": _("selectionInputMicrosoft"),
                         "google": _("selectionInputGoogle")
-                    }, "liveg")
+                    }, "liveg"),
+                    new NavigationButton(_("textNavigationButton"))
                 ]),
                 new Label([
                     new Text(_("labelSliderInput")),
@@ -372,7 +373,13 @@ function setScreen() {
                     new Label([
                         new Text(_("labelTextPrimary")),
                         new TextInput("", _("textPrimary")),
-                        new Button(_("textPrimaryButton"))
+                        new Button(_("textPrimaryButton"), false, {}, {}, {
+                            click: function() {
+                                dialog.isOpen = true;
+    
+                                ui.refresh();
+                            }
+                        })
                     ]),
                     new Label([
                         new Text(_("labelTextSecondary")),
@@ -386,7 +393,8 @@ function setScreen() {
                             "liveg": _("selectionInputLiveG"),
                             "microsoft": _("selectionInputMicrosoft"),
                             "google": _("selectionInputGoogle")
-                        }, "liveg")
+                        }, "liveg"),
+                        new NavigationButton(_("textNavigationButton"))
                     ]),
                     new Label([
                         new Text(_("labelSliderInput")),

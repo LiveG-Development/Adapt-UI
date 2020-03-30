@@ -497,6 +497,21 @@ button[secondary]:not([role="tab"]):hover {
     background-color: var(--secondaryUIPress);
 }
 
+button[navigation]:not([role="tab"]) {
+    background-color: transparent;
+    color: var(--primaryUI);
+    cursor: pointer;
+}
+
+button[navigation]:not([role="tab"]):hover {
+    color: var(--secondaryUI);
+}
+
+button[navigation]:not([role="tab"]) icon {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
 button:not([role="tab"]):disabled, button:not([role="tab"]):disabled:hover {
     background-color: var(--secondaryBackground);
     color: var(--secondaryText);

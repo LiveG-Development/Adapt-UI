@@ -770,6 +770,48 @@ ui.components.Button = class extends ui.components.Component {
 };
 
 /*
+    @name ui.components.NavigationButton
+
+    @param children any Children or content to include in component. Default: `[]`.
+    @param icon string Name of icon to use at end of navigation button. Use `""` to default to pointer that adapts to different mirroring directions. Default: `""`.
+    @param style object Styling to use on component. Default: `{}`.
+    @param attributes object HTML attributes to use on component. Default: `{}`.
+    @param events object Events to listen to on component. Default: `{}`.
+
+    @shortDescription NavigationButton class, extends `ui.components.Button`.
+    @longDescription Has similar properties to an HTML `button` element with attribute `navigation`.
+*/
+ui.components.NavigationButton = class extends ui.components.Button {
+    constructor(children = [], icon = "", style = {}, attributes = {}, events = {}) {
+        super(children, false, style, attributes, events);
+
+        this.HTMLTagName = "button";
+
+        this.icon = icon;
+    }
+
+    precompute(domObject) {
+        super.precompute(domObject);
+
+        this.attributes["navigation"] = "true";
+
+        return domObject;
+    }
+
+    generateDOMElement() {
+        var currentDOMElement = super.generateDOMElement();
+        var iconDOMElement = dom.new("icon");
+
+        iconDOMElement.text.set(this.icon == "" ? (ui.mirroringDirection == "rtl" ? "arrow_left" : "arrow_right") : this.icon);
+        iconDOMElement.attribute("aria-hidden").set("true");
+
+        currentDOMElement.newChild(iconDOMElement);
+
+        return currentDOMElement;
+    }
+};
+
+/*
     @name ui.components.TextInput
 
     @param value string Initial value to store in input. Default: `""`.
@@ -1296,7 +1338,7 @@ ui.components.Accordion = class extends ui.components.Component {
         domObject.events.listen("toggle", function(event) {
             thisScope.open = event.target.open;
         });
-        
+
         if (this.open) {
             this.attributes["open"] = this.open;
         } else {
