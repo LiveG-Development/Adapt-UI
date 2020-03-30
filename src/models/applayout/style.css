@@ -355,7 +355,7 @@ div [dialogcontent] label > span {
     margin-bottom: auto;
 }
 
-div[dialogcontent] label input, div[dialogcontent] label select, div[dialogcontent] label progress {
+div[dialogcontent] label input:not([type="checkbox"]):not([type="radio"]), div[dialogcontent] label select, div[dialogcontent] label progress {
     flex: 1;
 }
 
