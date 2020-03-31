@@ -60,7 +60,12 @@ appLayoutFunctions.dialogs.register = function(domObject = dom.element("div[menu
     });
 
     setInterval(function() {
-        if (!domObject.reference[0].contains(document.activeElement) && domObject.attribute("open").get() != null && document.activeElement != document.body) {
+        if (
+            !domObject.reference[0].contains(document.activeElement) &&
+            domObject.attribute("open").get() != null &&
+            document.activeElement != document.body &&
+            dom.element("div[dialog][open], div[menu][open]").reference[dom.element("div[dialog][open], div[menu][open]").reference.length - 1] == domObject.reference[0] // Make sure that 2 or more open dialogs don't fight for focus
+        ) {
             domObject.children(1).reference[0].focus();
         }
     });
@@ -163,7 +168,7 @@ appLayoutFunctions.dialogs.close = function(domObject = dom.element("div[menu]")
 
     setTimeout(function() {
         domObject.attribute("open").delete();
-        domObject.attribute("preclose").delete();         
+        domObject.attribute("preclose").delete();
     }, 500);
 
 
