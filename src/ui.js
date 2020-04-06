@@ -56,6 +56,8 @@ var ui = {
     },
 
     utilities: {},
+    root: null,
+    controlsWholeDocument: true,
 
     /*
         @name ui.refresh
@@ -63,6 +65,10 @@ var ui = {
         @shortDescription Regenerate the DOM to reflect the UI layout in `ui.screen`.
     */
     refresh: function() {
+        if (ui.root == null) {
+            ui.root = dom.element();
+        }
+
         for (var model in ui.models) {
             if (typeof(ui.models[model]._preRefresh) == "function") {
                 ui.models[model]._preRefresh();
@@ -77,40 +83,42 @@ var ui = {
             }
         }
 
-        dom.element().children().delete();
-        dom.element().attribute("dir").set(ui.mirroringDirection);
+        ui.root.children().delete();
+        ui.root.attribute("dir").set(ui.mirroringDirection);
         
         if (ui.language.length < 2) {
             throw "Invalid UI language"
         }
 
         if (["zh_HK", "zh_MO", "zh_TW"].includes(ui.language)) {
-            dom.element().attribute("lang").set("zh-Hant");
+            ui.root.attribute("lang").set("zh-Hant");
         } else if (ui.language.substring(0, 2) == "zh") {
-            dom.element().attribute("lang").set("zh-Hans");
+            ui.root.attribute("lang").set("zh-Hans");
         } else {
-            dom.element().attribute("lang").set(ui.language.substring(0, 2));
+            ui.root.attribute("lang").set(ui.language.substring(0, 2));
         }
 
-        if (_manifest != undefined && _manifest.name != undefined) {
-            if (ui.language in _manifest.name) {
-                dom.element("title").html.set(_manifest.name[ui.language]);
-            } else if (_manifest.defaultLocale in _manifest.name) {
-                dom.element("title").html.set(_manifest.name[_manifest.defaultLocale]);
-            } else {
-                throw "Invalid manifest name specification";
+        if (ui.controlsWholeDocument) {
+            if (_manifest != undefined && _manifest.name != undefined) {
+                if (ui.language in _manifest.name) {
+                    dom.element("title").html.set(_manifest.name[ui.language]);
+                } else if (_manifest.defaultLocale in _manifest.name) {
+                    dom.element("title").html.set(_manifest.name[_manifest.defaultLocale]);
+                } else {
+                    throw "Invalid manifest name specification";
+                }
             }
         }
 
         for (var i = 0; i < ui.screen.length; i++) {
-            dom.element().newChild(ui.screen[i].generateDOMElement());
+            ui.root.newChild(ui.screen[i].generateDOMElement());
         }
 
-        dom.element().events.listen("keydown", function(event) {
+        ui.root.events.listen("keydown", function(event) {
             if (event.keyCode == 9) {
                 dom.element("style[data-ui-helper='focus']").delete();
 
-                dom.element().newChild(
+                ui.root.newChild(
                     dom.new("style")
                         .attribute("data-ui-helper").set("focus")
                         .html.set(`
@@ -122,7 +130,7 @@ var ui = {
             }
         });
 
-        dom.element().events.listen("click", function() {
+        ui.root.events.listen("click", function() {
             dom.element("style[data-ui-helper='focus']").delete();
         });
 
