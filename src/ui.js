@@ -229,10 +229,15 @@ ui.theme = {
     secondaryUI: new ui.colour.RGBA(150, 184, 247),
     secondaryUIText: new ui.colour.RGBA(255, 255, 255),
     secondaryUIPress: new ui.colour.RGBA(180, 196, 224),
+    dangerousUI: new ui.colour.RGBA(224, 102, 102),
+    dangerousUIText: new ui.colour.RGBA(255, 255, 255),
+    dangerousUIPress: new ui.colour.RGBA(234, 153, 153),
+    extra: new ui.colour.RGBA(0, 0, 0, 0.5),
     scrollbar: new ui.colour.RGBA(0, 0, 0, 0.5),
     scrollbarHover: new ui.colour.RGBA(0, 0, 0, 0.6),
     scrollbarPress: new ui.colour.RGBA(0, 0, 0, 0.8),
-    extra: new ui.colour.RGBA(0, 0, 0, 0.5),
+    accordionSummary: new ui.colour.RGBA(0, 0, 0, 0.05),
+    accordionSummaryHover: new ui.colour.RGBA(0, 0, 0, 0.1),
     blur: new ui.colour.RGBA(0, 0, 0, 0.5)
 };
 

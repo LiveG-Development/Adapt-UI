@@ -41,6 +41,9 @@
     --secondaryUI: rgb(150, 184, 247);
     --secondaryUIText: rgb(255, 255, 255);
     --secondaryUIPress: rgb(191, 217, 245);
+    --dangerousUI: rgb(224, 102, 102);
+    --dangerousUIText: rgb(255, 255, 255);
+    --dangerousUIPress: rgb(234, 153, 153);
     --extra: rgba(0, 0, 0, 0.5);
     --scrollbar: rgba(0, 0, 0, 0.5);
     --scrollbarHover: rgba(0, 0, 0, 0.6);
@@ -397,6 +400,10 @@ p {
     font-size: var(--sizeP);
 }
 
+p[error] {
+    color: var(--dangerousUI);
+}
+
 icon {
     font-family: var(--fontClarity);
     font-weight: normal;
@@ -497,6 +504,15 @@ button[secondary]:not([role="tab"]):hover {
     background-color: var(--secondaryUIPress);
 }
 
+button[dangerous]:not([role="tab"]) {
+    background-color: var(--dangerousUI);
+    color: var(--dangerousUIText);
+}
+
+button[dangerous]:not([role="tab"]):hover {
+    background-color: var(--dangerousUIPress);
+}
+
 button[navigation]:not([role="tab"]) {
     background-color: transparent;
     color: var(--primaryUI);
@@ -556,6 +572,10 @@ input, select, progress {
 input[secondary], select[secondary] {
     background-color: var(--primaryBackground);
     color: var(--primaryText);
+}
+
+input[error]:not([type="checkbox"]):not([type="radio"]):not([type="range"]), select[error] {
+    box-shadow: inset 0px -1005px 0px -1000px var(--dangerousUI);
 }
 
 input[type="number"] {
