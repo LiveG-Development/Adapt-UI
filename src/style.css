@@ -420,6 +420,10 @@ icon {
     font-feature-settings: liga;
 }
 
+[dir="rtl"] icon[mirrorable] {
+    transform: rotateY(180deg);
+}
+
 a {
     color: var(--primaryUI);
     text-decoration: underline;

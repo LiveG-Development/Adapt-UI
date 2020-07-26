@@ -562,18 +562,20 @@ ui.components.ListItem = class extends ui.components.Component {
 
     @param name string Name of icon to use.
     @param description string Description of icon for accessibility. If blank, the icon will not be read out by screen readers. Default: `""`.
+    @param mirrorable boolean Whether the icon should be mirrored for RTL languages. Default: `false`.
 
     @shortDescription Icon class, extends `ui.components.Component`.
     @longDescription Uses icons from from the Clarity icon set. An `i` element is generated.
 */
 ui.components.Icon = class extends ui.components.Component {
-    constructor(name, description = "") {
+    constructor(name, description = "", mirrorable = false) {
         super();
 
         this.HTMLTagName = "icon";
 
         this.name = name;
         this.description = description;
+        this.mirrorable = mirrorable;
     }
 
     generateDOMElement() {
@@ -585,6 +587,12 @@ ui.components.Icon = class extends ui.components.Component {
             currentDOMElement.attribute("aria-label").set(this.description);
         } else {
             currentDOMElement.attribute("aria-hidden").set("true");
+        }
+
+        if (this.mirrorable) {
+            this.attributes["mirrorable"] = this.mirrorable;
+        } else {
+            delete this.attributes["mirrorable"];
         }
 
         return currentDOMElement;
