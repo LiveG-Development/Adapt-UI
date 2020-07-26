@@ -590,9 +590,9 @@ ui.components.Icon = class extends ui.components.Component {
         }
 
         if (this.mirrorable) {
-            this.attributes["mirrorable"] = this.mirrorable;
+            currentDOMElement.attribute("mirrorable").set(this.mirrorable);
         } else {
-            delete this.attributes["mirrorable"];
+            currentDOMElement.attribute("mirrorable").delete();
         }
 
         return currentDOMElement;
