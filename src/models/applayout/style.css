@@ -472,6 +472,10 @@ aside ~ div[appcontent] {
         height: calc(100vh - 50px);
     }
 
+    header ~ aside {
+        height: 50px;
+    }
+
     header ~ aside ~ div[appcontent] {
         height: calc(100vh - 50px - 25px - var(--sizeMenuBarText));
     }
