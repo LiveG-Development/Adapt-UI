@@ -680,7 +680,7 @@ ui.components.Link = class extends ui.components.Component {
     @param events object Events to listen to on component. Default: `{}`.
 
     @shortDescription TextCode class, extends `ui.components.Component`.
-    @longDescription Displays text in italics. Has similar properties to an HTML `code` element. 
+    @longDescription Displays text in a code snippet. Has similar properties to an HTML `code` element. 
 */
 ui.components.TextCode = class extends ui.components.Component {
     constructor(children = [], style = {}, attributes = {}, events = {}) {
@@ -699,7 +699,7 @@ ui.components.TextCode = class extends ui.components.Component {
     @param events object Events to listen to on component. Default: `{}`.
 
     @shortDescription CodeBlock class, extends `ui.components.Component`.
-    @longDescription Displays text in italics. Has similar properties to an HTML `pre` element. 
+    @longDescription Displays text in a code block. Has similar properties to an HTML `pre` element. 
 */
 ui.components.CodeBlock = class extends ui.components.Component {
     constructor(children = [], style = {}, attributes = {}, events = {}) {
