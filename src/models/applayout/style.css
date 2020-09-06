@@ -102,6 +102,7 @@ div[menu] {
     height: 100vh;
     margin: 0;
     background-color: var(--primaryBackground);
+    outline: none;
     transition: left 0.5s;
 }
 
