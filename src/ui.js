@@ -179,6 +179,13 @@ ui.colour.RGBA = class {
         }
     }
 
+    /*
+        @name ui.colour.RGBA( ... ).generateCSS
+
+        @return string CSS representation of colour.
+
+        @shortDescription Convert colour into an `rgba` CSS string for use in CSS code.
+    */
     generateCSS() {
         return "rgba(" + this.red + ", " + this.green + ", " + this.blue + ", " + this.alpha + ")";
     }
